@@ -1,0 +1,15 @@
+C:\Fitness_App\Get Fit\Get Fit\bin\Debug\Get Fit.dll
+C:\Fitness_App\Get Fit\Get Fit\bin\Debug\Get Fit.pdb
+C:\Fitness_App\Get Fit\Get Fit\bin\Debug\Get_Fit.Get_Fit.apk
+C:\Fitness_App\Get Fit\Get Fit\bin\Debug\Get_Fit.Get_Fit-Signed.apk
+C:\Fitness_App\Get Fit\Get Fit\obj\Debug\Get Fit.csprojResolveAssemblyReference.cache
+C:\Fitness_App\Get Fit\Get Fit\obj\Debug\Get Fit.dll
+C:\Fitness_App\Get Fit\Get Fit\obj\Debug\Get Fit.pdb
+C:\Fitness_App\Get Fit\Get Fit\obj\Debug\android\bin\Get_Fit.Get_Fit.apk
+C:\Fitness_App\Get Fit\Get Fit\obj\Debug\res\layout\main.xml
+C:\Fitness_App\Get Fit\Get Fit\obj\Debug\res\values\strings.xml
+C:\Fitness_App\Get Fit\Get Fit\obj\Debug\res\drawable\icon.png
+C:\Fitness_App\Get Fit\Get Fit\obj\Debug\R.cs.flag
+C:\Fitness_App\Get Fit\Get Fit\obj\Debug\uploadflags.txt
+C:\Fitness_App\Get Fit\Get Fit\obj\Debug\Get Fit.dll.mdb
+C:\Fitness_App\Get Fit\Get Fit\bin\Debug\Get Fit.dll.mdb
