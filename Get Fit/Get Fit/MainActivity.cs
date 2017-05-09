@@ -2,6 +2,7 @@
 using Android.Widget;
 using Android.OS;
 
+
 namespace Get_Fit
 {
     [Activity(Label = "Get_Fit", MainLauncher = true, Icon = "@drawable/icon")]
