@@ -4,57 +4,217 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>620</x>
-      <y>80</y>
-      <w>160</w>
-      <h>30</h>
+      <x>570</x>
+      <y>140</y>
+      <w>280</w>
+      <h>250</h>
     </coordinates>
-    <panel_attributes>Get Fit
+    <panel_attributes>MainActivity.cs
+
+
+--
++ImageButton AccountImage
++ImageButton MealImage
++ImageButton WorkoutImage 
+--
++OnCreate(Bundle savedInstance)
++void Account_Btn_Click(View view)
++void Meal_Btn_Click(View view)
++void Workout_Btn_Click(View view)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>630</x>
+      <y>500</y>
+      <w>240</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>EFUsers:DbContext
+
+
+
+--
+[Key]
++int userid
++string FirstName
++string LastName
++int weight
++double height
++Spinner bodygoal
++Button submit
+--
++void insertintoUsers()
++void EditInfo()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>30</x>
+      <y>530</y>
+      <w>250</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>EFIngriedents:DbContext
+
+
+--
+[key]
++int ingredientID
++string ingredientName
++int Calories
++string Category
+[Foriegn Key]
++int userId
+--
++void Add()
++void Edit()
++void Delete()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1200</x>
+      <y>380</y>
+      <w>260</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>EFWorkoutst:DbContext
+
+
+--
+[key]
++int workoutId
++string workoutName
++string workoutType
++int length
+[Foriegn key]
++int userId
+
+--
++void Add()
++void Edit()
++void Delete()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>50</x>
+      <y>50</y>
+      <w>270</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>EFMeals:DbContext
+--
+[key]
++int mealID
++string mealname
++int mealcalories
++int servings
++DateTime publication
++strings mealtype
++string recommedfor
++string DietaryRestrictions
+[Foriegn Key]
++string IngredientName
+--
++void Add()
++void Edit()
++void Delete()
++IList GetAllMeals</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1220</x>
+      <y>60</y>
+      <w>210</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>IFit
+--
+
++void Add()
++void Delete()
++void Edit() </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>890</x>
+      <y>140</y>
+      <w>210</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>login.xml
+--
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>630</x>
-      <y>100</y>
-      <w>30</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>590</x>
-      <y>150</y>
+      <x>1270</x>
+      <y>30</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>Log In</panel_attributes>
+    <panel_attributes>/AbstractClass/
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
+    <id>UMLClass</id>
     <coordinates>
-      <x>750</x>
-      <y>100</y>
-      <w>30</w>
-      <h>70</h>
+      <x>910</x>
+      <y>500</y>
+      <w>180</w>
+      <h>260</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+    <panel_attributes>Account.xml
+</panel_attributes>
+    <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>710</x>
-      <y>150</y>
-      <w>100</w>
-      <h>30</h>
+      <x>330</x>
+      <y>30</y>
+      <w>210</w>
+      <h>190</h>
     </coordinates>
-    <panel_attributes>Register</panel_attributes>
+    <panel_attributes>Meal_libary.xml
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>280</y>
+      <w>210</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Meal_Search.xml
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>340</x>
+      <y>530</y>
+      <w>210</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>new_meal.xml
+</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
