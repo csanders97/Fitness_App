@@ -20,5 +20,6 @@ namespace Get_Fit.Models
         int weight { get; set; }
         double height { get; set; }
         Spinner bodyGoal { get; set; }
+        int age { get; set; }
     }
 }
