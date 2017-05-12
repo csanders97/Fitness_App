@@ -52,6 +52,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Models\Ingredients.cs" />
+    <Compile Include="Models\Meals.cs" />
+    <Compile Include="Models\Users.cs" />
+    <Compile Include="Models\Workouts.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
