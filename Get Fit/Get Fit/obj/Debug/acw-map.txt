@@ -1,4 +1,0 @@
-Get_Fit.MainActivity, Get Fit;md51c99a46ab2e46865875adc0d8d57bf9a.MainActivity
-Get_Fit.MainActivity, Get Fit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md51c99a46ab2e46865875adc0d8d57bf9a.MainActivity
-Get_Fit.MainActivity;md51c99a46ab2e46865875adc0d8d57bf9a.MainActivity
-get_fit.MainActivity;md51c99a46ab2e46865875adc0d8d57bf9a.MainActivity
