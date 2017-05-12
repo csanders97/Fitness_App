@@ -30,11 +30,11 @@ public class Workouts {
     public void setWorkoutType(String type) {
         this.workoutType = type;
     }
-    public int length()
+    public int getLength()
     {
         return this.length;
     }
-    public void length(int time)
+    public void setLength(int time)
     {
         this.length = time;
     }
