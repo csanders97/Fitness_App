@@ -16,6 +16,16 @@ public class Ingredients {
 
     }
 
+
+    public Ingredients(String IngredientName, int Calories, String Category) {
+
+        this.IngredientName = IngredientName;
+        this.Calories = Calories;
+        this.Category = Category;
+
+
+    }
+
     public Ingredients(int ingredientId, String IngredientName, int Calories, String Category) {
 
         this.ingredientId = ingredientId;

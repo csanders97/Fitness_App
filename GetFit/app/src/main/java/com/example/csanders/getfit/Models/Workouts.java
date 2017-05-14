@@ -16,6 +16,14 @@ public class Workouts {
 
     }
 
+    public void Workouts(String workoutName,String workoutType,int length) {
+
+        this.workoutName  = workoutName;
+        this.workoutType = workoutType;
+        this.length = length;
+
+    }
+
     public void Workouts(int workoutId,String workoutName,String workoutType,int length) {
 
         this.workoutId = workoutId;

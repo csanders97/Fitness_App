@@ -16,6 +16,14 @@ public class Users {
 
     }
 
+    public Users(String firstName, String lastName, int weight, double height) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.weight = weight;
+        this.height = height;
+
+    }
+
     public Users(int userId, String firstName, String lastName, int weight, double height) {
 
         this.userId = userId;

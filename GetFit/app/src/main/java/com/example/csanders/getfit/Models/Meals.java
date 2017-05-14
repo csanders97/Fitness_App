@@ -20,6 +20,16 @@ public class Meals {
 
     }
 
+    public Meals(String mealName, int mealCalories, int servings,String publications, String mealType, String recommendations,String dietaryRestrictions) {
+        this.mealCalories = mealCalories;
+        this.servings = servings;
+        this.publications = publications;
+        this.mealType = mealType;
+        this.recommendations = recommendations;
+        this.dietaryRestrictions = dietaryRestrictions;
+
+    }
+
     public Meals(int mealId, String mealName, int mealCalories, int servings,String publications, String mealType, String recommendations,String dietaryRestrictions) {
         this.mealId = mealId;
         this.mealCalories = mealCalories;
