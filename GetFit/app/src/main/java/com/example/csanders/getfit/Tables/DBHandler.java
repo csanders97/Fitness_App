@@ -56,6 +56,47 @@ public class DBHandler extends  SQLiteOpenHelper {
     private static final String KEY_WorkoutType = "workout_type";
     private static final String KEY_WorkoutLength = "workout_length";
 
+
+    // Creating tables
+    // User table
+    private static final String CREATE_TABLE_USERS =
+            "CREATE TABLE " + TABLE_Users +
+                    "(" + KEY_UserID + " INTEGER PRIMARY KEY,"
+                        + KEY_FirstName + " TEXT,"
+                        + KEY_LastName + " TEXT,"
+                        + KEY_Weight + " INTEGER,"
+                        + KEY_Height + " REAL" + ")";
+
+    // Ingredients table
+    private static final String CREATE_TABLE_INGREDIENTS =
+            "CREATE TABLE " + TABLE_Ingredients +
+                        "(" + KEY_IngredientId + " INTEGER PRIMARY KEY,"
+                            + KEY_IngredientName + " TEXT,"
+                            + KEY_IngredientCalories + " INTEGER,"
+                            + KEY_IngredientCategory + " TEXT" + ")";
+
+    // Meals table
+    private static final String CREATE_TABLE_MEALS=
+            "CREATE TABLE " + TABLE_Meals +
+                        "(" + KEY_MealId + " INTEGER PRIMARY KEY,"
+                            + KEY_MealName + " INTEGER,"
+                            + KEY_MealCalories + " INTEGER,"
+                            + KEY_Servings + " DATETIME,"
+                            + KEY_Publications + " TEXT,"
+                            + KEY_MealType + " TEXT,"
+                            + KEY_Recommendations + " TEXT,"
+                            + KEY_DietaryRestrictions + "TEXT" + ")";
+
+
+
+    // Workouts table
+    private static final String CREATE_TABLE_WORKOUTS =
+            "CREATE TABLE " + TABLE_Workouts +
+                        "(" + KEY_WorkoutId + " INTEGER PRIMARY KEY,"
+                            + KEY_WorkoutName + " TEXT,"
+                            + KEY_WorkoutType + " TEXT,"
+                            + KEY_WorkoutLength + " INTEGER" + ")";
+
     public DBHandler(Context context) {
 
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -63,6 +104,11 @@ public class DBHandler extends  SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
+        db.execSQL(CREATE_TABLE_USERS);
+        db.execSQL(CREATE_TABLE_INGREDIENTS);
+        db.execSQL(CREATE_TABLE_MEALS);
+        db.execSQL(CREATE_TABLE_WORKOUTS);
 
     }
 
