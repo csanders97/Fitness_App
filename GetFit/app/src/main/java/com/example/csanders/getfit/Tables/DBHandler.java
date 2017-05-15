@@ -10,6 +10,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.csanders.getfit.Models.Users;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class DBHandler extends  SQLiteOpenHelper {
 
     // Database Version
@@ -125,4 +130,87 @@ public class DBHandler extends  SQLiteOpenHelper {
         onCreate(db);
 
     }
+
+    // Adding new shop
+    public void addUser(Users users) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_FirstName, users.getFirstName()); // User FirstName
+        values.put(KEY_LastName, users.getLastName()); // User LastName
+        values.put(KEY_Weight, users.getWeight()); // User Weight
+        values.put(KEY_Height, users.getHeight()); // User Height
+
+
+     // Inserting data into Users Table
+        db.insert(TABLE_Users, null, values);
+        db.close();
+    }
+    // Getting one shop
+    public Users getUser(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_Users, new String[]{KEY_UserID,
+                KEY_FirstName, KEY_LastName, KEY_Weight, KEY_Height}, KEY_UserID + "=?",
+        new String[]{String.valueOf(id)}, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        Users info = new Users(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4));
+// return shop
+        return info;
+    }
+    // Getting All Users
+    public List<Users> getAllShops() {
+        List<Users>  listofusers = new ArrayList<Users>();
+// Select All Query
+        String selectQuery = "SELECT * FROM " + TABLE_Users;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+// looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Users users = new Users();
+                users.setUserId(Integer.parseInt(cursor.getString(0)));
+                users.setFirstName(cursor.getString(1));
+                users.setLastName(cursor.getString(2));
+                users.setWeight(cursor.getInt(3));
+                users.setHeight(cursor.getInt(4));
+// Adding contact to list
+                listofusers.add(users);
+            } while (cursor.moveToNext());
+        }
+
+// return contact list
+        return listofusers;
+    }
+    // Updating a shop
+    public int updateUser(Users user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_FirstName, user.getFirstName()); // User FirstName
+        values.put(KEY_LastName, user.getLastName()); // User LastName
+        values.put(KEY_Weight, user.getWeight()); // User Weight
+        values.put(KEY_Height, user.getHeight()); // User Height
+
+
+// updating row
+        return db.update(TABLE_Users, values, KEY_UserID + " = ?",
+        new String[]{String.valueOf(user.getUserId())});
+    }
+
+    // Deleting a shop
+    public void deleteShop(Users user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_Users, KEY_UserID + " = ?",
+        new String[] { String.valueOf(user.getUserId()) });
+        db.close();
+    }
+
+
+
 }
