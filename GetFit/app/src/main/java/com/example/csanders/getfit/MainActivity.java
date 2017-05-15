@@ -15,6 +15,30 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+        DBHandler db = new DBHandler(this);
+
+// Inserting Shop/Rows
+        Log.d("Insert: ", "Inserting ..");
+        db.addUser(new Users("Billy ", "Bob ", 300 , 6 ));
+
+// Reading all shops
+        Log.d("Reading: ", "Reading all shops..");
+        List<Users> users = db.getAllShops();
+
+        for (Users user : users) {
+            String log = "Id: " + user.getUserId() + ",FirstName: " + user.getFirstName() + ",LastName: " + user.getLastName() + ",Weight: " + user.getWeight() + ",Height: " + user.getHeight();
+// Writing shops to log
+            Log.d("Users: : ", log);
+        }
     }
+
+
+
+
+
     }
+
 
