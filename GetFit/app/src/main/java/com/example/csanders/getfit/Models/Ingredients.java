@@ -10,7 +10,6 @@ public class Ingredients {
     private String IngredientName;
     private int Calories;
     private String Category;
-    private int ingredient_userid;
 
 
     public Ingredients() {
@@ -33,17 +32,6 @@ public class Ingredients {
         this.IngredientName = IngredientName;
         this.Calories = Calories;
         this.Category = Category;
-
-
-    }
-
-    public Ingredients(int ingredientId, String IngredientName, int Calories, String Category,int ingredient_userid) {
-
-        this.ingredientId = ingredientId;
-        this.IngredientName = IngredientName;
-        this.Calories = Calories;
-        this.Category = Category;
-        this.ingredient_userid = ingredient_userid;
 
 
     }
@@ -87,16 +75,6 @@ public class Ingredients {
     public void setCategory(String category) {
 
         this.Category = category;
-    }
-
-    public int getIngredient_userid()
-    {
-        return this.ingredient_userid;
-    }
-
-    public void setIngredient_userid(int ingredient_userid) {
-
-        this.ingredient_userid = ingredient_userid;
     }
 
 
