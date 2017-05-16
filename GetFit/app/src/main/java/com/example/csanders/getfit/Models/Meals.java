@@ -27,7 +27,6 @@ public class Meals {
         this.mealType = mealType;
         this.recommendations = recommendations;
         this.dietaryRestrictions = dietaryRestrictions;
-
     }
 
     public Meals(int mealId, String mealName, int mealCalories, int servings,String publications, String mealType, String recommendations,String dietaryRestrictions) {
@@ -38,35 +37,24 @@ public class Meals {
         this.mealType = mealType;
         this.recommendations = recommendations;
         this.dietaryRestrictions = dietaryRestrictions;
-
     }
 
-    public int getMealId()
-    {
-
+    public int getMealId() {
         return this.mealId;
     }
-    public void setMealId(int id)
-    {
-
+    public void setMealId(int id) {
         this.mealId = id;
     }
     public String getMealName() {
-
         return this.mealName;
     }
     public void setMealName(String name) {
-
         this.mealName = name;
     }
-    public int getMealCalories()
-    {
-
+    public int getMealCalories() {
         return this.mealCalories;
     }
-    public void setMealCalories(int calories)
-    {
-
+    public void setMealCalories(int calories) {
         this.mealCalories = calories;
     }
     public int getServings()
