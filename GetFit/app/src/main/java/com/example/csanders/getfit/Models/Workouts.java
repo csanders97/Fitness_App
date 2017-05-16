@@ -8,15 +8,17 @@ public class Workouts {
     private int workoutId;
     private String workoutName;
     private String workoutType;
+    private int workout_user_id;
     private int length;
 
 
 
-    public void Workouts() {
+
+    public Workouts() {
 
     }
 
-    public void Workouts(String workoutName,String workoutType,int length) {
+    public Workouts(String workoutName,String workoutType,int length) {
 
         this.workoutName  = workoutName;
         this.workoutType = workoutType;
@@ -24,7 +26,7 @@ public class Workouts {
 
     }
 
-    public void Workouts(int workoutId,String workoutName,String workoutType,int length) {
+    public Workouts(int workoutId,String workoutName,String workoutType,int length) {
 
         this.workoutId = workoutId;
         this.workoutName  = workoutName;
@@ -32,6 +34,19 @@ public class Workouts {
         this.length = length;
 
     }
+
+    public Workouts(int workoutId,String workoutName,String workoutType,int length, int workout_user_id) {
+
+        this.workoutId = workoutId;
+        this.workoutName  = workoutName;
+        this.workoutType = workoutType;
+        this.length = length;
+        this.workout_user_id = workout_user_id;
+
+    }
+
+
+
 
     public int getWorkoutId()
     {
@@ -68,5 +83,15 @@ public class Workouts {
     {
 
         this.length = time;
+    }
+
+    public int getWorkout_user_id() {
+
+        return this.workout_user_id;
+    }
+
+    public void setWorkout_user_id(int id) {
+
+        this.workout_user_id = id;
     }
 }
