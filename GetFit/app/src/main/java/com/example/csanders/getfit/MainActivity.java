@@ -45,11 +45,11 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
 
 
 // Inserting Shop/Rows
-        Log.d("Insert: ", "Inserting ..");
-        db.addUsers(new Users("Billy", "Bob", 300 , 6));
-        db.addIngredients(new Ingredients(1,"Carrot",10,"Vegatable",1));
-        db.addMeals(new Meals(1,"Salad",190,1,"5-17-2017","Lunch" ," ", " Weight Loss", 1, "Lettuce"));
-        db.addWorkouts(new Workouts(1,"Treadmill" , "Cardio", 30,1));
+//        Log.d("Insert: ", "Inserting ..");
+//        db.addUsers(new Users("Billy", "Bob", 300 , 6));
+//        db.addIngredients(new Ingredients(1,"Carrot",10,"Vegatable",1));
+//        db.addMeals(new Meals(1,"Salad",190,1,"5-17-2017","Lunch" ," ", " Weight Loss", 1, "Lettuce"));
+//        db.addWorkouts(new Workouts(1,"Treadmill" , "Cardio", 30,1));
 
 
 
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
 
         for (Meals meals: mealses) {
             String log = "Id: " + meals.getMealId() + ",Meal Name: " + meals.getMealName() + ",LastName: " + meals.getMealCalories() + ",Weight: " + meals.getMealType() + ",Height: " + meals.getServings()
-                    + " " + meals.getDietaryRestrictions() + " " + meals.getRecommendations() + " " + meals.getPublications() + " " + meals.getMeals_IngredientName() + " " + meals.getMeals_userID();
+                    + "DietaryRestrictions: " + meals.getDietaryRestrictions() + "Recommendations: " + meals.getRecommendations() + "Publications: " + meals.getPublications() + "Meals IngredientName: " + meals.getMeals_IngredientName() + "Meal UserID: " + meals.getMeals_userID();
 // Writing shops to log
             Log.d("Meals: : ", log);
         }
