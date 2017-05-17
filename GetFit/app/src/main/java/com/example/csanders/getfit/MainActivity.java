@@ -1,30 +1,48 @@
 package com.example.csanders.getfit;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.csanders.getfit.Models.Ingredients;
 import com.example.csanders.getfit.Models.Meals;
 import com.example.csanders.getfit.Models.Users;
 import com.example.csanders.getfit.Models.Workouts;
 import com.example.csanders.getfit.Tables.DBHandler;
+import com.example.csanders.getfit.Views.Home;
 
 import java.util.List;
 
 //IM YOUR DADDY CALEB
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements  View.OnClickListener{
+    private Button regClick;
+    private Button logClick;
+    private EditText userName;
+    private EditText pass;
+    private String name;
+    private String password;
+    DBHandler db = new DBHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        regClick = (Button) findViewById(R.id.registerbtn);
+        regClick.setOnClickListener(this);
+        logClick = (Button) findViewById(R.id.loginbtn);
+        logClick.setOnClickListener(this);
+        pass = (EditText) findViewById(R.id.passwordinput);
+        password = pass.getText().toString();
 
 
 
-        DBHandler db = new DBHandler(this);
+
+
 
 // Inserting Shop/Rows
         Log.d("Insert: ", "Inserting ..");
@@ -76,6 +94,21 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onClick(View view) {
+        userName = (EditText) findViewById(R.id.usernameinput);
+        name = userName.getText().toString();
+
+        switch (view.getId()) {
+
+            case R.id.registerbtn:
+
+                break;
+
+            case R.id.loginbtn:
+                Intent intent =  new Intent(this, Home.class);
+                startActivity(intent);
+                break;
+        }
+
 
     }
 
