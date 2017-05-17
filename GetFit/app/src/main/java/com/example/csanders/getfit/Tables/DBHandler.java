@@ -20,7 +20,7 @@ import java.util.List;
 public class DBHandler extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 3;
 
     // Database Name
     private static final String DATABASE_NAME = "Fitness";
@@ -34,7 +34,6 @@ public class DBHandler extends SQLiteOpenHelper {
 
     // Users Table - column names
     private static final String KEY_UserID = "user_id";
-    private static final String KEY_Password = "password";
     private static final String KEY_FirstName = "first_name";
     private static final String KEY_LastName = "last_name";
     private static final String KEY_Weight = "weight";
@@ -79,7 +78,6 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_USERS =
             "CREATE TABLE " + TABLE_Users +
                     "(" + KEY_UserID + " INTEGER PRIMARY KEY,"
-                    + KEY_Password + " TEXT, "
                     + KEY_FirstName + " TEXT,"
                     + KEY_LastName + " TEXT,"
                     + KEY_Weight + " INTEGER,"
@@ -281,28 +279,9 @@ public class DBHandler extends SQLiteOpenHelper {
 
 
     //Updating an Ingredient
-    public int updateIngredient(Ingredients ingredients) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(KEY_IngredientName, ingredients.getIngredientName()); // Ingredient Name
-        values.put(KEY_IngredientCalories, ingredients.getCalories()); // Ingredient Calories
-        values.put(KEY_IngredientCategory, ingredients.getCategory()); // Ingredient Category
-
-
-// updating row
-        return db.update(TABLE_Ingredients, values, KEY_IngredientId+ " = ?",
-                new String[]{String.valueOf(ingredients.getIngredientId())});
-    }
 
 
     //Deleting an Ingredient
-    public void deleteIngredients(Ingredients ingredients) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_Ingredients, KEY_IngredientId + " = ?",
-                new String[] { String.valueOf(ingredients.getIngredientId())});
-        db.close();
-    }
 
 
 
@@ -330,23 +309,6 @@ public class DBHandler extends SQLiteOpenHelper {
 
 
     //Updating a Meal
-    public int updateMeal(Meals meal) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(KEY_MealName, meal.getMealName()); // Meal Name
-        values.put(KEY_MealCalories, meal.getMealCalories()); // Meal Calories
-        values.put(KEY_Servings, meal.getServings()); // Meal Servings
-        values.put(KEY_Publications, meal.getPublications()); // Meal Publications
-        values.put(KEY_MealType, meal.getMealType()); // Meal Type
-        values.put(KEY_DietaryRestrictions, meal.getDietaryRestrictions()); // Meal Dietary Restrictions
-
-
-// updating row
-        return db.update(TABLE_Meals, values, KEY_MealId + " = ?",
-                new String[]{String.valueOf(meal.getMealId())});
-    }
-
 
 
     //Get all Meals
@@ -383,12 +345,6 @@ public class DBHandler extends SQLiteOpenHelper {
 
 
     //Deleting a Meal
-    public void deleteMeals(Meals meals) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_Meals, KEY_MealId + " = ?",
-                new String[] { String.valueOf(meals.getMealId())});
-        db.close();
-    }
 
 
 
@@ -399,10 +355,10 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_WorkoutName, workout.getWorkoutName()); // Workout Name
-        values.put(KEY_WorkoutType, workout.getWorkoutType()); // Workout Type
-        values.put(KEY_WorkoutLength, workout.getLength()); // Workout Length
-        values.put(KEY_Workout_User_ID, workout.getWorkout_user_id()); // Workout User ID
+        values.put(KEY_WorkoutName, workout.getWorkoutName()); // User FirstName
+        values.put(KEY_WorkoutType, workout.getWorkoutType()); // User LastName
+        values.put(KEY_WorkoutLength, workout.getLength()); // User Weight
+        values.put(KEY_Workout_User_ID, workout.getWorkout_user_id()); // User Height
 
         // Inserting data into Workouts Table
         db.insert(TABLE_Workouts, null, values);
@@ -411,21 +367,6 @@ public class DBHandler extends SQLiteOpenHelper {
 
 
     //Updating a workout
-    public int updateWorkout(Workouts workouts) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(KEY_WorkoutName, workouts.getWorkoutName()); // Workout Name
-        values.put(KEY_WorkoutType, workouts.getWorkoutType()); // Workout Type
-        values.put(KEY_WorkoutLength, workouts.getLength()); // Workout Length
-
-
-
-// updating row
-        return db.update(TABLE_Workouts, values, KEY_WorkoutId + " = ?",
-                new String[]{String.valueOf(workouts.getWorkoutId())});
-    }
-
 
 
     //Get all Workouts
@@ -433,7 +374,7 @@ public class DBHandler extends SQLiteOpenHelper {
         List<Workouts>  listofworkouts = new ArrayList<Workouts>();
 
 // Select All Query
-        String selectQuery = "SELECT * FROM " + TABLE_Workouts;
+        String selectQuery = "SELECT * FROM " + TABLE_Meals;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -461,12 +402,6 @@ public class DBHandler extends SQLiteOpenHelper {
 
 
     //Deleting a workout
-    public void deleteWorkouts(Workouts workouts) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_Workouts, KEY_WorkoutId + " = ?",
-                new String[] { String.valueOf(workouts.getWorkoutId())});
-        db.close();
-    }
 
 
 
