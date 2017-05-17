@@ -8,28 +8,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.csanders.getfit.Models.Ingredients;
+import com.example.csanders.getfit.Models.Meals;
 import com.example.csanders.getfit.Models.Users;
+import com.example.csanders.getfit.Models.Workouts;
 import com.example.csanders.getfit.Tables.DBHandler;
 import com.example.csanders.getfit.Views.Home;
 
 import java.util.List;
 
-<<<<<<< .mine
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button regClick;
-    private Button logClick;
-    private EditText userName;
-    private EditText pass;
-    private String name;
-    private String password;
-
-
-
-
-=======
 //IM YOUR DADDY CALEB
 
-public class MainActivity extends AppCompatActivity implements  View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private Button regClick;
     private Button logClick;
     private EditText userName;
@@ -37,13 +27,10 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     private String name;
     private String password;
     DBHandler db = new DBHandler(this);
-
->>>>>>> .theirs
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-<<<<<<< .mine
         regClick = (Button) findViewById(R.id.registerbtn);
         regClick.setOnClickListener(this);
         logClick = (Button) findViewById(R.id.loginbtn);
@@ -51,38 +38,13 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
         pass = (EditText) findViewById(R.id.passwordinput);
         password = pass.getText().toString();
     }
-=======
-        regClick = (Button) findViewById(R.id.registerbtn);
-        regClick.setOnClickListener(this);
-        logClick = (Button) findViewById(R.id.loginbtn);
-        logClick.setOnClickListener(this);
-        pass = (EditText) findViewById(R.id.passwordinput);
-        password = pass.getText().toString();
-
->>>>>>> .theirs
 
     public void onClick(View view) {
+        
         userName = (EditText) findViewById(R.id.usernameinput);
         name = userName.getText().toString();
-<<<<<<< .mine
         boolean doesExist = false;
         //db.addUser(new Users("John", "Doe", 300, 67));
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
-
-
 
 // Inserting Shop/Rows
         Log.d("Insert: ", "Inserting ..");
@@ -91,12 +53,8 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
         db.addMeals(new Meals(1,"Salad",190,1,"5-17-2017","Lunch" ," ", " Weight Loss", 1, "Lettuce"));
         db.addWorkouts(new Workouts(1,"Treadmill" , "Cardio", 30,1));
 
-
-
-
 // Reading all shops
         Log.d("Reading: ", "Reading all users..");
->>>>>>> .theirs
         List<Users> users = db.getAllUsers();
         for (Users user : users) {
             Log.i("Name: ", user.getFirstName());
@@ -121,64 +79,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
 //                }
                   Intent intent = new Intent(this, Home.class);
                   startActivity(intent);
-                break;
-
+                  break;
         }
     }
-<<<<<<< .mine
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
-
-
-
-    public void onClick(View view) {
-        userName = (EditText) findViewById(R.id.usernameinput);
-        name = userName.getText().toString();
-
-        switch (view.getId()) {
-
-            case R.id.registerbtn:
-
-                break;
-
-            case R.id.loginbtn:
-                Intent intent =  new Intent(this, Home.class);
-                startActivity(intent);
-                break;
-        }
-
-
-    }
-
-
-}
-
-
-
->>>>>>> .theirs
