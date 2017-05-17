@@ -1,6 +1,7 @@
 package com.example.csanders.getfit.Views;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,7 +31,15 @@ public class Home extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            //case r.id.pro
+            case R.id.profileBtn:
+                Intent profile = new Intent(this, Profile.class);
+                startActivity(profile);
+                break;
+            case R.id.libraryBtn:
+                Intent library = new Intent(this, Library.class);
+                startActivity(library);
+                break;
+            case R.id.searchBtn:
         }
     }
 }
