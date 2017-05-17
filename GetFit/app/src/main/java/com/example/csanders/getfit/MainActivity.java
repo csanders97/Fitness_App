@@ -13,6 +13,8 @@ import com.example.csanders.getfit.Tables.DBHandler;
 
 import java.util.List;
 
+//IM YOUR DADDY CALEB
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         List<Workouts> workoutses = db.getAllWorkouts();
         List<Ingredients> ingredientses = db.getAllIngredients();
         List<Meals> mealses = db.getAllMeals();
+
 
         for (Users user : users) {
             String log = "Id: " + user.getUserId() + ",FirstName: " + user.getFirstName() + ",LastName: " + user.getLastName() + ",Weight: " + user.getWeight() + ",Height: " + user.getHeight();
