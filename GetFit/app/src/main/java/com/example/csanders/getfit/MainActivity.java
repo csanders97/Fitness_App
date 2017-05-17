@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         DBHandler db = new DBHandler(this);
         boolean doesExist = false;
         //db.addUser(new Users("John", "Doe", 300, 67));
-        List<Users> users = db.getAllShops();
+        List<Users> users = db.getAllUsers();
         for (Users user : users) {
             Log.i("Name: ", user.getFirstName());
             Log.i("Input: ", name);
