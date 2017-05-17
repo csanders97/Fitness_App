@@ -40,18 +40,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void onClick(View view) {
-        
         userName = (EditText) findViewById(R.id.usernameinput);
         name = userName.getText().toString();
         boolean doesExist = false;
-        //db.addUser(new Users("John", "Doe", 300, 67));
+        //db.addUsers(new Users("John", "Doe", 300, 67));
 
 // Inserting Shop/Rows
-        Log.d("Insert: ", "Inserting ..");
-        db.addUsers(new Users("Billy", "Bob", 300 , 6));
-        db.addIngredients(new Ingredients(1,"Carrot",10,"Vegatable",1));
-        db.addMeals(new Meals(1,"Salad",190,1,"5-17-2017","Lunch" ," ", " Weight Loss", 1, "Lettuce"));
-        db.addWorkouts(new Workouts(1,"Treadmill" , "Cardio", 30,1));
+//        Log.d("Insert: ", "Inserting ..");
+//        db.addUsers(new Users("Billy", "Bob", 300 , 6));
+//        db.addIngredients(new Ingredients(1,"Carrot",10,"Vegatable",1));
+//        db.addMeals(new Meals(1,"Salad",190,1,"5-17-2017","Lunch" ," ", " Weight Loss", 1, "Lettuce"));
+//        db.addWorkouts(new Workouts(1,"Treadmill" , "Cardio", 30,1));
 
 // Reading all shops
         Log.d("Reading: ", "Reading all users..");
@@ -71,12 +70,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.loginbtn:
                 //logic
-//                if (doesExist) {
-//                    Log.i("Login: ", "Welcome back");
-//                }
-//                else {
-//                    Log.i("Login: ", "You need to register this user");
-//                }
+                if (doesExist) {
+                    Log.i("Login: ", "Welcome back");
+                }
+                else {
+                    Log.i("Login: ", "You need to register this user");
+                }
                   Intent intent = new Intent(this, Home.class);
                   startActivity(intent);
                   break;
