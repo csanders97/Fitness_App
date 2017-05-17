@@ -20,7 +20,7 @@ import java.util.List;
 public class DBHandler extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
 
     // Database Name
     private static final String DATABASE_NAME = "Fitness";
@@ -158,6 +158,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(KEY_FirstName, users.getFirstName()); // User FirstName
+        values.put(KEY_Password, users.getPassword()); //User Password
         values.put(KEY_LastName, users.getLastName()); // User LastName
         values.put(KEY_Weight, users.getWeight()); // User Weight
         values.put(KEY_Height, users.getHeight()); // User Height
@@ -171,7 +172,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public Users getUsers(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_Users, new String[]{KEY_UserID,
+        Cursor cursor = db.query(TABLE_Users, new String[]{KEY_UserID,KEY_Password,
                         KEY_FirstName, KEY_LastName, KEY_Weight, KEY_Height}, KEY_UserID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null)
@@ -196,10 +197,12 @@ public class DBHandler extends SQLiteOpenHelper {
             do {
                 Users users = new Users();
                 users.setUserId(Integer.parseInt(cursor.getString(0)));
-                users.setFirstName(cursor.getString(1));
-                users.setLastName(cursor.getString(2));
-                users.setWeight(cursor.getInt(3));
-                users.setHeight(cursor.getInt(4));
+                users.setPassword(cursor.getString(1));
+                users.setFirstName(cursor.getString(2));
+                users.setLastName(cursor.getString(3));
+                users.setWeight(cursor.getInt(4));
+                users.setHeight(cursor.getInt(5));
+
 // Adding contact to list
                 listofusers.add(users);
             } while (cursor.moveToNext());
@@ -214,6 +217,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(KEY_FirstName, users.getFirstName()); // User FirstName
+        values.put(KEY_Password, users.getPassword()); //User Password
         values.put(KEY_LastName, users.getLastName()); // User LastName
         values.put(KEY_Weight, users.getWeight()); // User Weight
         values.put(KEY_Height, users.getHeight()); // User Height

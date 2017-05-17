@@ -10,10 +10,16 @@ public class Users {
     public String lastName;
     public int weight;
     public double height;
+    public String password;
 
 
     public Users() {
 
+    }
+
+    public Users(String firstName , String password)  {
+        this.firstName = firstName;
+        this.password = password;
     }
 
     public Users(String firstName, String lastName, int weight, double height) {
@@ -33,6 +39,15 @@ public class Users {
         this.height = height;
 
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public int getUserId() {
 
         return this.userId;
