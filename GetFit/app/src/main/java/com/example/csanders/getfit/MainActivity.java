@@ -1,6 +1,7 @@
 package com.example.csanders.getfit;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 // Reading all shops
         Log.d("Reading: ", "Reading all users..");
         List<Users> users = db.getAllUsers();
+        int userIndex = 0;
         for (Users user : users) {
             Log.i("Name: ", user.getFirstName());
             Log.i("Input: ", name);
@@ -62,7 +64,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (user.getFirstName().equals(name)) {
                 doesExist = true;
                 Log.i("Bool: ", Boolean.toString(doesExist));
+                break;
             }
+            userIndex++;
         }
         switch(view.getId()) {
             case R.id.registerbtn:
@@ -76,8 +80,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else {
                     Log.i("Login: ", "You need to register this user");
                 }
+                    int currUserID = users.get(userIndex).getUserId();
+                    Users testString = db.getUsers(currUserID);
                   Intent intent = new Intent(this, Home.class);
                   startActivity(intent);
+
                   break;
         }
     }
