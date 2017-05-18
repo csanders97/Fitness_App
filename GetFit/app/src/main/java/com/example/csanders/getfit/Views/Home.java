@@ -40,6 +40,9 @@ public class Home extends Activity implements View.OnClickListener {
                 startActivity(library);
                 break;
             case R.id.searchBtn:
+                Intent search = new Intent(this, Search.class);
+                startActivity(search);
+                break;
         }
     }
 }

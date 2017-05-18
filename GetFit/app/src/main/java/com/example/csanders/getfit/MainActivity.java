@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText pass;
     private String name;
     private String password;
+    public int currUserID;
     DBHandler db = new DBHandler(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,12 +81,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else {
                     Log.i("Login: ", "You need to register this user");
                 }
-                    int currUserID = users.get(userIndex).getUserId();
-                    Users testString = db.getUsers(currUserID);
-                  Intent intent = new Intent(this, Home.class);
-                  startActivity(intent);
-
-                  break;
+                currUserID = users.get(userIndex).getUserId();
+                Users testString = db.getUsers(currUserID);
+                Intent intent = new Intent(this, Home.class);
+                startActivity(intent);
+                break;
         }
     }
 }

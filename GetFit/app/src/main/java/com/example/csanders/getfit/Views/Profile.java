@@ -16,14 +16,13 @@ import java.util.List;
 
 public class Profile extends Activity {
     DBHandler db = new DBHandler(this);
-    List<Users> users = db.getAllUsers();
     MainActivity main = new MainActivity();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
+        Users users = db.getUsers(main.currUserID);
     }
 
 
