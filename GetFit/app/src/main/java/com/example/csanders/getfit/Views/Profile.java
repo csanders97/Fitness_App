@@ -2,6 +2,7 @@ package com.example.csanders.getfit.Views;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.csanders.getfit.MainActivity;
 import com.example.csanders.getfit.Models.Users;
@@ -22,7 +23,8 @@ public class Profile extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        Users users = db.getUsers(main.currUserID);
+        Users user = db.getUsers(main.currUserID);
+        Log.i("Name: ", user.getFirstName());
     }
 
 

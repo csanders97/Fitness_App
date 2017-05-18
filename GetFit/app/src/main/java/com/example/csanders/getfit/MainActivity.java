@@ -45,7 +45,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         userName = (EditText) findViewById(R.id.usernameinput);
         name = userName.getText().toString();
         boolean doesExist = false;
-        db.addUsers(new Users(1,"John", "Doe", 300, 67));
+        //db.addUsers(new Users(1, "John", "hiThere", "Doe", 300, 67));
+        db.addUsers(new Users(2, "Caleb", "hiThere", "Sanders", 150, 59));
+
 
 // Inserting Shop/Rows
         Log.d("Insert: ", "Inserting ..");
@@ -83,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 currUserID = users.get(userIndex).getUserId();
                 Users testString = db.getUsers(currUserID);
+                Log.i("id: ", testString.toString());
                 Intent intent = new Intent(this, Home.class);
                 startActivity(intent);
                 break;
