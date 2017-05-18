@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.csanders.getfit.Models.Users;
 import com.example.csanders.getfit.R;
@@ -19,6 +21,7 @@ public class Home extends Activity implements View.OnClickListener {
     private Button prof;
     private Button lib;
     private Button search;
+    private int ID;
     DBHandler db = new DBHandler(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +29,10 @@ public class Home extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_home);
         Bundle bundle = getIntent().getExtras();
         String use = bundle.getString("stuff");
-        int ID = Integer.parseInt(use);
+        ID = Integer.parseInt(use);
         Users testString = db.getUsers(ID);
-        Log.i("Name: ", testString.getFirstName());
+        TextView text = (TextView) findViewById(R.id.textView4);
+        text.setText("Welcome back " + testString.getFirstName() + "!");
         prof = (Button) findViewById(R.id.profileBtn);
         lib = (Button) findViewById(R.id.libraryBtn);
         search = (Button) findViewById(R.id.searchBtn);
@@ -39,9 +43,12 @@ public class Home extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        Bundle bundle = new Bundle();
+        bundle.putString("ID", String.valueOf(ID));
         switch (view.getId()) {
             case R.id.profileBtn:
                 Intent profile = new Intent(this, Profile.class);
+                profile.putExtras(bundle);
                 startActivity(profile);
                 break;
             case R.id.libraryBtn:
