@@ -30,6 +30,15 @@ public class Users {
 
     }
 
+    public Users(int userId, String firstName, String password, String lastName, int weight, double height) {
+        this.userId = userId;
+        this.firstName = firstName;
+        this.password = password;
+        this.lastName = lastName;
+        this.weight = weight;
+        this.height = height;
+    }
+
     public Users(int userId, String firstName, String lastName, int weight, double height) {
 
         this.userId = userId;

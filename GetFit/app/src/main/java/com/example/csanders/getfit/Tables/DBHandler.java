@@ -172,14 +172,14 @@ public class DBHandler extends SQLiteOpenHelper {
     public Users getUsers(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_Users, new String[]{KEY_UserID,KEY_Password,
-                        KEY_FirstName, KEY_LastName, KEY_Weight, KEY_Height}, KEY_UserID + "=?",
+        Cursor cursor = db.query(TABLE_Users, new String[]{KEY_UserID,
+                        KEY_FirstName,KEY_Password, KEY_LastName, KEY_Weight, KEY_Height}, KEY_UserID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
         Users info = new Users(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4));
+                cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getInt(4), cursor.getInt(5));
 // return User
         return info;
     }
