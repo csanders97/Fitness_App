@@ -10,10 +10,13 @@
 
     <TextView
         android:text="Your Library"
-        android:background="#cc"
         android:textAlignment="center"
-        android:padding="10dp"
-        android:textSize="20dp"/>
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="22dp"
+        android:paddingTop="20dp"
+        android:background="#fff"/>
 
     <TableRow
         android:background="#CCC"
