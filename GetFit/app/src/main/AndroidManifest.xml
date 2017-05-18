@@ -17,7 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Views.Home"></activity>
-        <activity android:name=".Views.Login"></activity>
         <activity android:name=".Views.Create"></activity>
         <activity android:name=".Views.Library"></activity>
         <activity android:name=".Views.Search"></activity>
