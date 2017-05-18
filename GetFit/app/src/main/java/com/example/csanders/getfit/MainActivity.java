@@ -18,8 +18,6 @@ import com.example.csanders.getfit.Views.Home;
 
 import java.util.List;
 
-//IM YOUR DADDY CALEB
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private Button regClick;
     private Button logClick;
