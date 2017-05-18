@@ -6,7 +6,8 @@
     android:background="#CCC"
     android:paddingTop="1dp"
     android:stretchColumns="0"
-    android:id="@+id/tlTable01">
+    android:id="@+id/tlTable01"
+    android:weightSum="1">
 
     <TextView
         android:id="@+id/LibraryPage"
@@ -87,7 +88,9 @@
 
     <Button
         android:id="@+id/createItemBtn"
-        android:background="#fff"
-        android:text="+ Create new item" />
+        android:background="#4CAF50"
+        android:textColor="#fff"
+        android:text="+ Create new item"
+        android:layout_weight="96" />
 
 </TableLayout>
