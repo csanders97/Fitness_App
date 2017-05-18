@@ -8,6 +8,13 @@
     android:stretchColumns="0"
     android:id="@+id/tlTable01">
 
+    <TextView
+        android:text="Your Library"
+        android:background="#cc"
+        android:textAlignment="center"
+        android:padding="10dp"
+        android:textSize="20dp"/>
+
     <TableRow
         android:background="#CCC"
         android:paddingBottom="1dp"
