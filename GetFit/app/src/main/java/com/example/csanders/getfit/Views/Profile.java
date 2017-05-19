@@ -3,6 +3,7 @@ package com.example.csanders.getfit.Views;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.csanders.getfit.MainActivity;
@@ -18,8 +19,6 @@ import java.util.List;
 
 public class Profile extends Activity {
     DBHandler db = new DBHandler(this);
-    MainActivity main = new MainActivity();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +27,9 @@ public class Profile extends Activity {
         String use = bundle.getString("ID");
         int ID = Integer.parseInt(use);
         Users test = db.getUsers(ID);
-        //height.setText((int) test.getHeight());    }
-
-
+        EditText userName = (EditText) findViewById(R.id.nameInputProf);
+        EditText weight = (EditText) findViewById(R.id.weightInputProf);
+        userName.setText(test.getUserName(), TextView.BufferType.EDITABLE);
+        //weight.setText(test.getWeight(), TextView.BufferType.EDITABLE);
+    }
 }

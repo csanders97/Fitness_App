@@ -43,9 +43,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         userName = (EditText) findViewById(R.id.usernameinput);
         name = userName.getText().toString();
         boolean doesExist = false;
-        //db.addUsers(new Users(1, "John", "hiThere", "Doe", 300, 67));
-        //db.addUsers(new Users(2, "Caleb", "hiThere", "Sanders", 150, 59));
-        //db.addUsers(new Users(2, "Sophie", "password", "Wargo", 110, 66));
+        //db.addUsers(new Users(1, "John", "hiThere", 300, 67));
+        //db.addUsers(new Users(2, "Caleb", "hiThere", 150, 59));
+        //db.addUsers(new Users(2, "Sophie", "password", 110, 66));
 
 
 // Inserting Shop/Rows
@@ -60,10 +60,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         List<Users> users = db.getAllUsers();
         int userIndex = 0;
         for (Users user : users) {
-            Log.i("Name: ", user.getFirstName());
+            Log.i("Name: ", user.getUserName());
             Log.i("Input: ", name);
             Log.i("Bool: ", Boolean.toString(doesExist));
-            if (user.getFirstName().equals(name)) {
+            if (user.getUserName().equals(name)) {
                 doesExist = true;
                 Log.i("Bool: ", Boolean.toString(doesExist));
                 break;

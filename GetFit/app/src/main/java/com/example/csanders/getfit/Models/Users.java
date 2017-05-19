@@ -6,8 +6,7 @@ package com.example.csanders.getfit.Models;
 
 public class Users {
     public int userId;
-    public String firstName;
-    public String lastName;
+    public String userName;
     public int weight;
     public double height;
     public String password;
@@ -17,33 +16,30 @@ public class Users {
 
     }
 
-    public Users(String firstName , String password)  {
-        this.firstName = firstName;
+    public Users(String userName , String password)  {
+        this.userName = userName;
         this.password = password;
     }
 
-    public Users(String firstName, String lastName, int weight, double height) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Users(String userName, int weight, double height) {
+        this.userName = userName;
         this.weight = weight;
         this.height = height;
 
     }
 
-    public Users(int userId, String firstName, String password, String lastName, int weight, double height) {
+    public Users(int userId, String userName, String password, int weight, double height) {
         this.userId = userId;
-        this.firstName = firstName;
+        this.userName = userName;
         this.password = password;
-        this.lastName = lastName;
         this.weight = weight;
         this.height = height;
     }
 
-    public Users(int userId, String firstName, String lastName, int weight, double height) {
+    public Users(int userId, String userName, int weight, double height) {
 
         this.userId = userId;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.userName = userName;
         this.weight = weight;
         this.height = height;
 
@@ -65,21 +61,13 @@ public class Users {
 
         this.userId = id;
     }
-    public String getFirstName() {
+    public String getUserName() {
 
-        return this.firstName;
+        return this.userName;
     }
-    public void setFirstName(String first) {
+    public void setUserName(String first) {
 
-        this.firstName = first;
-    }
-    public String getLastName() {
-
-        return this.lastName;
-    }
-    public void setLastName(String last) {
-
-        this.lastName = last;
+        this.userName = first;
     }
     public int getWeight() {
 
