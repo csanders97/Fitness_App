@@ -3,6 +3,7 @@ package com.example.csanders.getfit.Views;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
 
 import com.example.csanders.getfit.MainActivity;
 import com.example.csanders.getfit.Models.Users;
@@ -27,7 +28,13 @@ public class Profile extends Activity {
         String use = bundle.getString("ID");
         int ID = Integer.parseInt(use);
         Users test = db.getUsers(ID);
-        Log.i("Name: ", test.getFirstName());
+        EditText name = (EditText) findViewById(R.id.nameInputProf);
+        EditText age = (EditText) findViewById(R.id.ageInputProf);
+        EditText weight = (EditText) findViewById(R.id.weightInputProf);
+        EditText height = (EditText) findViewById(R.id.heightInputProf);
+        name.setText(test.getFirstName());
+        //weight.setText(test.getWeight());
+        //height.setText((int) test.getHeight());
     }
 
 
