@@ -59,10 +59,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         List<Users> users = db.getAllUsers();
         int userIndex = 0;
         for (Users user : users) {
-            Log.i("Name: ", user.getFirstName());
+            Log.i("Name: ", user.getUserName());
             Log.i("Input: ", name);
             Log.i("Bool: ", Boolean.toString(doesExist));
-            if (user.getFirstName().equals(name)) {
+            if (user.getUserName().equals(name)) {
                 doesExist = true;
                 Log.i("Bool: ", Boolean.toString(doesExist));
                 break;
