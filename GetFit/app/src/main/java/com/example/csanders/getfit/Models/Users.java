@@ -6,9 +6,9 @@ package com.example.csanders.getfit.Models;
 
 public class Users {
     public int userId;
-    public String userName;
+    public String firstName;
+    public String lastName;
     public int weight;
-    public int age;
     public double height;
     public String password;
 
@@ -17,60 +17,38 @@ public class Users {
 
     }
 
-    public Users(String userName, int age, int weight, double height) {
-        this.userName = userName;
-        this.age = age;
-        this.weight = weight;
-        this.height = height;
-    }
-
-    public Users(String userName , String password)  {
-        this.userName = userName;
+    public Users(String firstName , String password)  {
+        this.firstName = firstName;
         this.password = password;
     }
 
-    public Users(String userName, int weight, double height) {
-        this.userName = userName;
+    public Users(String firstName, String lastName, int weight, double height) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.weight = weight;
         this.height = height;
 
     }
 
-    public Users(int userId, String userName, String password, int weight, double height) {
+    public Users(int userId, String firstName, String password, String lastName, int weight, double height) {
         this.userId = userId;
-        this.userName = userName;
+        this.firstName = firstName;
         this.password = password;
+        this.lastName = lastName;
         this.weight = weight;
         this.height = height;
     }
 
-    public Users(int userId, String userName, String password, int age, int weight, double height) {
-        this.userId = userId;
-        this.userName = userName;
-        this.password = password;
-        this.age = age;
-        this.weight = weight;
-        this.height = height;
-    }
-
-    public Users(int userId, String  userName, int weight, double height) {
+    public Users(int userId, String firstName, String lastName, int weight, double height) {
 
         this.userId = userId;
-        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.weight = weight;
         this.height = height;
 
     }
 
-    public int getAge()
-    {
-        return age;
-    }
-
-    public void setAge(int age)
-    {
-        this.age = age;
-    }
     public String getPassword() {
         return password;
     }
@@ -87,15 +65,22 @@ public class Users {
 
         this.userId = id;
     }
-    public String getUserName() {
+    public String getFirstName() {
 
-        return this.userName;
+        return this.firstName;
     }
-    public void setUserName(String user) {
+    public void setFirstName(String first) {
 
-        this.userName = user;
+        this.firstName = first;
     }
+    public String getLastName() {
 
+        return this.lastName;
+    }
+    public void setLastName(String last) {
+
+        this.lastName = last;
+    }
     public int getWeight() {
 
         return this.weight;

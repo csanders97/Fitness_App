@@ -27,7 +27,7 @@ public class Profile extends Activity {
         String use = bundle.getString("ID");
         int ID = Integer.parseInt(use);
         Users test = db.getUsers(ID);
-        Log.i("Name: ", test.getUserName());
+        Log.i("Name: ", test.getFirstName());
     }
 
 
