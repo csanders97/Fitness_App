@@ -1,5 +1,7 @@
 package com.example.csanders.getfit.Models;
 
+import com.example.csanders.getfit.Tables.DBHandler;
+
 /**
  * Created by Matthew Balderas on 5/13/2017.
  */
@@ -14,6 +16,7 @@ public class Ingredients {
 
 
     public Ingredients() {
+
 
     }
 
