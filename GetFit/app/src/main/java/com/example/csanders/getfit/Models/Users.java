@@ -8,7 +8,7 @@ import android.text.LoginFilter;
 
 public class Users {
     public int userId;
-    public String UserName;
+    public String userName;
     public int age;
     public int weight;
     public double height;
@@ -19,30 +19,30 @@ public class Users {
 
     }
 
-    public Users(String UserName , String password)  {
-        this.UserName = UserName;
+    public Users(String userName , String password)  {
+        this.userName = userName;
         this.password = password;
     }
 
     public Users(String UserName, int weight, double height) {
-        this.UserName = UserName;
+        this.userName = UserName;
         this.weight = weight;
         this.height = height;
 
     }
 
-    public Users(int userId, String UserName, String password, int weight, double height) {
+    public Users(int userId, String userName, String password, int weight, double height) {
         this.userId = userId;
-        this.UserName = UserName;
+        this.userName = userName;
         this.password = password;
         this.weight = weight;
         this.height = height;
     }
 
-    public Users(int userId, String UserName, String Password, int age, int weight, double height) {
+    public Users(int userId, String userName, String Password, int age, int weight, double height) {
 
         this.userId = userId;
-        this.UserName = UserName;
+        this.userName = userName;
         this.password = Password;
         this.age = age;
         this.weight = weight;
@@ -76,12 +76,10 @@ public class Users {
         this.userId = id;
     }
     public String getUserName() {
-
-        return this.UserName;
+        return this.userName;
     }
     public void setUserName(String first) {
-
-        this.UserName = first;
+        this.userName = first;
     }
     public int getWeight() {
 
