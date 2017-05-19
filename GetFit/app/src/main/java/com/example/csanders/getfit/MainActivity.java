@@ -18,8 +18,6 @@ import com.example.csanders.getfit.Views.Home;
 
 import java.util.List;
 
-//IM YOUR DADDY CALEB
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private Button regClick;
     private Button logClick;
@@ -46,15 +44,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         name = userName.getText().toString();
         boolean doesExist = false;
         //db.addUsers(new Users(1, "John", "hiThere", "Doe", 300, 67));
-        db.addUsers(new Users(2, "Caleb", "hiThere", "Sanders", 150, 59));
+        //db.addUsers(new Users(2, "Caleb", "hiThere", "Sanders", 150, 59));
 
 
 // Inserting Shop/Rows
-        Log.d("Insert: ", "Inserting ..");
-        db.addUsers(new Users("Billy", "Bob", 300 , 6));
-        db.addIngredients(new Ingredients(1,"Carrot",10,"Vegatable",1));
-        db.addMeals(new Meals(1,"Salad",190,1,"5-17-2017","Lunch" ," ", " Weight Loss", 1, "Lettuce"));
-        db.addWorkouts(new Workouts(1,"Treadmill" , "Cardio", 30,1));
+//        Log.d("Insert: ", "Inserting ..");
+//        db.addUsers(new Users("Billy", "Bob", 300 , 6));
+//        db.addIngredients(new Ingredients(1,"Carrot",10,"Vegatable",1));
+//        db.addMeals(new Meals(1,"Salad",190,1,"5-17-2017","Lunch" ," ", " Weight Loss", 1, "Lettuce"));
+//        db.addWorkouts(new Workouts(1,"Treadmill" , "Cardio", 30,1));
 
 // Reading all shops
         Log.d("Reading: ", "Reading all users..");
@@ -85,8 +83,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 currUserID = users.get(userIndex).getUserId();
                 Users testString = db.getUsers(currUserID);
-                Log.i("id: ", testString.toString());
                 Intent intent = new Intent(this, Home.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("stuff", String.valueOf(currUserID));
+                intent.putExtras(bundle);
                 startActivity(intent);
                 break;
         }
