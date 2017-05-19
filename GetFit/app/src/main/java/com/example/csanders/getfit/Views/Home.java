@@ -32,7 +32,7 @@ public class Home extends Activity implements View.OnClickListener {
         ID = Integer.parseInt(use);
         Users testString = db.getUsers(ID);
         TextView text = (TextView) findViewById(R.id.textView4);
-        text.setText("Welcome back " + testString.getUserName() + "!");
+        text.setText("Welcome back " + testString.getFirstName() + "!");
         prof = (Button) findViewById(R.id.profileBtn);
         lib = (Button) findViewById(R.id.libraryBtn);
         search = (Button) findViewById(R.id.searchBtn);
