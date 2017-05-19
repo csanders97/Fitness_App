@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.csanders.getfit.MainActivity;
 import com.example.csanders.getfit.Models.Users;
@@ -32,7 +33,7 @@ public class Profile extends Activity {
         EditText age = (EditText) findViewById(R.id.ageInputProf);
         EditText weight = (EditText) findViewById(R.id.weightInputProf);
         EditText height = (EditText) findViewById(R.id.heightInputProf);
-        name.setText(test.getFirstName());
+        name.setText(test.getFirstName(), TextView.BufferType.EDITABLE);
         //weight.setText(test.getWeight());
         //height.setText((int) test.getHeight());
     }
