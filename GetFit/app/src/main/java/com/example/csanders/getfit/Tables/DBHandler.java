@@ -20,7 +20,7 @@ import java.util.List;
 public class DBHandler extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
 
     // Database Name
     private static final String DATABASE_NAME = "Fitness";
@@ -35,8 +35,8 @@ public class DBHandler extends SQLiteOpenHelper {
     // Users Table - column names
     private static final String KEY_UserID = "user_id";
     private static final String KEY_Password = "password";
-    private static final String KEY_FirstName = "first_name";
-    private static final String KEY_LastName = "last_name";
+    private static final String KEY_UserName = "first_name";
+    private static final String KEY_AGE = "age";
     private static final String KEY_Weight = "weight";
     private static final String KEY_Height = "height";
 
@@ -80,8 +80,8 @@ public class DBHandler extends SQLiteOpenHelper {
             "CREATE TABLE " + TABLE_Users +
                     "(" + KEY_UserID + " INTEGER PRIMARY KEY,"
                     + KEY_Password + " TEXT, "
-                    + KEY_FirstName + " TEXT,"
-                    + KEY_LastName + " TEXT,"
+                    + KEY_UserName + " TEXT,"
+                    + KEY_AGE      + " INTEGER,"
                     + KEY_Weight + " INTEGER,"
                     + KEY_Height + " REAL " +")";
 
@@ -157,9 +157,8 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_FirstName, users.getFirstName()); // User FirstName
+        values.put(KEY_UserName, users.getUserName()); // User Username
         values.put(KEY_Password, users.getPassword()); //User Password
-        values.put(KEY_LastName, users.getLastName()); // User LastName
         values.put(KEY_Weight, users.getWeight()); // User Weight
         values.put(KEY_Height, users.getHeight()); // User Height
 
@@ -173,13 +172,13 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_Users, new String[]{KEY_UserID,
-                        KEY_FirstName,KEY_Password, KEY_LastName, KEY_Weight, KEY_Height}, KEY_UserID + "=?",
+                        KEY_UserName,KEY_Password,KEY_AGE, KEY_Weight, KEY_Height}, KEY_UserID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
         Users info = new Users(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getInt(4), cursor.getInt(5));
+                cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4), cursor.getInt(5));
 // return User
         return info;
     }
@@ -198,8 +197,8 @@ public class DBHandler extends SQLiteOpenHelper {
                 Users users = new Users();
                 users.setUserId(Integer.parseInt(cursor.getString(0)));
                 users.setPassword(cursor.getString(1));
-                users.setFirstName(cursor.getString(2));
-                users.setLastName(cursor.getString(3));
+                users.setUserName(cursor.getString(2));
+                users.setAge(cursor.getInt(3));
                 users.setWeight(cursor.getInt(4));
                 users.setHeight(cursor.getInt(5));
 
@@ -216,9 +215,9 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_FirstName, users.getFirstName()); // User FirstName
+        values.put(KEY_UserName, users.getUserName()); // User UserName
         values.put(KEY_Password, users.getPassword()); //User Password
-        values.put(KEY_LastName, users.getLastName()); // User LastName
+        values.put(KEY_AGE, users.getAge()); //User Age
         values.put(KEY_Weight, users.getWeight()); // User Weight
         values.put(KEY_Height, users.getHeight()); // User Height
 
@@ -475,4 +474,3 @@ public class DBHandler extends SQLiteOpenHelper {
 
 
 }
-

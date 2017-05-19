@@ -1,13 +1,15 @@
 package com.example.csanders.getfit.Models;
 
+import android.text.LoginFilter;
+
 /**
  * Created by csanders on 5/12/2017.
  */
 
 public class Users {
     public int userId;
-    public String firstName;
-    public String lastName;
+    public String UserName;
+    public int age;
     public int weight;
     public double height;
     public String password;
@@ -17,38 +19,46 @@ public class Users {
 
     }
 
-    public Users(String firstName , String password)  {
-        this.firstName = firstName;
+    public Users(String UserName , String password)  {
+        this.UserName = UserName;
         this.password = password;
     }
 
-    public Users(String firstName, String lastName, int weight, double height) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Users(String UserName, int weight, double height) {
+        this.UserName = UserName;
         this.weight = weight;
         this.height = height;
 
     }
 
-    public Users(int userId, String firstName, String password, String lastName, int weight, double height) {
+    public Users(int userId, String UserName, String password, int weight, double height) {
         this.userId = userId;
-        this.firstName = firstName;
+        this.UserName = UserName;
         this.password = password;
-        this.lastName = lastName;
         this.weight = weight;
         this.height = height;
     }
 
-    public Users(int userId, String firstName, String lastName, int weight, double height) {
+    public Users(int userId, String UserName, String Password, int age, int weight, double height) {
 
         this.userId = userId;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.UserName = UserName;
+        this.password = Password;
+        this.age = age;
         this.weight = weight;
         this.height = height;
 
     }
 
+    public int getAge() {
+
+        return this.age;
+    }
+
+    public void setAge(int age) {
+
+        this.age = age;
+    }
     public String getPassword() {
         return password;
     }
@@ -65,21 +75,13 @@ public class Users {
 
         this.userId = id;
     }
-    public String getFirstName() {
+    public String getUserName() {
 
-        return this.firstName;
+        return this.UserName;
     }
-    public void setFirstName(String first) {
+    public void setUserName(String first) {
 
-        this.firstName = first;
-    }
-    public String getLastName() {
-
-        return this.lastName;
-    }
-    public void setLastName(String last) {
-
-        this.lastName = last;
+        this.UserName = first;
     }
     public int getWeight() {
 
