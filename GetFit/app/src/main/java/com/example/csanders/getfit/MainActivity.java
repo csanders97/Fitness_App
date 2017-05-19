@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         boolean doesExist = false;
         //db.addUsers(new Users(1, "John", "hiThere", "Doe", 300, 67));
         //db.addUsers(new Users(2, "Caleb", "hiThere", "Sanders", 150, 59));
+        //db.addUsers(new Users(2, "Sophie", "password", "Wargo", 110, 66));
 
 
 // Inserting Shop/Rows
