@@ -35,13 +35,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         regClick.setOnClickListener(this);
         logClick = (Button) findViewById(R.id.loginbtn);
         logClick.setOnClickListener(this);
-        pass = (EditText) findViewById(R.id.passwordinput);
-        password = pass.getText().toString();
     }
 
     public void onClick(View view) {
         userName = (EditText) findViewById(R.id.usernameinput);
         name = userName.getText().toString();
+        pass = (EditText) findViewById(R.id.passwordinput);
+        password = pass.getText().toString();
         boolean doesExist = false;
         //db.addUsers(new Users(1, "John", "hiThere", 300, 67));
         //db.addUsers(new Users(2, "Caleb", "hiThere", 150, 59));
@@ -60,35 +60,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         List<Users> users = db.getAllUsers();
         int userIndex = 0;
         for (Users user : users) {
-            Log.i("Name: ", user.getUserName());
-            Log.i("Input: ", name);
-            Log.i("Bool: ", Boolean.toString(doesExist));
-            if (user.getUserName().equals(name)) {
+            if (user.getUserName().equals(name) && (user.getPassword().equals(password))) {
                 doesExist = true;
-                Log.i("Bool: ", Boolean.toString(doesExist));
                 break;
             }
             userIndex++;
         }
         switch(view.getId()) {
             case R.id.registerbtn:
-                //logic
+                if (!doesExist) {
+                    db.addUsers(new Users(name, password));
+                }
                 break;
             case R.id.loginbtn:
-                //logic
                 if (doesExist) {
-                    Log.i("Login: ", "Welcome back");
+                    currUserID = users.get(userIndex).getUserId();
+                    Intent intent = new Intent(this, Home.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("stuff", String.valueOf(currUserID));
+                    intent.putExtras(bundle);
+                    startActivity(intent);
                 }
                 else {
                     Log.i("Login: ", "You need to register this user");
                 }
-                currUserID = users.get(userIndex).getUserId();
-                Users testString = db.getUsers(currUserID);
-                Intent intent = new Intent(this, Home.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("stuff", String.valueOf(currUserID));
-                intent.putExtras(bundle);
-                startActivity(intent);
                 break;
         }
     }
