@@ -2,12 +2,15 @@ package com.example.csanders.getfit;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.csanders.getfit.Models.Ingredients;
 import com.example.csanders.getfit.Models.Meals;
@@ -66,10 +69,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             userIndex++;
         }
+        TextView error = (TextView) findViewById(R.id.message);
+        error.setGravity(Gravity.CENTER);
         switch(view.getId()) {
             case R.id.registerbtn:
                 if (!doesExist) {
                     db.addUsers(new Users(name, password));
+                }
+                else {
+                    error.setText("This user already exists! Please log in.");
                 }
                 break;
             case R.id.loginbtn:
@@ -82,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     startActivity(intent);
                 }
                 else {
-                    Log.i("Login: ", "You need to register this user");
+                    error.setText("This user does not exist! Please register this new account.");
                 }
                 break;
         }
