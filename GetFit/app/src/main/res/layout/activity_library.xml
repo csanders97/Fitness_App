@@ -88,9 +88,10 @@
 
     <Button
         android:id="@+id/createItemBtn"
+        android:layout_weight="96"
         android:background="#4CAF50"
-        android:textColor="#fff"
+        android:onClick="CreateOnClick"
         android:text="+ Create new item"
-        android:layout_weight="96" />
+        android:textColor="#fff" />
 
 </TableLayout>

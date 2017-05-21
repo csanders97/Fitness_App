@@ -40,10 +40,16 @@ public class Create extends Activity {
 
     public void onMealRadioButtonClicked(View view) {
 
+        Calories.setText(" ");
+        Calories.setText("Calories Gained");
+
     }
 
 
     public void onWorkoutRadioButtonClicked(View view) {
+
+        Calories.setText(" ");
+        Calories.setText("Calories Burned");
 
     }
 }
