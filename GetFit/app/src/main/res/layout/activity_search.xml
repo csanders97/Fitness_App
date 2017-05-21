@@ -7,6 +7,22 @@
     tools:context="com.example.csanders.getfit.MainActivity">
 
     <TextView
+        android:id="@+id/CalBox"
+        android:layout_width="89dp"
+        android:layout_height="24dp"
+        android:text="Calories"
+        tools:layout_editor_absoluteX="255dp"
+        tools:layout_editor_absoluteY="177dp" />
+
+    <TextView
+        android:id="@+id/CatBox"
+        android:layout_width="88dp"
+        android:layout_height="24dp"
+        android:text="Category"
+        tools:layout_editor_absoluteX="136dp"
+        tools:layout_editor_absoluteY="177dp" />
+
+    <TextView
         android:id="@+id/SearchPage"
         android:layout_width="326dp"
         android:layout_height="42dp"
@@ -74,5 +90,13 @@
         app:layout_constraintVertical_bias="0.22">
 
     </SearchView>
+
+    <TextView
+        android:id="@+id/NameBox"
+        android:layout_width="89dp"
+        android:layout_height="24dp"
+        android:text="Name"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="177dp" />
 
 </android.support.constraint.ConstraintLayout>

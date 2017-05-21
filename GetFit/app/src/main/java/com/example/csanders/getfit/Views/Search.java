@@ -25,6 +25,20 @@ public class Search extends Activity {
 
         List<Ingredients> ing = db.getAllIngredients();
 
+        db.addIngredients(new Ingredients(1, "Banana", 89, "Fruit"));
+        db.addIngredients(new Ingredients(2, "Apple", 52, "Fruit"));
+        db.addIngredients(new Ingredients(3, "Strawberry", 33, "Fruit"));
+        db.addIngredients(new Ingredients(4, "Orange", 47, "Fruit"));
+        db.addIngredients(new Ingredients(5, "Mango", 60, "Fruit"));
+
+        db.addIngredients(new Ingredients(1, "Lettuce", 15, "Vegetable"));
+        db.addIngredients(new Ingredients(1, "Green Pepper", 20, "Vegetable"));
+        db.addIngredients(new Ingredients(1, "Onion", 40, "Vegetable"));
+        db.addIngredients(new Ingredients(1, "Carrot", 41, "Vegetable"));
+        db.addIngredients(new Ingredients(1, "Rutabaga", 38, "Vegetable"));
+
+
+
         for(Ingredients ingredients : ing){
             Log.i("Categories: ", ingredients.getCategory());
             Log.i("Name: ", ingredients.getIngredientName());
