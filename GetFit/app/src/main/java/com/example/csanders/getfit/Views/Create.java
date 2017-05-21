@@ -2,6 +2,7 @@ package com.example.csanders.getfit.Views;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -34,7 +35,15 @@ public class Create extends Activity {
         Equipment = (EditText)findViewById(R.id.Equipment);
         addItem = (Button)findViewById(R.id.addItemToDB);
 
+    }
 
+
+    public void onMealRadioButtonClicked(View view) {
+
+    }
+
+
+    public void onWorkoutRadioButtonClicked(View view) {
 
     }
 }
