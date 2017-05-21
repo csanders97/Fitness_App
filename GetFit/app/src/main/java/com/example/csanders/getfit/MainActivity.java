@@ -2,12 +2,15 @@ package com.example.csanders.getfit;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.csanders.getfit.Models.Ingredients;
 import com.example.csanders.getfit.Models.Meals;
@@ -35,13 +38,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         regClick.setOnClickListener(this);
         logClick = (Button) findViewById(R.id.loginbtn);
         logClick.setOnClickListener(this);
-        pass = (EditText) findViewById(R.id.passwordinput);
-        password = pass.getText().toString();
     }
 
     public void onClick(View view) {
         userName = (EditText) findViewById(R.id.usernameinput);
         name = userName.getText().toString();
+        pass = (EditText) findViewById(R.id.passwordinput);
+        password = pass.getText().toString();
         boolean doesExist = false;
         //db.addUsers(new Users(1, "John", "hiThere", 300, 67));
         //db.addUsers(new Users(2, "Caleb", "hiThere", 150, 59));
@@ -60,35 +63,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         List<Users> users = db.getAllUsers();
         int userIndex = 0;
         for (Users user : users) {
-            Log.i("Name: ", user.getUserName());
-            Log.i("Input: ", name);
-            Log.i("Bool: ", Boolean.toString(doesExist));
-            if (user.getUserName().equals(name)) {
+            if (user.getUserName().equals(name) && (user.getPassword().equals(password))) {
                 doesExist = true;
-                Log.i("Bool: ", Boolean.toString(doesExist));
                 break;
             }
             userIndex++;
         }
+        TextView error = (TextView) findViewById(R.id.message);
+        error.setGravity(Gravity.CENTER);
         switch(view.getId()) {
             case R.id.registerbtn:
-                //logic
-                break;
-            case R.id.loginbtn:
-                //logic
-                if (doesExist) {
-                    Log.i("Login: ", "Welcome back");
+                if (!doesExist) {
+                    db.addUsers(new Users(name, password));
                 }
                 else {
-                    Log.i("Login: ", "You need to register this user");
+                    error.setText("This user already exists! Please log in.");
                 }
-                currUserID = users.get(userIndex).getUserId();
-                Users testString = db.getUsers(currUserID);
-                Intent intent = new Intent(this, Home.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("stuff", String.valueOf(currUserID));
-                intent.putExtras(bundle);
-                startActivity(intent);
+                break;
+            case R.id.loginbtn:
+                if (doesExist) {
+                    currUserID = users.get(userIndex).getUserId();
+                    Intent intent = new Intent(this, Home.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("stuff", String.valueOf(currUserID));
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+                else {
+                    error.setText("This user does not exist! Please register this new account.");
+                }
                 break;
         }
     }

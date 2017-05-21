@@ -213,7 +213,6 @@ public class DBHandler extends SQLiteOpenHelper {
     // Updating a User
     public int updateUser(Users users) {
         SQLiteDatabase db = this.getWritableDatabase();
-
         ContentValues values = new ContentValues();
         values.put(KEY_UserName, users.getUserName()); // User UserName
         values.put(KEY_Password, users.getPassword()); //User Password
