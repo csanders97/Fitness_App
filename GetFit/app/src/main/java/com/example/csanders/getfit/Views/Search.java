@@ -37,7 +37,17 @@ public class Search extends Activity {
         db.addIngredients(new Ingredients(1, "Carrot", 41, "Vegetable"));
         db.addIngredients(new Ingredients(1, "Rutabaga", 38, "Vegetable"));
 
+        db.addIngredients(new Ingredients(1, "4oz Chicken Breast (No Skin, raw)", 124, "Protein"));
+        db.addIngredients(new Ingredients(1, "4.1oz Chicken Thigh (No Skin, raw)", 82, "Protein"));
+        db.addIngredients(new Ingredients(1, "4oz Chicken Breast (With Skin, raw)", 194, "Protein"));
+        db.addIngredients(new Ingredients(1, "4oz Beef Sirloin Steak (raw)", 227, "Protein"));
+        db.addIngredients(new Ingredients(1, "4oz Pork Chop (raw)", 132, "Protein"));
+        db.addIngredients(new Ingredients(1, "0.3oz Medium Slice Bacon", 46, "Protein"));
 
+        db.addIngredients(new Ingredients(1, "1.0oz Panko Breadcrumbs", 110, "Seasoning"));
+        db.addIngredients(new Ingredients(1, "1.0oz Shredded Mozzarella Cheese", 80, "Dairy"));
+        db.addIngredients(new Ingredients(1, "1.0oz Grated Parmesan Cheese", 122, "Dairy"));
+        db.addIngredients(new Ingredients(1, "1.0oz Canned Tomato Sauce", 7, "Seasoning"));
 
         for(Ingredients ingredients : ing){
             Log.i("Categories: ", ingredients.getCategory());
