@@ -210,4 +210,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.982" />
 
+    <TextView
+        android:id="@+id/dailyCalories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recommended Calories: "
+        tools:layout_editor_absoluteX="121dp"
+        tools:layout_editor_absoluteY="447dp" />
+
+    <TextView
+        android:id="@+id/caloriesLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remaining Calories Today:"
+        tools:layout_editor_absoluteX="121dp"
+        tools:layout_editor_absoluteY="478dp" />
+
 </android.support.constraint.ConstraintLayout>
