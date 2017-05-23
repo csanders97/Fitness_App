@@ -21,6 +21,7 @@ import java.util.List;
 
 public class Profile extends Activity implements View.OnClickListener {
     DBHandler db = new DBHandler(this);
+    Users test = new Users();
     private EditText age;
     private EditText userName;
     private EditText weight;
@@ -33,7 +34,7 @@ public class Profile extends Activity implements View.OnClickListener {
         Bundle bundle = getIntent().getExtras();
         String use = bundle.getString("ID");
         int ID = Integer.parseInt(use);
-        Users test = db.getUsers(ID);
+        test = db.getUsers(ID);
         userName = (EditText)findViewById(R.id.nameInputProf);
         age = (EditText) findViewById(R.id.ageInputProf);
         weight = (EditText) findViewById(R.id.weightInputProf);
@@ -52,6 +53,6 @@ public class Profile extends Activity implements View.OnClickListener {
         age = (EditText) findViewById(R.id.ageInputProf);
         weight = (EditText) findViewById(R.id.weightInputProf);
         height = (EditText) findViewById(R.id.heightInputProf);
-        
+        db.updateUser(test);
     }
 }
