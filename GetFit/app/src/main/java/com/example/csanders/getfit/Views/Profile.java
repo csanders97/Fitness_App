@@ -70,11 +70,9 @@ public class Profile extends Activity implements View.OnClickListener {
         calories = (10*(userWeight*.45359237) + (6.25 * (userHeight*2.54) - (5*userAge) + 5));
         if(goal.toString().contains("Lose Weight")) {
             calories -= 500;
-        } 
+        }
         if(goal.toString().contains("Gain Weight")) {
             calories += 500;
-        } else {
-            calories = calories;
         }
         findCaloriesRemaining(calories);
         return calories;
