@@ -10,6 +10,7 @@ import android.widget.MultiAutoCompleteTextView;
 import android.widget.RadioButton;
 
 import com.example.csanders.getfit.Models.Ingredients;
+import com.example.csanders.getfit.Models.Workouts;
 import com.example.csanders.getfit.R;
 import com.example.csanders.getfit.Tables.DBHandler;
 
@@ -23,10 +24,20 @@ public class Create extends Activity {
     private RadioButton meal;
     private RadioButton workout;
     private EditText Name;
-    private EditText Description;
+    private EditText Servings;
     private EditText Calories;
+    private EditText Recommended;
+    private EditText publication;
+    private EditText length;
+    private EditText MealType;
+    private EditText workouttype;
     private Button addItem;
     private MultiAutoCompleteTextView options;
+    private String InputWorkoutName;
+    private int WorkoutCalories;
+    private String InputWorkoutEquipment;
+    private String InputWorkoutType;
+    private int workoutlength;
 
 
     DBHandler db = new DBHandler(this);
@@ -37,12 +48,19 @@ public class Create extends Activity {
         meal = (RadioButton)findViewById(R.id.mealSelection);
         workout = (RadioButton)findViewById(R.id.workoutSelection);
         Name = (EditText)findViewById(R.id.Name);
-        Description = (EditText)findViewById(R.id.Description);
+        Servings = (EditText)findViewById(R.id.Servings);
         Calories = (EditText)findViewById(R.id.Calories);
+        Recommended = (EditText)findViewById(R.id.recommended);
+        publication = (EditText)findViewById(R.id.publicationdate);
+        length = (EditText)findViewById(R.id.length);
+        workouttype = (EditText)findViewById(R.id.workouttype);
+
+        MealType = (EditText)findViewById(R.id.mealtype);
+
         addItem = (Button)findViewById(R.id.addItemToDB);
         options = (MultiAutoCompleteTextView)findViewById(R.id.multiAutoCompleteTextView);
 
-        List<Ingredients> ing = db.getAllIngredients();
+        //List<Ingredients> ing = db.getAllIngredients();
 
 //        db.addIngredients(new Ingredients(1, "Banana", 89, "Fruit"));
 //        db.addIngredients(new Ingredients(2, "Apple", 52, "Fruit"));
@@ -67,22 +85,34 @@ public class Create extends Activity {
 //        db.addIngredients(new Ingredients(18, "1.0oz Shredded Mozzarella Cheese", 80, "Dairy"));
 //        db.addIngredients(new Ingredients(19, "1.0oz Grated Parmesan Cheese", 122, "Dairy"));
 //        db.addIngredients(new Ingredients(20, "1.0oz Canned Tomato Sauce", 7, "Seasoning"));
-
-        for(Ingredients ingredients : ing){
-            Log.i("Categories: ", ingredients.getCategory());
-            Log.i("Name: ", ingredients.getIngredientName());
-            Log.i("Calories: ", Integer.toString(ingredients.getCalories()));
-            Log.i("ID: ", Integer.toString(ingredients.getIngredientId()));
-            Log.i("User ID: ", Integer.toString(ingredients.getIngredient_userid()));
-        }
-    }
+//
+//        for(Ingredients ingredients : ing){
+//            Log.i("Categories: ", ingredients.getCategory());
+//            Log.i("Name: ", ingredients.getIngredientName());
+//            Log.i("Calories: ", Integer.toString(ingredients.getCalories()));
+//            Log.i("ID: ", Integer.toString(ingredients.getIngredientId()));
+//            Log.i("User ID: ", Integer.toString(ingredients.getIngredient_userid()));
+//        }
+  }
 
 
     public void onMealRadioButtonClicked(View view) {
 
         Calories.setText(" ");
-        Calories.setText("Calories Gained");
-        options.setText("Ingredients");
+        Calories.setHint("Calories Gained");
+        options.setHint("Ingredients");
+        Servings.setVisibility(View.VISIBLE);
+        Recommended.setVisibility(View.VISIBLE);
+        publication.setVisibility(View.VISIBLE);
+        MealType.setVisibility(View.VISIBLE);
+
+
+        length.setVisibility(View.INVISIBLE);
+        workouttype.setVisibility(View.INVISIBLE);
+
+        String InputMealName = Name.getText().toString();
+
+       // db.addMeals(InputMealName,);
 
     }
 
@@ -90,8 +120,43 @@ public class Create extends Activity {
     public void onWorkoutRadioButtonClicked(View view) {
 
         Calories.setText(" ");
-        Calories.setText("Calories Burned");
-        options.setText("Equipment");
+        Calories.setHint("Calories Burned");
+        options.setHint("Equipment");
+        Servings.setVisibility(View.INVISIBLE);
+        Recommended.setVisibility(View.INVISIBLE);
+        publication.setVisibility(View.INVISIBLE);
+        MealType.setVisibility(View.INVISIBLE);
 
+        length.setVisibility(View.VISIBLE);
+        workouttype.setVisibility(View.VISIBLE);
+
+
+        length.setHint("Length");
+        workouttype.setHint("Workout Type");
+
+
+
+
+//        InputWorkoutName = Name.getText().toString();
+//        String InputWorkoutCalories = Calories.getText().toString();
+//        WorkoutCalories = Integer.parseInt(InputWorkoutCalories);
+//        InputWorkoutEquipment = options.getText().toString();
+//         InputWorkoutType = workouttype.getText().toString();
+//        String InputWorkoutLength = length.getText().toString();
+//        workoutlength = Integer.parseInt(InputWorkoutLength);
+
+
+
+
+    }
+
+
+    public void AddtoDatabase(View view) {
+
+        if(Calories.getText().equals("Calories Burned")) {
+
+            db.addWorkouts(new Workouts(InputWorkoutName,InputWorkoutType,InputWorkoutEquipment,workoutlength,WorkoutCalories));
+
+        }
     }
 }

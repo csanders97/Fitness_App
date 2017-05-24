@@ -10,6 +10,7 @@ public class Workouts {
     private String workoutType;
     private String equipment;
     private int length;
+    private int caloriesBurned;
     private int workout_user_id;
 
 
@@ -24,6 +25,17 @@ public class Workouts {
         this.workoutType = workoutType;
         this.length = length;
 
+
+    }
+
+    public Workouts(String workoutName,String workoutType, String equipment, int length,int caloriesBurned) {
+
+        this.workoutName  = workoutName;
+        this.workoutType = workoutType;
+        this.equipment = equipment;
+        this.length = length;
+        this.caloriesBurned = caloriesBurned;
+
     }
 
     public Workouts(int workoutId,String workoutName,String workoutType,int length) {
@@ -35,17 +47,18 @@ public class Workouts {
 
     }
 
-    public Workouts(int workoutId,String workoutName,String workoutType,int length, int workout_user_id) {
+    public Workouts(int workoutId,String workoutName,String workoutType,int length, int caloriesBurned, int workout_user_id) {
 
         this.workoutId = workoutId;
         this.workoutName  = workoutName;
         this.workoutType = workoutType;
         this.length = length;
+        this.caloriesBurned = caloriesBurned;
         this.workout_user_id = workout_user_id;
 
     }
 
-    public Workouts(int workoutId,String workoutName,String workoutType, String equipment, int length, int workout_user_id) {
+    public Workouts(int workoutId,String workoutName,String workoutType, String equipment, int length,int workout_user_id) {
 
         this.workoutId = workoutId;
         this.workoutName  = workoutName;
@@ -54,6 +67,28 @@ public class Workouts {
         this.length = length;
         this.workout_user_id = workout_user_id;
 
+    }
+
+    public Workouts(int workoutId,String workoutName,String workoutType, String equipment, int length, int caloriesBurned, int workout_user_id) {
+
+        this.workoutId = workoutId;
+        this.workoutName  = workoutName;
+        this.workoutType = workoutType;
+        this.equipment = equipment;
+        this.length = length;
+        this.caloriesBurned = caloriesBurned;
+        this.workout_user_id = workout_user_id;
+
+    }
+
+    public int getCaloriesBurned() {
+
+        return caloriesBurned;
+    }
+
+    public void setCaloriesBurned(int burned) {
+
+        this.caloriesBurned = burned;
     }
 
     public String getEquipment() {
