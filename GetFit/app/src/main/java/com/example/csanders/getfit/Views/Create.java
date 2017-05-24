@@ -37,7 +37,7 @@ public class Create extends Activity {
         Name = (EditText)findViewById(R.id.Name);
         Description = (EditText)findViewById(R.id.Description);
         Calories = (EditText)findViewById(R.id.Calories);
-        Equipment = (EditText)findViewById(R.id.Equipment);
+        //Equipment = (EditText)findViewById(R.id.Equipment);
         addItem = (Button)findViewById(R.id.addItemToDB);
 
         List<Ingredients> ing = db.getAllIngredients();
