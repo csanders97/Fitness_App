@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.csanders.getfit.MainActivity;
@@ -29,6 +30,7 @@ public class Profile extends Activity implements View.OnClickListener {
     private EditText weight;
     private EditText height;
     private Button editUser;
+    private Spinner goal;
     private TextView dailyCalories;
     private TextView remainingCalories;
     @Override
@@ -66,6 +68,20 @@ public class Profile extends Activity implements View.OnClickListener {
         int userWeight = Integer.parseInt(weight.toString());
         int userHeight = Integer.parseInt(height.toString());
         calories = (10*(userWeight*.45359237) + (6.25 * (userHeight*2.54) - (5*userAge) + 5));
+        if(goal.toString().contains("Lose Weight")) {
+            calories -= 500;
+        } 
+        if(goal.toString().contains("Gain Weight")) {
+            calories += 500;
+        } else {
+            calories = calories;
+        }
+        findCaloriesRemaining(calories);
         return calories;
+    }
+
+    public double findCaloriesRemaining(double calories) {
+        double remCalories = calories;
+        return remCalories;
     }
 }
