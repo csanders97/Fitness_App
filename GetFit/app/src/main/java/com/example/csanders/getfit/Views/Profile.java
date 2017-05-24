@@ -13,6 +13,8 @@ import com.example.csanders.getfit.Models.Users;
 import com.example.csanders.getfit.R;
 import com.example.csanders.getfit.Tables.DBHandler;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 /**
@@ -27,6 +29,8 @@ public class Profile extends Activity implements View.OnClickListener {
     private EditText weight;
     private EditText height;
     private Button editUser;
+    private TextView dailyCalories;
+    private TextView remainingCalories;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,5 +58,14 @@ public class Profile extends Activity implements View.OnClickListener {
         weight = (EditText) findViewById(R.id.weightInputProf);
         height = (EditText) findViewById(R.id.heightInputProf);
         db.updateUser(test);
+    }
+
+    public double findCalories() {
+        double calories = 0;
+        int userAge = Integer.parseInt(age.toString());
+        int userWeight = Integer.parseInt(weight.toString());
+        int userHeight = Integer.parseInt(height.toString());
+        calories = (10*(userWeight*.45359237) + (6.25 * (userHeight*2.54) - (5*userAge) + 5));
+        return calories;
     }
 }
