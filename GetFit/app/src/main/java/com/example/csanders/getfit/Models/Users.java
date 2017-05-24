@@ -12,7 +12,7 @@ public class Users {
     public int age;
     public int weight;
     public double height;
-    public String Goal;
+    public String goal;
     public String password;
 
 
@@ -48,7 +48,7 @@ public class Users {
         this.age = age;
         this.weight = weight;
         this.height = height;
-        this.Goal = Goal;
+        this.goal = Goal;
 
     }
 
@@ -66,13 +66,13 @@ public class Users {
 
     public String getGoal() {
 
-        return this.Goal;
+        return this.goal;
     }
 
 
     public void setGoal(String goal) {
 
-        this.Goal = goal;
+        this.goal = goal;
     }
 
 
@@ -86,10 +86,12 @@ public class Users {
         this.age = age;
     }
     public String getPassword() {
+
         return password;
     }
 
     public void setPassword(String password) {
+
         this.password = password;
     }
 
@@ -102,9 +104,11 @@ public class Users {
         this.userId = id;
     }
     public String getUserName() {
+
         return this.userName;
     }
     public void setUserName(String first) {
+
         this.userName = first;
     }
     public int getWeight() {

@@ -22,6 +22,7 @@ public class Home extends Activity implements View.OnClickListener {
     private Button lib;
     private Button search;
     private int ID;
+    Users testString = new Users();
     DBHandler db = new DBHandler(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,7 @@ public class Home extends Activity implements View.OnClickListener {
         Bundle bundle = getIntent().getExtras();
         String use = bundle.getString("stuff");
         ID = Integer.parseInt(use);
-        Users testString = db.getUsers(ID);
+        testString = db.getUsers(ID);
         TextView text = (TextView) findViewById(R.id.textView4);
         text.setText("Welcome back " + testString.getUserName() + "!");
         prof = (Button) findViewById(R.id.profileBtn);
@@ -48,7 +49,7 @@ public class Home extends Activity implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.profileBtn:
                 Intent profile = new Intent(this, Profile.class);
-                //profile.putExtras(bundle);
+                profile.putExtras(bundle);
                 startActivity(profile);
                 break;
             case R.id.libraryBtn:

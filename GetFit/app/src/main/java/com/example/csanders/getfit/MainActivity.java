@@ -75,6 +75,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.registerbtn:
                 if (!doesExist) {
                     db.addUsers(new Users(name, password));
+                    finish();
+                    startActivity(getIntent());
                 }
                 else {
                     error.setText("This user already exists! Please log in.");

@@ -39,7 +39,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEY_AGE = "age";
     private static final String KEY_Weight = "weight";
     private static final String KEY_Height = "height";
-    private static final String KEY_Goal = " goal";
+    private static final String KEY_Goal = "goal";
 
 
     // Ingredients Table - column nmaes
@@ -178,13 +178,13 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_Users, new String[]{KEY_UserID,
-                        KEY_UserName, KEY_Password, KEY_Weight, KEY_Height,KEY_Goal}, KEY_UserID + "=?",
-                new String[]{String.valueOf(id)}, null, null, null);
+                        KEY_UserName, KEY_Password, KEY_AGE, KEY_Weight, KEY_Height, KEY_Goal}, KEY_UserID + "=?",
+                new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
         Users info = new Users(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4), cursor.getInt(5), cursor.getString(6));
+                cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4), cursor.getDouble(5), cursor.getString(6));
 // return User
         return info;
     }
