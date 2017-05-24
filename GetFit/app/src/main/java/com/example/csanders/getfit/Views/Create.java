@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.MultiAutoCompleteTextView;
 import android.widget.RadioButton;
 
 import com.example.csanders.getfit.Models.Ingredients;
@@ -24,8 +25,9 @@ public class Create extends Activity {
     private EditText Name;
     private EditText Description;
     private EditText Calories;
-    private EditText Equipment;
     private Button addItem;
+    private MultiAutoCompleteTextView options;
+
 
     DBHandler db = new DBHandler(this);
     @Override
@@ -36,9 +38,8 @@ public class Create extends Activity {
         workout = (RadioButton)findViewById(R.id.workoutSelection);
         Name = (EditText)findViewById(R.id.Name);
         Description = (EditText)findViewById(R.id.Description);
-        Calories = (EditText)findViewById(R.id.Calories);
-        //Equipment = (EditText)findViewById(R.id.Equipment);
-        addItem = (Button)findViewById(R.id.addItemToDB);
+        Calories = (EditText)findViewById(R.id.Calories);        addItem = (Button)findViewById(R.id.addItemToDB);
+        options = (MultiAutoCompleteTextView)findViewById(R.id.multiAutoCompleteTextView);
 
         List<Ingredients> ing = db.getAllIngredients();
 
@@ -80,6 +81,7 @@ public class Create extends Activity {
 
         Calories.setText(" ");
         Calories.setText("Calories Gained");
+        options.setText("Ingredients");
 
     }
 
@@ -88,6 +90,7 @@ public class Create extends Activity {
 
         Calories.setText(" ");
         Calories.setText("Calories Burned");
+        options.setText("Equipment");
 
     }
 }

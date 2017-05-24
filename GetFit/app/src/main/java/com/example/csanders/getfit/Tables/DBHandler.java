@@ -20,7 +20,7 @@ import java.util.List;
 public class DBHandler extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 7;
 
     // Database Name
     private static final String DATABASE_NAME = "Fitness";
@@ -39,6 +39,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEY_AGE = "age";
     private static final String KEY_Weight = "weight";
     private static final String KEY_Height = "height";
+    private static final String KEY_Goal = " goal";
 
 
     // Ingredients Table - column nmaes
@@ -69,6 +70,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEY_WorkoutId= " workout_id ";
     private static final String KEY_WorkoutName = " workout_name ";
     private static final String KEY_WorkoutType = " workout_type ";
+    private static final String KEY_Equipment = " equipment ";
     private static final String KEY_WorkoutLength = " workout_length ";
     //Foreign Key
     private static final String KEY_Workout_User_ID = "userId";
@@ -83,7 +85,8 @@ public class DBHandler extends SQLiteOpenHelper {
                     + KEY_UserName + " TEXT,"
                     + KEY_AGE  + " INTEGER,"
                     + KEY_Weight + " INTEGER,"
-                    + KEY_Height + " REAL " +")";
+                    + KEY_Height + " REAL,"
+                    + KEY_Goal   +  " TEXT"   +")";
 
     // Ingredients table
     private static final String CREATE_TABLE_INGREDIENTS =
@@ -120,6 +123,7 @@ public class DBHandler extends SQLiteOpenHelper {
                     + KEY_WorkoutName + " TEXT,"
                     + KEY_WorkoutType + " TEXT,"
                     + KEY_WorkoutLength + " INTEGER,"
+                    + KEY_Equipment     + " TEXT,"
                     + KEY_Workout_User_ID + " INTEGER,"
                     + "FOREIGN KEY (" + KEY_Workout_User_ID + ") REFERENCES " + TABLE_Users + "(" + KEY_UserID + ")"  + ")";
 
@@ -161,6 +165,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_Password, users.getPassword()); //User Password
         values.put(KEY_Weight, users.getWeight()); // User Weight
         values.put(KEY_Height, users.getHeight()); // User Height
+        values.put(KEY_Goal, users.getGoal());
 
         // Inserting data into Users Table
         db.insert(TABLE_Users, null, values);
@@ -178,7 +183,7 @@ public class DBHandler extends SQLiteOpenHelper {
             cursor.moveToFirst();
 
         Users info = new Users(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4));
+                cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4), cursor.getInt(5), cursor.getString(6));
 // return User
         return info;
     }
@@ -201,6 +206,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 users.setAge(cursor.getInt(3));
                 users.setWeight(cursor.getInt(4));
                 users.setHeight(cursor.getInt(5));
+                users.setGoal(cursor.getString(6));
 
 // Adding contact to list
                 listofusers.add(users);
@@ -251,6 +257,7 @@ public class DBHandler extends SQLiteOpenHelper {
         db.insert(TABLE_Ingredients, null, values);
         db.close();
     }
+
 
 
     //Get all Ingredients
@@ -403,6 +410,7 @@ public class DBHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_WorkoutName, workout.getWorkoutName()); // Workout Name
         values.put(KEY_WorkoutType, workout.getWorkoutType()); // Workout Type
+        values.put(KEY_Equipment, workout.getEquipment()); //Workout Equipment
         values.put(KEY_WorkoutLength, workout.getLength()); // Workout Length
         values.put(KEY_Workout_User_ID, workout.getWorkout_user_id()); // Workout User ID
 
@@ -419,6 +427,7 @@ public class DBHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_WorkoutName, workouts.getWorkoutName()); // Workout Name
         values.put(KEY_WorkoutType, workouts.getWorkoutType()); // Workout Type
+        values.put(KEY_Equipment, workouts.getEquipment());  //Workout Equipment
         values.put(KEY_WorkoutLength, workouts.getLength()); // Workout Length
 
 
@@ -447,8 +456,9 @@ public class DBHandler extends SQLiteOpenHelper {
                 workouts.setWorkoutId(Integer.parseInt(cursor.getString(0)));
                 workouts.setWorkoutName(cursor.getString(1));
                 workouts.setWorkoutType(cursor.getString(2));
-                workouts.setLength(cursor.getInt(3));
-                workouts.setWorkout_user_id(cursor.getInt(4));
+                workouts.setEquipment(cursor.getString(3));
+                workouts.setLength(cursor.getInt(4));
+                workouts.setWorkout_user_id(cursor.getInt(5));
 
 // Adding contact to list
                 listofworkouts.add(workouts);
