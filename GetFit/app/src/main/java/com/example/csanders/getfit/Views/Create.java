@@ -38,7 +38,8 @@ public class Create extends Activity {
         workout = (RadioButton)findViewById(R.id.workoutSelection);
         Name = (EditText)findViewById(R.id.Name);
         Description = (EditText)findViewById(R.id.Description);
-        Calories = (EditText)findViewById(R.id.Calories);        addItem = (Button)findViewById(R.id.addItemToDB);
+        Calories = (EditText)findViewById(R.id.Calories);
+        addItem = (Button)findViewById(R.id.addItemToDB);
         options = (MultiAutoCompleteTextView)findViewById(R.id.multiAutoCompleteTextView);
 
         List<Ingredients> ing = db.getAllIngredients();
