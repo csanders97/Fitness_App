@@ -20,7 +20,7 @@ import java.util.List;
 public class DBHandler extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 7;
+    private static final int DATABASE_VERSION = 8;
 
     // Database Name
     private static final String DATABASE_NAME = "Fitness";
@@ -72,6 +72,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEY_WorkoutType = " workout_type ";
     private static final String KEY_Equipment = " equipment ";
     private static final String KEY_WorkoutLength = " workout_length ";
+    private static final String KEY_CaloriesBurned = " burned_calories";
     //Foreign Key
     private static final String KEY_Workout_User_ID = "userId";
 
@@ -177,7 +178,7 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_Users, new String[]{KEY_UserID,
-                        KEY_UserName, KEY_Password, KEY_Weight, KEY_Height, KEY_Goal}, KEY_UserID + "=?",
+                        KEY_UserName, KEY_Password, KEY_Weight, KEY_Height,KEY_Goal}, KEY_UserID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
@@ -412,6 +413,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_WorkoutType, workout.getWorkoutType()); // Workout Type
         values.put(KEY_Equipment, workout.getEquipment()); //Workout Equipment
         values.put(KEY_WorkoutLength, workout.getLength()); // Workout Length
+        values.put(KEY_CaloriesBurned, workout.getCaloriesBurned()); //Calories burned after workout
         values.put(KEY_Workout_User_ID, workout.getWorkout_user_id()); // Workout User ID
 
         // Inserting data into Workouts Table
@@ -429,6 +431,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_WorkoutType, workouts.getWorkoutType()); // Workout Type
         values.put(KEY_Equipment, workouts.getEquipment());  //Workout Equipment
         values.put(KEY_WorkoutLength, workouts.getLength()); // Workout Length
+        values.put(KEY_CaloriesBurned, workouts.getCaloriesBurned()); //Calories burned after workout
 
 
 
@@ -458,7 +461,8 @@ public class DBHandler extends SQLiteOpenHelper {
                 workouts.setWorkoutType(cursor.getString(2));
                 workouts.setEquipment(cursor.getString(3));
                 workouts.setLength(cursor.getInt(4));
-                workouts.setWorkout_user_id(cursor.getInt(5));
+                workouts.setCaloriesBurned(cursor.getInt(5));
+                workouts.setWorkout_user_id(cursor.getInt(6));
 
 // Adding contact to list
                 listofworkouts.add(workouts);

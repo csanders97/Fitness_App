@@ -48,7 +48,7 @@ public class Home extends Activity implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.profileBtn:
                 Intent profile = new Intent(this, Profile.class);
-                profile.putExtras(bundle);
+                //profile.putExtras(bundle);
                 startActivity(profile);
                 break;
             case R.id.libraryBtn:
