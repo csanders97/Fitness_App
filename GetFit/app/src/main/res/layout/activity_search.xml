@@ -7,22 +7,6 @@
     tools:context="com.example.csanders.getfit.MainActivity">
 
     <TextView
-        android:id="@+id/CalBox"
-        android:layout_width="89dp"
-        android:layout_height="24dp"
-        android:text="Calories"
-        tools:layout_editor_absoluteX="255dp"
-        tools:layout_editor_absoluteY="177dp" />
-
-    <TextView
-        android:id="@+id/CatBox"
-        android:layout_width="88dp"
-        android:layout_height="24dp"
-        android:text="Category"
-        tools:layout_editor_absoluteX="136dp"
-        tools:layout_editor_absoluteY="177dp" />
-
-    <TextView
         android:id="@+id/SearchPage"
         android:layout_width="326dp"
         android:layout_height="42dp"
@@ -92,11 +76,19 @@
     </SearchView>
 
     <TextView
-        android:id="@+id/NameBox"
-        android:layout_width="89dp"
-        android:layout_height="24dp"
+        android:id="@+id/mealName"
+        android:layout_width="329dp"
+        android:layout_height="34dp"
         android:text="Name"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="177dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintVertical_bias="0.375" />
 
 </android.support.constraint.ConstraintLayout>
