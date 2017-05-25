@@ -119,7 +119,6 @@ public class Create extends Activity {
 
     public void onWorkoutRadioButtonClicked(View view) {
 
-        Calories.setText(" ");
         Calories.setHint("Calories Burned");
         options.setHint("Equipment");
         Servings.setVisibility(View.INVISIBLE);
