@@ -218,8 +218,14 @@ public class DBHandler extends SQLiteOpenHelper {
         return listofusers;
     }
     // Updating a User
-    public int updateUser(Users users) {
+    public int updateUser(int ID, String name, int age, int weight, Double height, String goal) {
         SQLiteDatabase db = this.getWritableDatabase();
+        Users users = getUsers(ID);
+        users.setUserName(name);
+        users.setAge(age);
+        users.setWeight(weight);
+        users.setHeight(height);
+        users.setGoal(goal);
         ContentValues values = new ContentValues();
         values.put(KEY_UserName, users.getUserName()); // User UserName
         values.put(KEY_Password, users.getPassword()); //User Password

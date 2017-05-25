@@ -26,20 +26,20 @@ public class Profile extends Activity implements View.OnClickListener {
     DBHandler db = new DBHandler(this);
     Users test = new Users();
     private EditText age;
+    private int ID;
     private EditText userName;
     private EditText weight;
     private EditText height;
     private Button editUser;
     private Spinner goal;
     private TextView dailyCalories;
-    private TextView remainingCalories;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         Bundle bundle = getIntent().getExtras();
         String use = bundle.getString("ID");
-        int ID = Integer.parseInt(use);
+        ID = Integer.parseInt(use);
         test = db.getUsers(ID);
         userName = (EditText)findViewById(R.id.nameInputProf);
         age = (EditText) findViewById(R.id.ageInputProf);
@@ -49,6 +49,10 @@ public class Profile extends Activity implements View.OnClickListener {
         age.setText(String.valueOf(test.getAge()), TextView.BufferType.EDITABLE);
         weight.setText(String.valueOf(test.getWeight()), TextView.BufferType.EDITABLE);
         height.setText(String.valueOf(test.getHeight()), TextView.BufferType.EDITABLE);
+//        dailyCalories = (TextView) findViewById(R.id.dailyCalories);
+//        Double daily = findCalories();
+//        String calorie = new Double(daily).toString();
+//        dailyCalories.setText(calorie);
         editUser = (Button) findViewById(R.id.submitButton);
         editUser.setOnClickListener(this);
     }
@@ -56,14 +60,18 @@ public class Profile extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         userName = (EditText) findViewById(R.id.nameInputProf);
+        String getName = userName.getText().toString();
         age = (EditText) findViewById(R.id.ageInputProf);
+        int getAge = Integer.parseInt(age.getText().toString());
         weight = (EditText) findViewById(R.id.weightInputProf);
+        int getWeight = Integer.parseInt(weight.getText().toString());
         height = (EditText) findViewById(R.id.heightInputProf);
+        Double getHeight = Double.parseDouble(height.getText().toString());
         goal = (Spinner) findViewById(R.id.goalsSpinner);
         String agenda = goal.getSelectedItem().toString();
-        db.updateUser(test);
-        double find = Double.parseDouble(dailyCalories.toString());
-        find = findCalories();
+        db.updateUser(ID, getName, getAge, getWeight, getHeight, agenda);
+        finish();
+        startActivity(getIntent());
     }
 
     public double findCalories() {
