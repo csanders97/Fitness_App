@@ -226,6 +226,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_AGE, users.getAge()); //User Age
         values.put(KEY_Weight, users.getWeight()); // User Weight
         values.put(KEY_Height, users.getHeight()); // User Height
+        values.put(KEY_Goal, users.getGoal()); //User Goal
 
 // updating row
         return db.update(TABLE_Users, values, KEY_UserID + " = ?",

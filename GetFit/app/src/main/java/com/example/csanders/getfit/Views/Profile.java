@@ -59,6 +59,8 @@ public class Profile extends Activity implements View.OnClickListener {
         age = (EditText) findViewById(R.id.ageInputProf);
         weight = (EditText) findViewById(R.id.weightInputProf);
         height = (EditText) findViewById(R.id.heightInputProf);
+        goal = (Spinner) findViewById(R.id.goalsSpinner);
+        String agenda = goal.getSelectedItem().toString();
         db.updateUser(test);
     }
 
