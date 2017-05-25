@@ -1,6 +1,7 @@
 package com.example.csanders.getfit.Views;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.example.csanders.getfit.Models.Ingredients;
 import com.example.csanders.getfit.Models.Workouts;
@@ -119,7 +121,6 @@ public class Create extends Activity {
 
     public void onWorkoutRadioButtonClicked(View view) {
 
-        Calories.setText(" ");
         Calories.setHint("Calories Burned");
         options.setHint("Equipment");
         Servings.setVisibility(View.INVISIBLE);
@@ -133,6 +134,8 @@ public class Create extends Activity {
 
         length.setHint("Length");
         workouttype.setHint("Workout Type");
+
+
 
 
 
@@ -152,6 +155,10 @@ public class Create extends Activity {
 
 
     public void AddtoDatabase(View view) {
+
+        Intent library = new Intent(this, Library.class);
+        startActivity(library);
+        Toast.makeText(getApplicationContext(), "Added!", Toast.LENGTH_LONG).show();
 
         if(Calories.getText().equals("Calories Burned")) {
 

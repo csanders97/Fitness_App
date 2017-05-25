@@ -109,7 +109,7 @@
         app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.129" />
 
     <TextView
         android:id="@+id/heightProf"
@@ -225,24 +225,8 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
-        app:layout_constraintHorizontal_bias="0.53"
-        app:layout_constraintVertical_bias="0.918" />
-
-    <TextView
-        android:id="@+id/caloriesLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Remaining Calories Today:"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.553"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="0.983" />
+        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintVertical_bias="0.937" />
 
     <TextView
         android:id="@+id/recCalories"
@@ -253,27 +237,11 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.918"
+        app:layout_constraintVertical_bias="0.937"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.974" />
-
-    <TextView
-        android:id="@+id/remCalories"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.983"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.974" />
+        app:layout_constraintHorizontal_bias="0.8" />
 
 </android.support.constraint.ConstraintLayout>
