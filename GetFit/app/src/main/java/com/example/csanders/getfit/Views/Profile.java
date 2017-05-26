@@ -49,10 +49,10 @@ public class Profile extends Activity implements View.OnClickListener {
         age.setText(String.valueOf(test.getAge()), TextView.BufferType.EDITABLE);
         weight.setText(String.valueOf(test.getWeight()), TextView.BufferType.EDITABLE);
         height.setText(String.valueOf(test.getHeight()), TextView.BufferType.EDITABLE);
-//        dailyCalories = (TextView) findViewById(R.id.dailyCalories);
-//        Double daily = findCalories();
-//        String calorie = new Double(daily).toString();
-//        dailyCalories.setText(calorie);
+        dailyCalories = (TextView) findViewById(R.id.dailyCalories);
+        Double daily = findCalories();
+        String calorie = new Double(daily).toString();
+        dailyCalories.setText(calorie);
         editUser = (Button) findViewById(R.id.submitButton);
         editUser.setOnClickListener(this);
     }
