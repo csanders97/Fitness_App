@@ -20,6 +20,14 @@
         android:textAlignment="center"
         android:textSize="22dp" />
 
+    <Button
+        android:id="@+id/createItemBtn"
+        android:layout_weight="96"
+        android:background="#4CAF50"
+        android:onClick="CreateOnClick"
+        android:text="+ Create new item"
+        android:textColor="#fff" />
+
     <TableRow
         android:background="#CCC"
         android:paddingBottom="1dp"
@@ -85,13 +93,5 @@
             android:textSize="20dp"/>
 
     </TableRow>
-
-    <Button
-        android:id="@+id/createItemBtn"
-        android:layout_weight="96"
-        android:background="#4CAF50"
-        android:onClick="CreateOnClick"
-        android:text="+ Create new item"
-        android:textColor="#fff" />
 
 </TableLayout>
