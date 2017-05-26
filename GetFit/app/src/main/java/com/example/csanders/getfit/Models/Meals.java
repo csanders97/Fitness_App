@@ -23,6 +23,7 @@ public class Meals {
     }
 
     public Meals(String mealName, int mealCalories, int servings,String publications, String mealType, String recommendations,String dietaryRestrictions) {
+        this.mealName = mealName;
         this.mealCalories = mealCalories;
         this.servings = servings;
         this.publications = publications;
@@ -33,6 +34,7 @@ public class Meals {
 
     public Meals(int mealId, String mealName, int mealCalories, int servings,String publications, String mealType, String recommendations,String dietaryRestrictions) {
         this.mealId = mealId;
+        this.mealName = mealName;
         this.mealCalories = mealCalories;
         this.servings = servings;
         this.publications = publications;
@@ -43,6 +45,7 @@ public class Meals {
 
     public Meals(int mealId, String mealName, int mealCalories, int servings,String publications, String mealType, String recommendations,String dietaryRestrictions, int meals_userID, String meals_IngredientName) {
         this.mealId = mealId;
+        this.mealName = mealName;
         this.mealCalories = mealCalories;
         this.servings = servings;
         this.publications = publications;
