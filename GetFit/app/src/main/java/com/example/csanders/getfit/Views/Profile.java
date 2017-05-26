@@ -33,6 +33,7 @@ public class Profile extends Activity implements View.OnClickListener {
     private Button editUser;
     private Spinner goal;
     private TextView dailyCalories;
+    private double calories = 0.00;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,7 @@ public class Profile extends Activity implements View.OnClickListener {
         String use = bundle.getString("ID");
         ID = Integer.parseInt(use);
         test = db.getUsers(ID);
+        goal = (Spinner) findViewById(R.id.goalsSpinner);
         userName = (EditText)findViewById(R.id.nameInputProf);
         age = (EditText) findViewById(R.id.ageInputProf);
         weight = (EditText) findViewById(R.id.weightInputProf);
@@ -49,10 +51,10 @@ public class Profile extends Activity implements View.OnClickListener {
         age.setText(String.valueOf(test.getAge()), TextView.BufferType.EDITABLE);
         weight.setText(String.valueOf(test.getWeight()), TextView.BufferType.EDITABLE);
         height.setText(String.valueOf(test.getHeight()), TextView.BufferType.EDITABLE);
-//        dailyCalories = (TextView) findViewById(R.id.dailyCalories);
-//        Double daily = findCalories();
-//        String calorie = new Double(daily).toString();
-//        dailyCalories.setText(calorie);
+        dailyCalories = (TextView) findViewById(R.id.recCalories);
+        Double daily = findCalories();
+        String calorie = daily.toString();
+        dailyCalories.setText(calorie);
         editUser = (Button) findViewById(R.id.submitButton);
         editUser.setOnClickListener(this);
     }
@@ -67,20 +69,18 @@ public class Profile extends Activity implements View.OnClickListener {
         int getWeight = Integer.parseInt(weight.getText().toString());
         height = (EditText) findViewById(R.id.heightInputProf);
         Double getHeight = Double.parseDouble(height.getText().toString());
-        goal = (Spinner) findViewById(R.id.goalsSpinner);
         String agenda = goal.getSelectedItem().toString();
         db.updateUser(ID, getName, getAge, getWeight, getHeight, agenda);
-        findCalories();
         finish();
         startActivity(getIntent());
     }
 
     public double findCalories() {
-        double calories = 0;
-        int userAge = Integer.parseInt(age.toString());
-        int userWeight = Integer.parseInt(weight.toString());
-        int userHeight = Integer.parseInt(height.toString());
-        calories = (10*(userWeight*.45359237) + (6.25 * (userHeight*2.54) - (5*userAge) + 5));
+        double userAge = Double.parseDouble(age.getText().toString());
+        double userWeight = Double.parseDouble(weight.getText().toString());
+        double userHeight = Double.parseDouble(height.getText().toString());
+        calories = (10*(userWeight*.45) + (6.25 * (userHeight*2.5) - (5*userAge) + 5));
+        Log.i("Goal: ", goal.getSelectedItem().toString());
         if(goal.getSelectedItem().toString().contains("Lose Weight")) {
             calories -= 500;
         }
