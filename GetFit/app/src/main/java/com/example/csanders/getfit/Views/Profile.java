@@ -70,6 +70,7 @@ public class Profile extends Activity implements View.OnClickListener {
         goal = (Spinner) findViewById(R.id.goalsSpinner);
         String agenda = goal.getSelectedItem().toString();
         db.updateUser(ID, getName, getAge, getWeight, getHeight, agenda);
+        findCalories();
         finish();
         startActivity(getIntent());
     }
