@@ -3,6 +3,7 @@ package com.example.csanders.getfit.Views;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -23,12 +24,17 @@ import java.util.List;
 public class Search extends Activity {
     DBHandler db = new DBHandler(this);
     private TextView name;
-    private ListView nameList;
+
     private SearchView ingredient;
 
     Meals meals = new Meals();
     public final static int quota = 1000;
 
+    List<Meals> meal;
+    String[] mealArray;
+    ArrayAdapter<String> test = new ArrayAdapter<String>(this, R.layout.activity_search, mealArray);
+    ListView nameList = (ListView) findViewById(R.id.listOfMeals);
+    //nameList.setAdapter(test);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,24 +47,38 @@ public class Search extends Activity {
         quotaMealSearch();
     }
 
+    public void mealDisplay(int index){
+        name = (TextView) findViewById(R.id.mealName);
+        name.setText(String.valueOf(mealArray[index]), TextView.BufferType.EDITABLE);
+        Log.i("Test3: ", mealArray[index]);
+    }
+
     public void quotaMealSearch()
     {
-        List<Meals> meal = db.getAllMeals();
-        for(Meals m : meal){
+        meal = db.getAllMeals();
+        mealArray =  new String[meal.size()];
+        //String item = ingredient.getQuery().toString();
+
+        for(int i = 0; i < meal.size(); i++){
+            mealArray[i] = meal.get(i).getMealName();
             if(meals.getMealCalories() <= quota){
-                if(m.getMealName() == null){
+                if(mealArray[i] == null){
                     Log.i("Null", "Value");
                 }else{
-                    name = (TextView) findViewById(R.id.mealName);
-                    name.setText(String.valueOf(m.getMealName()), TextView.BufferType.EDITABLE);
-                    Log.i("Test3: ", m.getMealName().toString());
+                    searchMealByIngredients(i);
                 }
             }
         }
     }
 
-    public void searchMealByIngredients()
+
+    public void searchMealByIngredients(int index)
     {
-        //still needs work
+        String item = ingredient.getQuery().toString();
+
+        if(item == meal.get(index).getMeals_IngredientName() || item == meal.get(index).getDietaryRestrictions() || item == meal.get(index).getRecommendations()){
+            mealDisplay(index);
+        }
     }
+
 }
