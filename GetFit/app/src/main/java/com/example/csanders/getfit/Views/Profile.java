@@ -3,6 +3,7 @@ package com.example.csanders.getfit.Views;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,6 +35,7 @@ public class Profile extends Activity implements View.OnClickListener {
     private Spinner goal;
     private TextView dailyCalories;
     private double calories = 0.00;
+    private String calorie;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,9 +54,15 @@ public class Profile extends Activity implements View.OnClickListener {
         weight.setText(String.valueOf(test.getWeight()), TextView.BufferType.EDITABLE);
         height.setText(String.valueOf(test.getHeight()), TextView.BufferType.EDITABLE);
         dailyCalories = (TextView) findViewById(R.id.recCalories);
-        Double daily = findCalories();
-        String calorie = daily.toString();
+        if (isEmpty()) {
+            Double daily = findCalories();
+            calorie = daily.toString();
+        }
+        else  {
+            calorie = "Please enter any empty values for a recommended calorie count.";
+        }
         dailyCalories.setText(calorie);
+        dailyCalories.setGravity(Gravity.CENTER);
         editUser = (Button) findViewById(R.id.submitButton);
         editUser.setOnClickListener(this);
     }
@@ -73,6 +81,13 @@ public class Profile extends Activity implements View.OnClickListener {
         db.updateUser(ID, getName, getAge, getWeight, getHeight, agenda);
         finish();
         startActivity(getIntent());
+    }
+
+    public boolean isEmpty() {
+        if (test.getAge() == 0 || test.getHeight() == 0 || test.getWeight() == 0) {
+            return false;
+        }
+        return true;
     }
 
     public double findCalories() {
