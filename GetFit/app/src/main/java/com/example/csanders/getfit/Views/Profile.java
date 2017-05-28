@@ -34,7 +34,6 @@ public class Profile extends Activity implements View.OnClickListener {
     private Button editUser;
     private Spinner goal;
     private TextView dailyCalories;
-    private double calories = 0.00;
     private String calorie;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +53,7 @@ public class Profile extends Activity implements View.OnClickListener {
         weight.setText(String.valueOf(test.getWeight()), TextView.BufferType.EDITABLE);
         height.setText(String.valueOf(test.getHeight()), TextView.BufferType.EDITABLE);
         dailyCalories = (TextView) findViewById(R.id.recCalories);
+        goal.setSelection(getSpinnerValue(goal, test.getGoal()));
         if (isEmpty()) {
             Double daily = findCalories();
             calorie = daily.toString();
@@ -61,6 +61,7 @@ public class Profile extends Activity implements View.OnClickListener {
         else  {
             calorie = "Please enter any empty values for a recommended calorie count.";
         }
+
         dailyCalories.setText(calorie);
         dailyCalories.setGravity(Gravity.CENTER);
         editUser = (Button) findViewById(R.id.submitButton);
@@ -90,7 +91,19 @@ public class Profile extends Activity implements View.OnClickListener {
         return true;
     }
 
+    public int getSpinnerValue(Spinner spinner, String userGoal) {
+        int index = 0;
+        for (int i = 0; i < spinner.getCount(); i++) {
+            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(userGoal)) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+
     public double findCalories() {
+        double calories = 0.00;
         double userAge = Double.parseDouble(age.getText().toString());
         double userWeight = Double.parseDouble(weight.getText().toString());
         double userHeight = Double.parseDouble(height.getText().toString());

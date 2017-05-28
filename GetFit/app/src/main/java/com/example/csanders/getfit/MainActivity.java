@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         pass = (EditText) findViewById(R.id.passwordinput);
         password = pass.getText().toString();
         boolean doesExist = false;
-        //db.addUsers(new Users(1, "John", "hiThere", 300, 67));
         //db.addUsers(new Users(2, "Caleb", "hiThere", 150, 59));
         //db.addUsers(new Users(2, "Sophie", "password", 110, 66));
 
