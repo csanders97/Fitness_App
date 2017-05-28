@@ -76,11 +76,7 @@ public class Search extends Activity {
     {
         String item = ingredient.getQuery().toString();
 
-        if(item == meal.get(index).getMeals_IngredientName()){
-            mealDisplay(index);
-        }else if(item == meal.get(index).getDietaryRestrictions()){
-            mealDisplay(index);
-        }else if(item == meal.get(index).getRecommendations()){
+        if(item == meal.get(index).getMeals_IngredientName() || item == meal.get(index).getDietaryRestrictions() || item == meal.get(index).getRecommendations()){
             mealDisplay(index);
         }
     }
