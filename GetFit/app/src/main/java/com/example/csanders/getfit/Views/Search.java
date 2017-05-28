@@ -47,26 +47,42 @@ public class Search extends Activity {
         quotaMealSearch();
     }
 
+    public void mealDisplay(int index){
+        name = (TextView) findViewById(R.id.mealName);
+        name.setText(String.valueOf(mealArray[index]), TextView.BufferType.EDITABLE);
+        Log.i("Test3: ", mealArray[index]);
+    }
+
     public void quotaMealSearch()
     {
         meal = db.getAllMeals();
         mealArray =  new String[meal.size()];
+        //String item = ingredient.getQuery().toString();
+
         for(int i = 0; i < meal.size(); i++){
             mealArray[i] = meal.get(i).getMealName();
             if(meals.getMealCalories() <= quota){
                 if(mealArray[i] == null){
                     Log.i("Null", "Value");
                 }else{
-                    name = (TextView) findViewById(R.id.mealName);
-                    name.setText(String.valueOf(mealArray[i]), TextView.BufferType.EDITABLE);
-                    Log.i("Test3: ", mealArray[i]);
+                    searchMealByIngredients(i);
                 }
             }
         }
     }
 
-    public void searchMealByIngredients()
+
+    public void searchMealByIngredients(int index)
     {
-        //still needs work
+        String item = ingredient.getQuery().toString();
+
+        if(item == meal.get(index).getMeals_IngredientName()){
+            mealDisplay(index);
+        }else if(item == meal.get(index).getDietaryRestrictions()){
+            mealDisplay(index);
+        }else if(item == meal.get(index).getRecommendations()){
+            mealDisplay(index);
+        }
     }
+
 }
