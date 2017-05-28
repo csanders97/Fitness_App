@@ -225,19 +225,19 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
-        app:layout_constraintHorizontal_bias="0.547"
-        app:layout_constraintVertical_bias="0.937" />
+        app:layout_constraintHorizontal_bias="0.549"
+        app:layout_constraintVertical_bias="0.918" />
 
     <TextView
         android:id="@+id/recCalories"
-        android:layout_width="153dp"
-        android:layout_height="14dp"
+        android:layout_width="237dp"
+        android:layout_height="16dp"
         android:text="0"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.983"
+        app:layout_constraintVertical_bias="0.964"
         android:layout_marginLeft="125dp"
         app:layout_constraintLeft_toLeftOf="parent" />
 
