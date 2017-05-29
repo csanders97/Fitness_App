@@ -32,17 +32,22 @@ public class Search extends Activity {
 
     List<Meals> meal;
     String[] mealArray;
-    ArrayAdapter<String> test = new ArrayAdapter<String>(this, R.layout.activity_search, mealArray);
-    ListView nameList = (ListView) findViewById(R.id.listOfMeals);
-    //nameList.setAdapter(test);
+    ArrayAdapter<String> test;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        db.addMeals(new Meals(1, "Burrito", 500, 3, "publication", "NAN", "recommendations", "No Restrictions"));
-        db.addMeals(new Meals(2, "Steak Dinner", 1001, 5, "publication", "NAN", "recommendations", "No Restrictions"));
-        db.addMeals(new Meals(3, "CheeseBurger", 800, 3, "publication", "NAN", "recommendations", "No Restrictions"));
+        meal = db.getAllMeals();
+        mealArray =  new String[meal.size()];
+        test = new ArrayAdapter<String>(this, R.layout.activity_search, mealArray);
+        Log.i("A", test.toString());
+        ListView nameList = (ListView) findViewById(R.id.listOfMeals);
+        nameList.setAdapter(test);
+        //db.addMeals(new Meals(1, "Burrito", 500, 3, "publication", "NAN", "recommendations", "No Restrictions"));
+        //db.addMeals(new Meals(2, "Steak Dinner", 1001, 5, "publication", "NAN", "recommendations", "No Restrictions"));
+        //db.addMeals(new Meals(3, "CheeseBurger", 800, 3, "publication", "NAN", "recommendations", "No Restrictions"));
         Log.i("Test: ", "Hello");
         quotaMealSearch();
     }
@@ -55,8 +60,6 @@ public class Search extends Activity {
 
     public void quotaMealSearch()
     {
-        meal = db.getAllMeals();
-        mealArray =  new String[meal.size()];
         //String item = ingredient.getQuery().toString();
 
         for(int i = 0; i < meal.size(); i++){
@@ -76,7 +79,7 @@ public class Search extends Activity {
     {
         String item = ingredient.getQuery().toString();
 
-        if(item == meal.get(index).getMeals_IngredientName() || item == meal.get(index).getDietaryRestrictions() || item == meal.get(index).getRecommendations()){
+        if(item == meal.get(index).getMeals_IngredientName() || item == meal.get(index).getDietaryRestrictions() || item == meal.get(index).getRecommendations() || item == meal.get(index).getMealName()){
             mealDisplay(index);
         }
     }
