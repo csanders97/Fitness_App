@@ -490,7 +490,4 @@ public class DBHandler extends SQLiteOpenHelper {
                 new String[] { String.valueOf(workouts.getWorkoutId())});
         db.close();
     }
-
-
-
 }
