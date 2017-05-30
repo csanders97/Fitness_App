@@ -68,7 +68,8 @@ public class Search extends Activity {
                 if(mealArray[i] == null){
                     Log.i("Null", "Value");
                 }else{
-                    searchMealByIngredients(i);
+                    //searchMealByIngredients(i);
+                    mealDisplay(i);
                 }
             }
         }
