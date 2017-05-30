@@ -44,6 +44,7 @@ public class Library extends Activity  {
             row.setBackgroundColor(Color.argb(1,204,204,204));
             row.setPadding(0, 0, 1, 1);
 
+            name.setTextSize(20);
             name.setText(meals.getMealName());
             name.setTextSize(22);
             name.setPadding(40,15,10,15);

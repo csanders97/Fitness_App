@@ -55,11 +55,10 @@ public class Profile extends Activity implements View.OnClickListener {
         dailyCalories = (TextView) findViewById(R.id.recCalories);
         goal.setSelection(getSpinnerValue(goal, test.getGoal()));
         if (isEmpty()) {
-            Double daily = findCalories();
-            calorie = daily.toString();
+            test.getCaloriequota();
         }
         else  {
-            calorie = "Please enter any empty values for a recommended calorie count.";
+            calorie = "Please fill in all empty values.";
         }
 
         dailyCalories.setText(calorie);
@@ -79,7 +78,8 @@ public class Profile extends Activity implements View.OnClickListener {
         height = (EditText) findViewById(R.id.heightInputProf);
         Double getHeight = Double.parseDouble(height.getText().toString());
         String agenda = goal.getSelectedItem().toString();
-        db.updateUser(ID, getName, getAge, getWeight, getHeight, agenda);
+        Double quota = findCalories();
+        db.updateUser(ID, getName, getAge, getWeight, getHeight, agenda, quota);
         finish();
         startActivity(getIntent());
     }
