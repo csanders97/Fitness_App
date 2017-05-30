@@ -20,7 +20,7 @@ import java.util.List;
 public class DBHandler extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 8;
+    private static final int DATABASE_VERSION = 9;
 
     // Database Name
     private static final String DATABASE_NAME = "Fitness";
@@ -40,6 +40,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEY_Weight = "weight";
     private static final String KEY_Height = "height";
     private static final String KEY_Goal = "goal";
+    private static final String KEY_CalorieQuota = "calorie_quota";
 
 
     // Ingredients Table - column nmaes
@@ -87,7 +88,8 @@ public class DBHandler extends SQLiteOpenHelper {
                     + KEY_AGE  + " INTEGER,"
                     + KEY_Weight + " INTEGER,"
                     + KEY_Height + " REAL,"
-                    + KEY_Goal   +  " TEXT"   +")";
+                    + KEY_Goal   +  " TEXT,"
+                    + KEY_CalorieQuota + " Real" +")";
 
     // Ingredients table
     private static final String CREATE_TABLE_INGREDIENTS =
@@ -166,7 +168,8 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_Password, users.getPassword()); //User Password
         values.put(KEY_Weight, users.getWeight()); // User Weight
         values.put(KEY_Height, users.getHeight()); // User Height
-        values.put(KEY_Goal, users.getGoal());
+        values.put(KEY_Goal, users.getGoal()); // User Goal
+        values.put(KEY_CalorieQuota, users.getCaloriequota()); //User CalorieQuota
 
         // Inserting data into Users Table
         db.insert(TABLE_Users, null, values);
@@ -178,13 +181,13 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_Users, new String[]{KEY_UserID,
-                        KEY_UserName, KEY_Password, KEY_AGE, KEY_Weight, KEY_Height, KEY_Goal}, KEY_UserID + "=?",
+                        KEY_UserName, KEY_Password, KEY_AGE, KEY_Weight, KEY_Height, KEY_Goal, KEY_CalorieQuota}, KEY_UserID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
         Users info = new Users(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4), cursor.getDouble(5), cursor.getString(6));
+                cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4), cursor.getDouble(5), cursor.getString(6), cursor.getDouble(7));
 // return User
         return info;
     }
@@ -208,6 +211,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 users.setWeight(cursor.getInt(4));
                 users.setHeight(cursor.getInt(5));
                 users.setGoal(cursor.getString(6));
+                users.setCaloriequota(cursor.getDouble(7));
 
 // Adding contact to list
                 listofusers.add(users);
