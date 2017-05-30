@@ -222,7 +222,7 @@ public class DBHandler extends SQLiteOpenHelper {
         return listofusers;
     }
     // Updating a User
-    public int updateUser(int ID, String name, int age, int weight, Double height, String goal) {
+    public int updateUser(int ID, String name, int age, int weight, Double height, String goal, double quota) {
         SQLiteDatabase db = this.getWritableDatabase();
         Users users = getUsers(ID);
         users.setUserName(name);
@@ -230,6 +230,7 @@ public class DBHandler extends SQLiteOpenHelper {
         users.setWeight(weight);
         users.setHeight(height);
         users.setGoal(goal);
+        users.setCaloriequota(quota);
         ContentValues values = new ContentValues();
         values.put(KEY_UserName, users.getUserName()); // User UserName
         values.put(KEY_Password, users.getPassword()); //User Password
@@ -237,6 +238,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_Weight, users.getWeight()); // User Weight
         values.put(KEY_Height, users.getHeight()); // User Height
         values.put(KEY_Goal, users.getGoal()); //User Goal
+        values.put(KEY_CalorieQuota, users.getCaloriequota()); //User Calorie Quota
 
 // updating row
         return db.update(TABLE_Users, values, KEY_UserID + " = ?",
