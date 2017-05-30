@@ -27,10 +27,12 @@ public class Library extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
+//        db.addMeals(new Meals(1, "Burrito", 500, 3, "publication", "NAN", "recommendations", "No Restrictions"));
+//        db.addMeals(new Meals(2, "Steak Dinner", 1001, 5, "publication", "NAN", "recommendations", "No Restrictions"));
+//        db.addMeals(new Meals(3, "CheeseBurger", 800, 3, "publication", "NAN", "recommendations", "No Restrictions"));
         TableLayout tl = (TableLayout) findViewById(R.id.tlTable01);
         create = (Button)findViewById(R.id.createItemBtn);
         List<Meals> meal = db.getAllMeals();
-        int mealIndex = 0;
         for(Meals meals : meal) {
             TableRow row = new TableRow(this);
             TextView name = new TextView(this);
