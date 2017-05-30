@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
@@ -32,6 +33,7 @@ public class Library extends Activity  {
         //db.addMeals(new Meals(1, "Burrito", 500, 3, "publication", "NAN", "recommendations", "No Restrictions"));
         //db.addMeals(new Meals(2, "Steak Dinner", 1001, 5, "publication", "NAN", "recommendations", "No Restrictions"));
         //db.addMeals(new Meals(3, "CheeseBurger", 800, 3, "publication", "NAN", "recommendations", "No Restrictions"));
+        db.addWorkouts(new Workouts(1, "Push-Ups", "core", 5));
         TableLayout tl = (TableLayout) findViewById(R.id.tlTable01);
         create = (Button)findViewById(R.id.createItemBtn);
         List<Meals> meal = db.getAllMeals();
@@ -66,6 +68,7 @@ public class Library extends Activity  {
 
         List<Workouts> workout = db.getAllWorkouts();
         for(Workouts workouts : workout) {
+            Log.i("Workouts: ", workouts.getWorkoutName());
             TableRow row = new TableRow(this);
             TextView name = new TextView(this);
             TextView type = new TextView(this);
@@ -100,4 +103,3 @@ public class Library extends Activity  {
         startActivity(create);
     }
 }
-
