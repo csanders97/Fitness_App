@@ -54,44 +54,5 @@
             android:textSize="35dp"
             android:textStyle="bold"/>
     </TableRow>
-    <TableRow
-        android:background="#CCC"
-        android:paddingBottom="1dp"
-        android:paddingRight="1dp">
-
-        <TextView
-            android:layout_marginLeft="1dp"
-            android:background="#FFF"
-            android:padding="10dp"
-            android:text="Chicken Parmesan"
-            android:textSize="20dp" />
-
-        <TextView
-            android:layout_marginLeft="1dp"
-            android:background="#FFF"
-            android:padding="10dp"
-            android:text="Meal"
-            android:textSize="20dp"/>
-    </TableRow>
-    <TableRow
-        android:background="#CCC"
-        android:paddingBottom="1dp"
-        android:paddingRight="1dp">
-
-        <TextView
-            android:layout_marginLeft="1dp"
-            android:background="#FFF"
-            android:padding="10dp"
-            android:text="Leg Press 3x12"
-            android:textSize="20dp"/>
-
-        <TextView
-            android:layout_marginLeft="1dp"
-            android:background="#FFF"
-            android:padding="10dp"
-            android:text="Workout"
-            android:textSize="20dp"/>
-
-    </TableRow>
 
 </TableLayout>
