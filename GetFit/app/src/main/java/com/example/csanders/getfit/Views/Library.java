@@ -48,7 +48,7 @@ public class Library extends Activity  {
 
     }
 
-    public void CreateOnClick(View v) {
+    public void CreateOnClick(View view) {
         Intent create = new Intent(this, Create.class);
         startActivity(create);
     }

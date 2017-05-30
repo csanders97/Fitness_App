@@ -12,6 +12,7 @@ public class Users {
     public int age;
     public int weight;
     public double height;
+    public double caloriequota;
     public String goal;
     public String password;
 
@@ -52,6 +53,19 @@ public class Users {
 
     }
 
+    public Users(int userId, String userName, String Password, int age, int weight, double height, String Goal, double caloriequota) {
+
+        this.userId = userId;
+        this.userName = userName;
+        this.password = Password;
+        this.age = age;
+        this.weight = weight;
+        this.height = height;
+        this.goal = Goal;
+        this.caloriequota = caloriequota;
+
+    }
+
 
     public Users(int userId, String userName, String Password, int age, int weight, double height) {
 
@@ -62,6 +76,16 @@ public class Users {
         this.weight = weight;
         this.height = height;
 
+    }
+
+    public double getCaloriequota() {
+
+        return this.caloriequota;
+    }
+
+    public void setCaloriequota(double caloriequota) {
+
+        this.caloriequota = caloriequota;
     }
 
     public String getGoal() {

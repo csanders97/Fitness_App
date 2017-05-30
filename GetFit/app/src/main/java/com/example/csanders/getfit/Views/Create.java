@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
@@ -36,6 +37,7 @@ public class Create extends Activity {
     private EditText workouttype;
     private Button addItem;
     private MultiAutoCompleteTextView options;
+    String[] COUNTRIES = new String[5];
 
 
     DBHandler db = new DBHandler(this);
@@ -55,6 +57,17 @@ public class Create extends Activity {
         MealType = (EditText)findViewById(R.id.mealtype);
         addItem = (Button)findViewById(R.id.addItemToDB);
         options = (MultiAutoCompleteTextView)findViewById(R.id.multiAutoCompleteTextView);
+
+        COUNTRIES = new String[] {
+                "Belgium", "France", "Italy", "Germany", "Spain"
+        };
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, COUNTRIES);
+        options.setAdapter(adapter);
+        options.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+
+
 
         //List<Ingredients> ing = db.getAllIngredients();
 
@@ -95,6 +108,7 @@ public class Create extends Activity {
     public void onMealRadioButtonClicked(View view) {
         Calories.setHint("Calories Gained");
         options.setHint("Ingredients");
+
         Servings.setVisibility(View.VISIBLE);
         Recommended.setVisibility(View.VISIBLE);
         publication.setVisibility(View.VISIBLE);
