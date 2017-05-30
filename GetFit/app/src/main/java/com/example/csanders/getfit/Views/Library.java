@@ -19,7 +19,7 @@ import java.util.List;
  * Created by Sophie on 5/15/2017.
  */
 
-public class Library extends Activity implements View.OnClickListener {
+public class Library extends Activity  {
     private Button create;
     DBHandler db = new DBHandler(this);
 
@@ -48,8 +48,7 @@ public class Library extends Activity implements View.OnClickListener {
 
     }
 
-    @Override
-    public void onClick(View v) {
+    public void CreateOnClick(View v) {
         Intent create = new Intent(this, Create.class);
         startActivity(create);
     }

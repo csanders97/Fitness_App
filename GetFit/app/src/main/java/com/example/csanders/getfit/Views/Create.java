@@ -12,6 +12,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.example.csanders.getfit.Models.Ingredients;
+import com.example.csanders.getfit.Models.Meals;
 import com.example.csanders.getfit.Models.Workouts;
 import com.example.csanders.getfit.R;
 import com.example.csanders.getfit.Tables.DBHandler;
@@ -35,11 +36,6 @@ public class Create extends Activity {
     private EditText workouttype;
     private Button addItem;
     private MultiAutoCompleteTextView options;
-    private String InputWorkoutName;
-    private int WorkoutCalories;
-    private String InputWorkoutEquipment;
-    private String InputWorkoutType;
-    private int workoutlength;
 
 
     DBHandler db = new DBHandler(this);
@@ -56,9 +52,7 @@ public class Create extends Activity {
         publication = (EditText)findViewById(R.id.publicationdate);
         length = (EditText)findViewById(R.id.length);
         workouttype = (EditText)findViewById(R.id.workouttype);
-
         MealType = (EditText)findViewById(R.id.mealtype);
-
         addItem = (Button)findViewById(R.id.addItemToDB);
         options = (MultiAutoCompleteTextView)findViewById(R.id.multiAutoCompleteTextView);
 
@@ -99,8 +93,6 @@ public class Create extends Activity {
 
 
     public void onMealRadioButtonClicked(View view) {
-
-        Calories.setText(" ");
         Calories.setHint("Calories Gained");
         options.setHint("Ingredients");
         Servings.setVisibility(View.VISIBLE);
@@ -112,9 +104,9 @@ public class Create extends Activity {
         length.setVisibility(View.INVISIBLE);
         workouttype.setVisibility(View.INVISIBLE);
 
-        String InputMealName = Name.getText().toString();
 
-       // db.addMeals(InputMealName,);
+        workout.setChecked(false);
+
 
     }
 
@@ -135,20 +127,7 @@ public class Create extends Activity {
         length.setHint("Length");
         workouttype.setHint("Workout Type");
 
-
-
-
-
-
-//        InputWorkoutName = Name.getText().toString();
-//        String InputWorkoutCalories = Calories.getText().toString();
-//        WorkoutCalories = Integer.parseInt(InputWorkoutCalories);
-//        InputWorkoutEquipment = options.getText().toString();
-//         InputWorkoutType = workouttype.getText().toString();
-//        String InputWorkoutLength = length.getText().toString();
-//        workoutlength = Integer.parseInt(InputWorkoutLength);
-
-
+        meal.setChecked(false);
 
 
     }
@@ -156,13 +135,47 @@ public class Create extends Activity {
 
     public void AddtoDatabase(View view) {
 
-        Intent library = new Intent(this, Library.class);
-        startActivity(library);
-        Toast.makeText(getApplicationContext(), "Added!", Toast.LENGTH_LONG).show();
 
-        if(Calories.getText().equals("Calories Burned")) {
+
+        if(meal.isChecked() == false) {
+
+
+            String InputWorkoutName = Name.getText().toString();
+            String InputWorkoutCalories = Calories.getText().toString();
+            int WorkoutCalories = Integer.parseInt(InputWorkoutCalories);
+            String InputWorkoutEquipment = options.getText().toString();
+            String InputWorkoutType = workouttype.getText().toString();
+            String InputWorkoutLength = length.getText().toString();
+            int workoutlength = Integer.parseInt(InputWorkoutLength);
 
             db.addWorkouts(new Workouts(InputWorkoutName,InputWorkoutType,InputWorkoutEquipment,workoutlength,WorkoutCalories));
+
+
+            Intent library = new Intent(this, Library.class);
+            startActivity(library);
+
+             Toast.makeText(getApplicationContext(), "Added Workout!", Toast.LENGTH_LONG).show();
+
+        }
+        if(workout.isChecked() == false) {
+
+            String InputMealName = Name.getText().toString();
+            String InputCaloriesGained = Calories.getText().toString();
+            int CaloriesGained = Integer.parseInt(InputCaloriesGained);
+            String InputIngredients  = options.getText().toString();
+            String InputServings = Servings.getText().toString();
+            int MealServings = Integer.parseInt(InputServings);
+            String InputRecommendedFor = Recommended.getText().toString();
+            String InputPublicationDate = publication.getText().toString();
+            String InputMealType = MealType.getText().toString();
+
+            db.addMeals(new Meals(InputMealName,CaloriesGained,MealServings,InputIngredients,InputPublicationDate,InputMealType,InputRecommendedFor));
+
+
+            Intent library = new Intent(this, Library.class);
+            startActivity(library);
+
+            Toast.makeText(getApplicationContext(), "Added Meal!", Toast.LENGTH_LONG).show();
 
         }
     }
