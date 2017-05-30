@@ -43,6 +43,20 @@ public class Meals {
         this.dietaryRestrictions = dietaryRestrictions;
     }
 
+
+    public Meals(int mealId, String mealName, int mealCalories, int servings,String meals_IngredientName,String publications, String mealType, String recommendations,String dietaryRestrictions, int meals_userID) {
+        this.mealId = mealId;
+        this.mealName = mealName;
+        this.mealCalories = mealCalories;
+        this.servings = servings;
+        this.publications = publications;
+        this.mealType = mealType;
+        this.recommendations = recommendations;
+        this.dietaryRestrictions = dietaryRestrictions;
+        this.meals_userID = meals_userID;
+        this.meals_IngredientName = meals_IngredientName;
+    }
+
     public Meals(int mealId, String mealName, int mealCalories, int servings,String publications, String mealType, String recommendations,String dietaryRestrictions, int meals_userID, String meals_IngredientName) {
         this.mealId = mealId;
         this.mealName = mealName;
