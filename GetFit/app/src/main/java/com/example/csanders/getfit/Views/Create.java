@@ -38,13 +38,16 @@ public class Create extends Activity {
     private Button addItem;
     private MultiAutoCompleteTextView options;
     String[] COUNTRIES = new String[5];
-
+    int ID;
 
     DBHandler db = new DBHandler(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
+        Bundle bundle = getIntent().getExtras();
+        String use = bundle.getString("stuff");
+        ID = Integer.parseInt(use);
         meal = (RadioButton)findViewById(R.id.mealSelection);
         workout = (RadioButton)findViewById(R.id.workoutSelection);
         Name = (EditText)findViewById(R.id.Name);
@@ -161,8 +164,9 @@ public class Create extends Activity {
             String InputWorkoutType = workouttype.getText().toString();
             String InputWorkoutLength = length.getText().toString();
             int workoutlength = Integer.parseInt(InputWorkoutLength);
+            int workouts_user_id = ID;
 
-            db.addWorkouts(new Workouts(InputWorkoutName,InputWorkoutType,InputWorkoutEquipment,workoutlength,WorkoutCalories));
+            db.addWorkouts(new Workouts(InputWorkoutName,InputWorkoutType,InputWorkoutEquipment,workoutlength,WorkoutCalories, workouts_user_id));
 
 
             Intent library = new Intent(this, Library.class);
@@ -182,8 +186,9 @@ public class Create extends Activity {
             String InputRecommendedFor = Recommended.getText().toString();
             String InputPublicationDate = publication.getText().toString();
             String InputMealType = MealType.getText().toString();
+            int meal_user_id = ID;
 
-            db.addMeals(new Meals(InputMealName,CaloriesGained,MealServings,InputIngredients,InputPublicationDate,InputMealType,InputRecommendedFor));
+            db.addMeals(new Meals(InputMealName,CaloriesGained,MealServings,InputIngredients,InputPublicationDate,InputMealType,InputRecommendedFor,meal_user_id));
 
 
             Intent library = new Intent(this, Library.class);

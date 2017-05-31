@@ -22,7 +22,7 @@ public class Meals {
 
     }
 
-    public Meals(String mealName, int mealCalories, int servings,String publications, String mealType, String recommendations,String dietaryRestrictions) {
+    public Meals(String mealName, int mealCalories, int servings,String publications, String mealType, String recommendations,String dietaryRestrictions, int meal_user_id) {
         this.mealName = mealName;
         this.mealCalories = mealCalories;
         this.servings = servings;
@@ -30,6 +30,7 @@ public class Meals {
         this.mealType = mealType;
         this.recommendations = recommendations;
         this.dietaryRestrictions = dietaryRestrictions;
+        this.meals_userID = meal_user_id;
     }
 
     public Meals(int mealId, String mealName, int mealCalories, int servings,String publications, String mealType, String recommendations,String dietaryRestrictions) {

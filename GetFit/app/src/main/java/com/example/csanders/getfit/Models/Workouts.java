@@ -28,13 +28,14 @@ public class Workouts {
 
     }
 
-    public Workouts(String workoutName,String workoutType, String equipment, int length,int caloriesBurned) {
+    public Workouts(String workoutName,String workoutType, String equipment, int length,int caloriesBurned, int workout_user_id) {
 
         this.workoutName  = workoutName;
         this.workoutType = workoutType;
         this.equipment = equipment;
         this.length = length;
         this.caloriesBurned = caloriesBurned;
+        this.workout_user_id = workout_user_id;
 
     }
 
