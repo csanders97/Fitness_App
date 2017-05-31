@@ -33,6 +33,7 @@ public class Library extends Activity  {
         //db.addMeals(new Meals(1, "Burrito", 500, 3, "publication", "NAN", "recommendations", "No Restrictions"));
         //db.addMeals(new Meals(2, "Steak Dinner", 1001, 5, "publication", "NAN", "recommendations", "No Restrictions"));
         //db.addMeals(new Meals(3, "CheeseBurger", 800, 3, "publication", "NAN", "recommendations", "No Restrictions"));
+        db.addMeals(new Meals(4, "Hamburger", 200, 3, "publication", "NAN", "recommendations", "No Restrictions"));
         db.addWorkouts(new Workouts(1, "Push-Ups", "core", 5));
         TableLayout tl = (TableLayout) findViewById(R.id.tlTable01);
         create = (Button)findViewById(R.id.createItemBtn);

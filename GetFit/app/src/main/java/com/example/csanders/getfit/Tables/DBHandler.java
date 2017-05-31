@@ -457,7 +457,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     //Get all Workouts
     public List<Workouts> getAllWorkouts() {
-        List<Workouts>  listofworkouts = new ArrayList<Workouts>();
+        List<Workouts> listofworkouts = new ArrayList<Workouts>();
 
 // Select All Query
         String selectQuery = "SELECT * FROM " + TABLE_Workouts;
