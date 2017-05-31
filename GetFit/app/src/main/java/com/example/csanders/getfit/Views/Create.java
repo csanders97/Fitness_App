@@ -46,7 +46,7 @@ public class Create extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
         Bundle bundle = getIntent().getExtras();
-        String use = bundle.getString("stuff");
+        String use = bundle.getString("ID");
         ID = Integer.parseInt(use);
         meal = (RadioButton)findViewById(R.id.mealSelection);
         workout = (RadioButton)findViewById(R.id.workoutSelection);
@@ -168,8 +168,10 @@ public class Create extends Activity {
 
             db.addWorkouts(new Workouts(InputWorkoutName,InputWorkoutType,InputWorkoutEquipment,workoutlength,WorkoutCalories, workouts_user_id));
 
-
+            Bundle bundle = new Bundle();
+            bundle.putString("ID", String.valueOf(ID));
             Intent library = new Intent(this, Library.class);
+            library.putExtras(bundle);
             startActivity(library);
 
              Toast.makeText(getApplicationContext(), "Added Workout!", Toast.LENGTH_LONG).show();
@@ -190,8 +192,10 @@ public class Create extends Activity {
 
             db.addMeals(new Meals(InputMealName,CaloriesGained,MealServings,InputIngredients,InputPublicationDate,InputMealType,InputRecommendedFor,meal_user_id));
 
-
+            Bundle bundle = new Bundle();
+            bundle.putString("ID", String.valueOf(ID));
             Intent library = new Intent(this, Library.class);
+            library.putExtras(bundle);
             startActivity(library);
 
             Toast.makeText(getApplicationContext(), "Added Meal!", Toast.LENGTH_LONG).show();

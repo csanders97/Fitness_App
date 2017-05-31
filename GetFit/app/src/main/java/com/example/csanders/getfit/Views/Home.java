@@ -54,6 +54,7 @@ public class Home extends Activity implements View.OnClickListener {
                 break;
             case R.id.libraryBtn:
                 Intent library = new Intent(this, Library.class);
+                library.putExtras(bundle);
                 startActivity(library);
                 break;
             case R.id.searchBtn:
