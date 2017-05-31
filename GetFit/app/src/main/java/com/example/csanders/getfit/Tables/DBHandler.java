@@ -20,7 +20,7 @@ import java.util.List;
 public class DBHandler extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 9;
+    private static final int DATABASE_VERSION = 10;
 
     // Database Name
     private static final String DATABASE_NAME = "Fitness";
@@ -122,11 +122,12 @@ public class DBHandler extends SQLiteOpenHelper {
     // Workouts table
     private static final String CREATE_TABLE_WORKOUTS =
             "CREATE TABLE " + TABLE_Workouts +
-                    "(" + KEY_WorkoutId + " INTEGER PRIMARY KEY,"
-                    + KEY_WorkoutName + " TEXT,"
-                    + KEY_WorkoutType + " TEXT,"
-                    + KEY_WorkoutLength + " INTEGER,"
-                    + KEY_Equipment     + " TEXT,"
+                    "(" + KEY_WorkoutId   + " INTEGER PRIMARY KEY,"
+                    + KEY_WorkoutName     + " TEXT,"
+                    + KEY_WorkoutType     + " TEXT,"
+                    + KEY_WorkoutLength   + " INTEGER,"
+                    + KEY_Equipment       + " TEXT,"
+                    + KEY_CaloriesBurned  + " INTEGER,"
                     + KEY_Workout_User_ID + " INTEGER,"
                     + "FOREIGN KEY (" + KEY_Workout_User_ID + ") REFERENCES " + TABLE_Users + "(" + KEY_UserID + ")"  + ")";
 
@@ -477,12 +478,12 @@ public class DBHandler extends SQLiteOpenHelper {
                 workouts.setCaloriesBurned(cursor.getInt(5));
                 workouts.setWorkout_user_id(cursor.getInt(6));
 
-// Adding contact to list
+// Adding workout to list
                 listofworkouts.add(workouts);
             } while (cursor.moveToNext());
         }
 
-// return contact list
+// return workout list
         return listofworkouts;
     }
 
