@@ -56,10 +56,23 @@ public class Library extends Activity  {
                 type.setPadding(40, 15, 10, 15);
                 type.setBackgroundColor(Color.argb(255, 255, 255, 255));
                 dlt.setText("Delete");
-                dlt.setId(meals.getMealId());
+                final int mealId = meals.getMealId();
+                final String mealName = meals.getMealName();
+                final int mealCalories = meals.getMealCalories();
+                final int mealServings = meals.getServings();
+                final String ingredient = meals.getMeals_IngredientName();
+                final String publication = meals.getPublications();
+                final String typeMeal = meals.getMealType();
+                final String recommendations = meals.getRecommendations();
+                final String diet = meals.getDietaryRestrictions();
                 dlt.setTextColor(Color.argb(255, 255, 255, 255));
                 dlt.setBackgroundColor(Color.argb(1, 76, 175, 80));
-
+                dlt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        deleteMeal(mealId, mealName, mealCalories, mealServings, ingredient, publication, typeMeal, recommendations, diet);
+                    }
+                });
 
                 row.addView(name);
                 row.addView(type);
@@ -70,6 +83,7 @@ public class Library extends Activity  {
 
         List<Workouts> workout = db.getAllWorkouts();
         for(Workouts workouts : workout) {
+
             if (workouts.getWorkout_user_id() == ID) {
                 TableRow row = new TableRow(this);
                 TextView name = new TextView(this);
@@ -88,7 +102,7 @@ public class Library extends Activity  {
                 type.setPadding(40, 15, 10, 15);
                 type.setBackgroundColor(Color.argb(255, 255, 255, 255));
                 dlt.setText("Delete");
-                dlt.setId(workouts.getWorkoutId());
+
                 dlt.setTextColor(Color.argb(255, 255, 255, 255));
                 dlt.setBackgroundColor(Color.argb(1, 76, 175, 80));
 
@@ -99,6 +113,11 @@ public class Library extends Activity  {
                 tl.addView(row);
             }
         }
+    }
+
+    public void deleteMeal(int id, String name, int calorie, int serving, String ingredient, String publication, String type, String recommend, String diet) {
+        db.deleteMeals(id, name, calorie, serving, ingredient, publication, type, recommend, diet);
+
     }
 
     public void CreateOnClick(View view) {

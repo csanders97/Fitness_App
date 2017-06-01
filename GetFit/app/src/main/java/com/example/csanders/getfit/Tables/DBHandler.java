@@ -407,10 +407,11 @@ public class DBHandler extends SQLiteOpenHelper {
 
 
     //Deleting a Meal
-    public void deleteMeals(Meals meals) {
+    public void deleteMeals(int id, String name, int calorie, int serving, String ingredient, String publication, String type, String recommend, String diet) {
+        Meals meals;
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_Meals, KEY_MealId + " = ?",
-                new String[] { String.valueOf(meals.getMealId())});
+                new String[] { String.valueOf(id)});
         db.close();
     }
 
