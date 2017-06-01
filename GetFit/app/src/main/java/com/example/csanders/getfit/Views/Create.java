@@ -186,11 +186,12 @@ public class Create extends Activity {
             String InputServings = Servings.getText().toString();
             int MealServings = Integer.parseInt(InputServings);
             String InputRecommendedFor = Recommended.getText().toString();
+            String Dietary = "None";
             String InputPublicationDate = publication.getText().toString();
             String InputMealType = MealType.getText().toString();
             int meal_user_id = ID;
 
-            db.addMeals(new Meals(InputMealName, CaloriesGained, MealServings, InputPublicationDate, InputMealType, InputRecommendedFor, meal_user_id, InputIngredients));
+            db.addMeals(new Meals(InputMealName, CaloriesGained, MealServings, InputPublicationDate, InputMealType, InputRecommendedFor, Dietary, meal_user_id, InputIngredients));
 
             Bundle bundle = new Bundle();
             bundle.putString("ID", String.valueOf(ID));

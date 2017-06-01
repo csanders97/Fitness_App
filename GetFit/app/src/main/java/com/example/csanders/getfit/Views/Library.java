@@ -56,24 +56,25 @@ public class Library extends Activity  {
                 type.setPadding(40, 15, 10, 15);
                 type.setBackgroundColor(Color.argb(255, 255, 255, 255));
                 dlt.setText("Delete");
-//                final int mealId = meals.getMealId();
-//                final String mealName = meals.getMealName();
-//                final int mealCalories = meals.getMealCalories();
-//                final int mealServings = meals.getServings();
-//                final String ingredient = meals.getMeals_IngredientName();
-//                final String publication = meals.getPublications();
-//                final String typeMeal = meals.getMealType();
-//                final String recommendations = meals.getRecommendations();
-//                final String diet = meals.getDietaryRestrictions();
+                final int mealId = meals.getMealId();
+                final String mealName = meals.getMealName();
+                final int mealCalories = meals.getMealCalories();
+                final int mealServings = meals.getServings();
+                final String ingredient = meals.getMeals_IngredientName();
+                final String publication = meals.getPublications();
+                final String typeMeal = meals.getMealType();
+                final String recommendations = meals.getRecommendations();
+                final String diet = meals.getDietaryRestrictions();
                 dlt.setTextColor(Color.argb(255, 255, 255, 255));
                 dlt.setBackgroundColor(Color.argb(1, 76, 175, 80));
+                dlt.setBackgroundColor(Color.parseColor("#4CAF50"));
 //                dlt.setOnClickListener(new View.OnClickListener() {
 //                    @Override
 //                    public void onClick(View v) {
 //                        deleteMeal(mealId, mealName, mealCalories, mealServings, ingredient, publication, typeMeal, recommendations, diet);
 //                    }
 //                });
-
+                dlt.setOnClickListener(checkMealButton((dlt)));
                 row.addView(name);
                 row.addView(type);
                 row.addView(dlt);
@@ -105,18 +106,26 @@ public class Library extends Activity  {
 
                 dlt.setTextColor(Color.argb(255, 255, 255, 255));
                 dlt.setBackgroundColor(Color.argb(1, 76, 175, 80));
-                dlt.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        deleteWorkout();
-                    }
-                });
+//                dlt.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Log.i("Please: ", "Work");
+//                    }
+//                });
                 row.addView(name);
                 row.addView(type);
                 row.addView(dlt);
                 tl.addView(row);
             }
         }
+    }
+
+    View.OnClickListener checkMealButton(final Button button) {
+        return new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.i("Please: ", "Work");
+            }
+        };
     }
 
     public void deleteMeal(int id, String name, int calorie, int serving, String ingredient, String publication, String type, String recommend, String diet) {

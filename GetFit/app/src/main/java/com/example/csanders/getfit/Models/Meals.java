@@ -45,13 +45,14 @@ public class Meals {
     }
 
 
-    public Meals(String mealName, int mealCalories, int servings, String publications, String mealType, String recommendations, int meals_userID, String meals_IngredientName) {
+    public Meals(String mealName, int mealCalories, int servings, String publications, String mealType, String recommendations, String diet, int meals_userID, String meals_IngredientName) {
         this.mealName = mealName;
         this.mealCalories = mealCalories;
         this.servings = servings;
         this.publications = publications;
         this.mealType = mealType;
         this.recommendations = recommendations;
+        this.dietaryRestrictions = diet;
         this.meals_userID = meals_userID;
         this.meals_IngredientName = meals_IngredientName;
     }
