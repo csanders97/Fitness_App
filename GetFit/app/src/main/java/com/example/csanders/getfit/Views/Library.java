@@ -104,8 +104,12 @@ public class Library extends Activity  {
     public void CreateOnClick(View view) {
         Bundle bundle = new Bundle();
         bundle.putString("ID", String.valueOf(ID));
-        Intent create = new Intent(this, Create.class);
-        create.putExtras(bundle);
-        startActivity(create);
+        switch (view.getId()) {
+            case R.id.createItemBtn:
+                Intent create = new Intent(this, Create.class);
+                create.putExtras(bundle);
+                startActivity(create);
+                break;
+        }
     }
 }
