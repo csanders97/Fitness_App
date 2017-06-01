@@ -163,10 +163,10 @@ public class Create extends Activity {
             String InputWorkoutEquipment = options.getText().toString();
             String InputWorkoutType = workouttype.getText().toString();
             String InputWorkoutLength = length.getText().toString();
-            int workoutlength = Integer.parseInt(InputWorkoutLength);
+            int workoutLength = Integer.parseInt(InputWorkoutLength);
             int workouts_user_id = ID;
 
-            db.addWorkouts(new Workouts(InputWorkoutName,InputWorkoutType,InputWorkoutEquipment,workoutlength,WorkoutCalories, workouts_user_id));
+            db.addWorkouts(new Workouts(InputWorkoutName,InputWorkoutType,InputWorkoutEquipment,workoutLength,WorkoutCalories, workouts_user_id));
 
             Bundle bundle = new Bundle();
             bundle.putString("ID", String.valueOf(ID));
@@ -190,7 +190,7 @@ public class Create extends Activity {
             String InputMealType = MealType.getText().toString();
             int meal_user_id = ID;
 
-            db.addMeals(new Meals(InputMealName,CaloriesGained,MealServings,InputIngredients,InputPublicationDate,InputMealType,InputRecommendedFor,meal_user_id));
+            db.addMeals(new Meals(InputMealName, CaloriesGained, MealServings, InputPublicationDate, InputMealType, InputRecommendedFor, meal_user_id, InputIngredients));
 
             Bundle bundle = new Bundle();
             bundle.putString("ID", String.valueOf(ID));

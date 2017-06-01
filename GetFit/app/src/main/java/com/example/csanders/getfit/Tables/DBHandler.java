@@ -61,7 +61,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEY_Publications = " publications ";
     private static final String KEY_MealType = " meal_type ";
     private static final String KEY_Recommendations = " recommendations ";
-    private static final String KEY_DietaryRestrictions = " dietary_restrictions ";
+    //private static final String KEY_DietaryRestrictions = " dietary_restrictions ";
     //Foreign Key
     private static final String KEY_Meals_UserID = " userId ";
     private static final String KEY_Meals_IngredientName = " ingredient_name ";
@@ -111,7 +111,7 @@ public class DBHandler extends SQLiteOpenHelper {
                     + KEY_Publications + " TEXT,"
                     + KEY_MealType + " TEXT,"
                     + KEY_Recommendations + " TEXT,"
-                    + KEY_DietaryRestrictions + "TEXT, "
+     //               + KEY_DietaryRestrictions + "TEXT, "
                     + KEY_Meals_UserID + " INTEGER, "
                     + KEY_Meals_IngredientName + " TEXT,"
                     + "FOREIGN KEY (" + KEY_Meals_UserID + ") REFERENCES " + TABLE_Users + "(" + KEY_UserID + "),"
@@ -342,7 +342,8 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_Servings, meals.getServings()); // Meal Servings
         values.put(KEY_Publications, meals.getPublications()); // Meal Publications
         values.put(KEY_MealType, meals.getMealType()); // Meal Type
-        values.put(KEY_DietaryRestrictions, meals.getDietaryRestrictions()); // Meal Dietary Restrictions
+        //values.put(KEY_DietaryRestrictions, meals.getDietaryRestrictions()); // Meal Dietary Restrictions
+        values.put(KEY_Recommendations, meals.getRecommendations());
         values.put(KEY_Meals_UserID, meals.getMeals_userID()); // Meal_UserID
         values.put(KEY_Meals_IngredientName, meals.getMeals_IngredientName()); // Meal IngredientName
 
@@ -363,7 +364,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_Servings, meal.getServings()); // Meal Servings
         values.put(KEY_Publications, meal.getPublications()); // Meal Publications
         values.put(KEY_MealType, meal.getMealType()); // Meal Type
-        values.put(KEY_DietaryRestrictions, meal.getDietaryRestrictions()); // Meal Dietary Restrictions
+        //values.put(KEY_DietaryRestrictions, meal.getDietaryRestrictions()); // Meal Dietary Restrictions
 
 
 // updating row
@@ -392,9 +393,9 @@ public class DBHandler extends SQLiteOpenHelper {
                 meals.setServings(cursor.getInt(3));
                 meals.setPublications(cursor.getString(4));
                 meals.setMealType(cursor.getString(5));
-                meals.setDietaryRestrictions(cursor.getString(6));
-                meals.setMeals_userID(cursor.getInt(7));
-                meals.setMeals_IngredientName(cursor.getString(8));
+                //meals.setDietaryRestrictions(cursor.getString(6));
+                meals.setMeals_userID(cursor.getInt(6));
+                meals.setMeals_IngredientName(cursor.getString(7));
 
 // Adding contact to list
                 listofmeals.add(meals);

@@ -56,23 +56,23 @@ public class Library extends Activity  {
                 type.setPadding(40, 15, 10, 15);
                 type.setBackgroundColor(Color.argb(255, 255, 255, 255));
                 dlt.setText("Delete");
-                final int mealId = meals.getMealId();
-                final String mealName = meals.getMealName();
-                final int mealCalories = meals.getMealCalories();
-                final int mealServings = meals.getServings();
-                final String ingredient = meals.getMeals_IngredientName();
-                final String publication = meals.getPublications();
-                final String typeMeal = meals.getMealType();
-                final String recommendations = meals.getRecommendations();
-                final String diet = meals.getDietaryRestrictions();
+//                final int mealId = meals.getMealId();
+//                final String mealName = meals.getMealName();
+//                final int mealCalories = meals.getMealCalories();
+//                final int mealServings = meals.getServings();
+//                final String ingredient = meals.getMeals_IngredientName();
+//                final String publication = meals.getPublications();
+//                final String typeMeal = meals.getMealType();
+//                final String recommendations = meals.getRecommendations();
+//                final String diet = meals.getDietaryRestrictions();
                 dlt.setTextColor(Color.argb(255, 255, 255, 255));
                 dlt.setBackgroundColor(Color.argb(1, 76, 175, 80));
-                dlt.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        deleteMeal(mealId, mealName, mealCalories, mealServings, ingredient, publication, typeMeal, recommendations, diet);
-                    }
-                });
+//                dlt.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        deleteMeal(mealId, mealName, mealCalories, mealServings, ingredient, publication, typeMeal, recommendations, diet);
+//                    }
+//                });
 
                 row.addView(name);
                 row.addView(type);
@@ -105,8 +105,12 @@ public class Library extends Activity  {
 
                 dlt.setTextColor(Color.argb(255, 255, 255, 255));
                 dlt.setBackgroundColor(Color.argb(1, 76, 175, 80));
-
-
+                dlt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        deleteWorkout();
+                    }
+                });
                 row.addView(name);
                 row.addView(type);
                 row.addView(dlt);
@@ -117,18 +121,17 @@ public class Library extends Activity  {
 
     public void deleteMeal(int id, String name, int calorie, int serving, String ingredient, String publication, String type, String recommend, String diet) {
         db.deleteMeals(id, name, calorie, serving, ingredient, publication, type, recommend, diet);
+    }
 
+    public void deleteWorkout() {
+        //db.deleteWorkouts();
     }
 
     public void CreateOnClick(View view) {
         Bundle bundle = new Bundle();
         bundle.putString("ID", String.valueOf(ID));
-        switch (view.getId()) {
-            case R.id.createItemBtn:
-                Intent create = new Intent(this, Create.class);
-                create.putExtras(bundle);
-                startActivity(create);
-                break;
-        }
+        Intent create = new Intent(this, Create.class);
+        create.putExtras(bundle);
+        startActivity(create);
     }
 }
