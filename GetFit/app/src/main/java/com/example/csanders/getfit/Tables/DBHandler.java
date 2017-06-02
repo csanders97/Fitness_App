@@ -502,10 +502,11 @@ public class DBHandler extends SQLiteOpenHelper {
 
 
     //Deleting a workout
-    public void deleteWorkouts(Workouts workouts) {
+    public void deleteWorkouts(int id, String name, String type, String equipment, int length, int calorie) {
+        Workouts workouts;
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_Workouts, KEY_WorkoutId + " = ?",
-                new String[] { String.valueOf(workouts.getWorkoutId())});
+                new String[] { String.valueOf(id)});
         db.close();
     }
 }
