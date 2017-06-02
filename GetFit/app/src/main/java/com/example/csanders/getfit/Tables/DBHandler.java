@@ -65,6 +65,8 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEY_MealType = " meal_type ";
     private static final String KEY_Recommendations = " recommendations ";
     private static final String KEY_DietaryRestrictions = " dietary_restrictions ";
+    private static final String KEY_Instructions = " instructions";
+
     //Foreign Key
     private static final String KEY_Meals_UserID = " userId ";
     private static final String KEY_Meals_IngredientName = " ingredient_name ";
@@ -115,6 +117,7 @@ public class DBHandler extends SQLiteOpenHelper {
                     + KEY_MealType + " TEXT,"
                     + KEY_Recommendations + " TEXT,"
                     + KEY_DietaryRestrictions + "TEXT, "
+                    + KEY_Instructions        +  "TEXT, "
                     + KEY_Meals_UserID + " INTEGER, "
                     + KEY_Meals_IngredientName + " TEXT,"
                     + "FOREIGN KEY (" + KEY_Meals_UserID + ") REFERENCES " + TABLE_Users + "(" + KEY_UserID + "),"
@@ -347,6 +350,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_MealType, meals.getMealType()); // Meal Type
         values.put(KEY_DietaryRestrictions, meals.getDietaryRestrictions()); // Meal Dietary Restrictions
         values.put(KEY_Recommendations, meals.getRecommendations());
+        values.put(KEY_Instructions, meals.getInstructions());
         values.put(KEY_Meals_UserID, meals.getMeals_userID()); // Meal_UserID
         values.put(KEY_Meals_IngredientName, meals.getMeals_IngredientName()); // Meal IngredientName
 
@@ -367,6 +371,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_Publications, meal.getPublications()); // Meal Publications
         values.put(KEY_MealType, meal.getMealType()); // Meal Type
         values.put(KEY_DietaryRestrictions, meal.getDietaryRestrictions()); // Meal Dietary Restrictions
+        values.put(KEY_Instructions, meal.getInstructions()); //Meal Instructions
 
 
 // updating row
@@ -397,10 +402,11 @@ public class DBHandler extends SQLiteOpenHelper {
                 meals.setMealType(cursor.getString(5));
                 meals.setRecommendations(cursor.getString(6));
                 meals.setDietaryRestrictions(cursor.getString(7));
-                meals.setMeals_userID(cursor.getInt(8));
-                meals.setMeals_IngredientName(cursor.getString(9));
+                meals.setInstructions(cursor.getString(8));
+                meals.setMeals_userID(cursor.getInt(9));
+                meals.setMeals_IngredientName(cursor.getString(10));
 
-                String name = cursor.getString(1) + " " + cursor.getString(2);
+                String name = cursor.getString(1) + " " + cursor.getString(2)  + " Calories ";
                 mealsearch.add(name);
 // Adding contact to list
                 listofmeals.add(meals);
