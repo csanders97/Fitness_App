@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.csanders.getfit.Models.Meals;
 import com.example.csanders.getfit.Models.Workouts;
@@ -91,7 +92,12 @@ public class Library extends Activity  {
 
                 row.setBackgroundColor(Color.argb(1, 204, 204, 204));
                 row.setPadding(0, 0, 1, 1);
-
+                final int workoutId = workouts.getWorkoutId();
+                final String workoutName = workouts.getWorkoutName();
+                final String workoutType = workouts.getWorkoutType();
+                final String workoutEquipment = workouts.getEquipment();
+                final int workoutLength = workouts.getLength();
+                final int workoutCalories = workouts.getCaloriesBurned();
                 name.setText(workouts.getWorkoutName());
                 name.setTextSize(22);
                 name.setPadding(40, 15, 10, 15);
@@ -104,7 +110,7 @@ public class Library extends Activity  {
 
                 dlt.setTextColor(Color.argb(255, 255, 255, 255));
                 dlt.setBackgroundColor(Color.argb(1, 76, 175, 80));
-                //dlt.setOnClickListener(checkWorkoutButton(dlt, ));
+                dlt.setOnClickListener(checkWorkoutButton(dlt, workoutId, workoutName, workoutType, workoutEquipment, workoutLength, workoutCalories));
                 row.addView(name);
                 row.addView(type);
                 row.addView(dlt);
@@ -119,20 +125,22 @@ public class Library extends Activity  {
                 db.deleteMeals(id, name, calorie, serving, ingredient, publication, type, recommend, diet);
                 finish();
                 startActivity(getIntent());
+                Toast.makeText(getApplicationContext(), "Meal Deleted!", Toast.LENGTH_LONG).show();
             }
         };
     }
 
-//    View.OnClickListener checkWorkoutButton(final Button button) {
-//        return new View.OnClickListener() {
-//            public void onClick(View v) {
-//                db.deleteWorkouts();
-//                finish();
-//                startActivity(getIntent());
-//            }
-//        };
-//    }
-    
+    View.OnClickListener checkWorkoutButton(final Button button, final int id, final String name, final String type, final String equipment, final int length, final int calorie) {
+        return new View.OnClickListener() {
+            public void onClick(View v) {
+                db.deleteWorkouts(id, name, type, equipment, length, calorie);
+                finish();
+                startActivity(getIntent());
+                Toast.makeText(getApplicationContext(), "Workout Deleted!", Toast.LENGTH_LONG).show();
+            }
+        };
+    }
+
     public void CreateOnClick(View view) {
         Bundle bundle = new Bundle();
         bundle.putString("ID", String.valueOf(ID));
