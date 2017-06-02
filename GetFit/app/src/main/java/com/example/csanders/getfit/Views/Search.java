@@ -6,6 +6,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -31,11 +32,12 @@ public class Search extends Activity {
     private ListView listofMeal;
     private RadioButton MealSearch;
     private RadioButton WorkoutSearch;
+    private AutoCompleteTextView search;
     public static ArrayList<String> mealsearch = new ArrayList<String>();
     public static ArrayList<String> workoutsearch = new ArrayList<String>();
 
 
-    private SearchView ingredient;
+
 
     Meals meals = new Meals();
     public final static int quota = 1000;
@@ -54,16 +56,17 @@ public class Search extends Activity {
         MealSearch = (RadioButton) findViewById(R.id.mealRadioBtnSearch);
         WorkoutSearch = (RadioButton)findViewById(R.id.workoutRadioBtnSearch);
         listofMeal = (ListView)findViewById(R.id.listOfMeals);
+        search = (AutoCompleteTextView)findViewById(R.id.SearchTextView);
 
 
 
 
        // mealArray =  new String[meal.size()];
-
+//
 //        db.addMeals(new Meals(1, "Burrito", 500, 3, "publication", "NAN", "recommendations", "No Restrictions"));
 //        db.addMeals(new Meals(2, "Steak Dinner", 1001, 5, "publication", "NAN", "recommendations", "No Restrictions"));
 //        db.addMeals(new Meals(3, "CheeseBurger", 800, 3, "publication", "NAN", "recommendations", "No Restrictions"));
-
+//
 //          db.addWorkouts(new Workouts(1, "Running" , "Cardio", 10));
 //          db.addWorkouts(new Workouts(2, "Jogging" , "Cardio", 10));
 
@@ -75,6 +78,7 @@ public class Search extends Activity {
 
          ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,mealsearch);
          listofMeal.setAdapter(adapter);
+         search.setAdapter(adapter);
 
 
          WorkoutSearch.setChecked(false);
@@ -87,6 +91,7 @@ public class Search extends Activity {
 
         ArrayAdapter<String> wadapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,workoutsearch);
         listofMeal.setAdapter(wadapter);
+        search.setAdapter(wadapter);
 
 
         MealSearch.setChecked(false);
