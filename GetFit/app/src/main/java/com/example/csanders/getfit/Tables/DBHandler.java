@@ -356,7 +356,6 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-
     //Updating a Meal
     public int updateMeal(Meals meal) {
         SQLiteDatabase db = this.getWritableDatabase();
