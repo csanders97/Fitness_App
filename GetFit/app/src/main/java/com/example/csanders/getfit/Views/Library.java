@@ -68,13 +68,7 @@ public class Library extends Activity  {
                 dlt.setTextColor(Color.argb(255, 255, 255, 255));
                 dlt.setBackgroundColor(Color.argb(1, 76, 175, 80));
                 dlt.setBackgroundColor(Color.parseColor("#4CAF50"));
-//                dlt.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        deleteMeal(mealId, mealName, mealCalories, mealServings, ingredient, publication, typeMeal, recommendations, diet);
-//                    }
-//                });
-                dlt.setOnClickListener(checkMealButton((dlt)));
+                dlt.setOnClickListener(checkMealButton(dlt, mealId, mealName, mealCalories, mealServings, ingredient, publication, typeMeal, recommendations, diet));
                 row.addView(name);
                 row.addView(type);
                 row.addView(dlt);
@@ -106,12 +100,7 @@ public class Library extends Activity  {
 
                 dlt.setTextColor(Color.argb(255, 255, 255, 255));
                 dlt.setBackgroundColor(Color.argb(1, 76, 175, 80));
-//                dlt.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Log.i("Please: ", "Work");
-//                    }
-//                });
+                //dlt.setOnClickListener(checkWorkoutButton(dlt, ));
                 row.addView(name);
                 row.addView(type);
                 row.addView(dlt);
@@ -120,22 +109,26 @@ public class Library extends Activity  {
         }
     }
 
-    View.OnClickListener checkMealButton(final Button button) {
+    View.OnClickListener checkMealButton(final Button button, final int id, final String name, final int calorie, final int serving, final String ingredient, final String publication, final String type, final String recommend, final String diet) {
         return new View.OnClickListener() {
             public void onClick(View v) {
-                Log.i("Please: ", "Work");
+                db.deleteMeals(id, name, calorie, serving, ingredient, publication, type, recommend, diet);
+                finish();
+                startActivity(getIntent());
             }
         };
     }
 
-    public void deleteMeal(int id, String name, int calorie, int serving, String ingredient, String publication, String type, String recommend, String diet) {
-        db.deleteMeals(id, name, calorie, serving, ingredient, publication, type, recommend, diet);
-    }
-
-    public void deleteWorkout() {
-        //db.deleteWorkouts();
-    }
-
+//    View.OnClickListener checkWorkoutButton(final Button button) {
+//        return new View.OnClickListener() {
+//            public void onClick(View v) {
+//                db.deleteWorkouts();
+//                finish();
+//                startActivity(getIntent());
+//            }
+//        };
+//    }
+    
     public void CreateOnClick(View view) {
         Bundle bundle = new Bundle();
         bundle.putString("ID", String.valueOf(ID));
