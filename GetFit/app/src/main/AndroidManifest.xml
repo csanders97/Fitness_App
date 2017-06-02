@@ -21,6 +21,7 @@
         <activity android:name=".Views.Library"></activity>
         <activity android:name=".Views.Search"></activity>
         <activity android:name=".Views.Profile"></activity>
+        <activity android:name=".Views.Item"></activity>
     </application>
 
 </manifest>

@@ -51,6 +51,7 @@ public class Library extends Activity  {
                 name.setTextSize(22);
                 name.setPadding(40, 15, 10, 15);
                 name.setBackgroundColor(Color.argb(255, 255, 255, 255));
+
                 type.setText("Meal");
                 type.setTextSize(22);
                 type.setPadding(40, 15, 10, 15);
@@ -69,6 +70,9 @@ public class Library extends Activity  {
                 dlt.setBackgroundColor(Color.argb(1, 76, 175, 80));
                 dlt.setBackgroundColor(Color.parseColor("#4CAF50"));
                 dlt.setOnClickListener(checkMealButton(dlt, mealId, mealName, mealCalories, mealServings, ingredient, publication, typeMeal, recommendations, diet));
+
+                name.setOnClickListener(sendItemID(mealId));
+
                 row.addView(name);
                 row.addView(type);
                 row.addView(dlt);
@@ -135,5 +139,17 @@ public class Library extends Activity  {
         Intent create = new Intent(this, Create.class);
         create.putExtras(bundle);
         startActivity(create);
+    }
+
+    View.OnClickListener sendItemID(final int id) {
+        return new View.OnClickListener() {
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("ID", String.valueOf(id));
+                Intent item = new Intent(v.getContext(), Item.class);
+                item.putExtras(bundle);
+                startActivity(item);
+            }
+        };
     }
 }
