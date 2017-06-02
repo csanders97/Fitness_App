@@ -17,6 +17,9 @@ import com.example.csanders.getfit.Models.Workouts;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.csanders.getfit.Views.Search.mealsearch;
+import static com.example.csanders.getfit.Views.Search.workoutsearch;
+
 public class DBHandler extends SQLiteOpenHelper {
 
     // Database Version
@@ -398,6 +401,8 @@ public class DBHandler extends SQLiteOpenHelper {
                 meals.setMeals_userID(cursor.getInt(8));
                 meals.setMeals_IngredientName(cursor.getString(9));
 
+                String name = cursor.getString(1) + " " + cursor.getString(2);
+                mealsearch.add(name);
 // Adding contact to list
                 listofmeals.add(meals);
             } while (cursor.moveToNext());
@@ -481,6 +486,9 @@ public class DBHandler extends SQLiteOpenHelper {
                 workouts.setCaloriesBurned(cursor.getInt(5));
                 workouts.setWorkout_user_id(cursor.getInt(6));
 
+
+                String workoutname = cursor.getString(1) + " " + cursor.getString(2);
+                workoutsearch.add(workoutname);
 // Adding workout to list
                 listofworkouts.add(workouts);
             } while (cursor.moveToNext());
