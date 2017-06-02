@@ -111,6 +111,9 @@ public class Library extends Activity  {
                 dlt.setTextColor(Color.argb(255, 255, 255, 255));
                 dlt.setBackgroundColor(Color.argb(1, 76, 175, 80));
                 dlt.setOnClickListener(checkWorkoutButton(dlt, workoutId, workoutName, workoutType, workoutEquipment, workoutLength, workoutCalories));
+
+                name.setOnClickListener(sendItemID(workoutId));
+
                 row.addView(name);
                 row.addView(type);
                 row.addView(dlt);
