@@ -18,6 +18,7 @@ import com.example.csanders.getfit.Models.Workouts;
 import com.example.csanders.getfit.R;
 import com.example.csanders.getfit.Tables.DBHandler;
 
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -31,13 +32,14 @@ public class Create extends Activity {
     private EditText Servings;
     private EditText Calories;
     private EditText Recommended;
-    private EditText publication;
+    private EditText instructions;
     private EditText length;
     private EditText MealType;
     private EditText workouttype;
     private Button addItem;
     private MultiAutoCompleteTextView options;
     String[] COUNTRIES = new String[5];
+    Calendar calendar = Calendar.getInstance();
     int ID;
 
     DBHandler db = new DBHandler(this);
@@ -54,7 +56,7 @@ public class Create extends Activity {
         Servings = (EditText)findViewById(R.id.Servings);
         Calories = (EditText)findViewById(R.id.Calories);
         Recommended = (EditText)findViewById(R.id.recommended);
-        publication = (EditText)findViewById(R.id.publicationdate);
+        instructions = (EditText)findViewById(R.id.instructions);
         length = (EditText)findViewById(R.id.length);
         workouttype = (EditText)findViewById(R.id.workouttype);
         MealType = (EditText)findViewById(R.id.mealtype);
@@ -114,7 +116,7 @@ public class Create extends Activity {
 
         Servings.setVisibility(View.VISIBLE);
         Recommended.setVisibility(View.VISIBLE);
-        publication.setVisibility(View.VISIBLE);
+        instructions.setVisibility(View.VISIBLE);
         MealType.setVisibility(View.VISIBLE);
 
 
@@ -134,7 +136,7 @@ public class Create extends Activity {
         options.setHint("Equipment");
         Servings.setVisibility(View.INVISIBLE);
         Recommended.setVisibility(View.INVISIBLE);
-        publication.setVisibility(View.INVISIBLE);
+//        instructions.setVisibility(View.INVISIBLE);
         MealType.setVisibility(View.INVISIBLE);
 
         length.setVisibility(View.VISIBLE);
@@ -163,10 +165,15 @@ public class Create extends Activity {
             String InputWorkoutEquipment = options.getText().toString();
             String InputWorkoutType = workouttype.getText().toString();
             String InputWorkoutLength = length.getText().toString();
+            String WorkoutInstructions = instructions.getText().toString();
             int workoutLength = Integer.parseInt(InputWorkoutLength);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            int year = calendar.get(Calendar.YEAR);
+            String publicationDate = "" + month + "/" + day + "/" + year;
             int workouts_user_id = ID;
 
-            db.addWorkouts(new Workouts(InputWorkoutName,InputWorkoutType,InputWorkoutEquipment,workoutLength,WorkoutCalories, workouts_user_id));
+            db.addWorkouts(new Workouts(InputWorkoutName,InputWorkoutType,InputWorkoutEquipment,workoutLength,WorkoutCalories, publicationDate, WorkoutInstructions, workouts_user_id));
 
             Bundle bundle = new Bundle();
             bundle.putString("ID", String.valueOf(ID));
@@ -187,11 +194,15 @@ public class Create extends Activity {
             int MealServings = Integer.parseInt(InputServings);
             String InputRecommendedFor = Recommended.getText().toString();
             String Dietary = "None";
-            String InputPublicationDate = publication.getText().toString();
+            String MealInstructions = instructions.getText().toString();
             String InputMealType = MealType.getText().toString();
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            int year = calendar.get(Calendar.YEAR);
+            String publicationDate = "" + month + "/" + day + "/" + year;
             int meal_user_id = ID;
 
-            db.addMeals(new Meals(InputMealName, CaloriesGained, MealServings, InputPublicationDate, InputMealType, InputRecommendedFor, Dietary, meal_user_id, InputIngredients));
+            db.addMeals(new Meals(InputMealName, CaloriesGained, MealServings, publicationDate, InputMealType, InputRecommendedFor, MealInstructions, Dietary, meal_user_id, InputIngredients));
 
             Bundle bundle = new Bundle();
             bundle.putString("ID", String.valueOf(ID));

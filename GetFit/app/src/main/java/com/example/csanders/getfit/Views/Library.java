@@ -67,10 +67,11 @@ public class Library extends Activity  {
                 final String typeMeal = meals.getMealType();
                 final String recommendations = meals.getRecommendations();
                 final String diet = meals.getDietaryRestrictions();
+                final String instruct = meals.getInstructions();
                 dlt.setTextColor(Color.argb(255, 255, 255, 255));
                 dlt.setBackgroundColor(Color.argb(1, 76, 175, 80));
                 dlt.setBackgroundColor(Color.parseColor("#4CAF50"));
-                dlt.setOnClickListener(checkMealButton(dlt, mealId, mealName, mealCalories, mealServings, ingredient, publication, typeMeal, recommendations, diet));
+                dlt.setOnClickListener(checkMealButton(dlt, mealId, mealName, mealCalories, mealServings, ingredient, publication, typeMeal, recommendations, instruct, diet));
 
                 name.setOnClickListener(sendItemID(mealId));
 
@@ -98,6 +99,8 @@ public class Library extends Activity  {
                 final String workoutEquipment = workouts.getEquipment();
                 final int workoutLength = workouts.getLength();
                 final int workoutCalories = workouts.getCaloriesBurned();
+                final String workoutPublished = workouts.getWorkoutPublished();
+                final String workoutInstructions = workouts.getWorkoutInstructions();
                 name.setText(workouts.getWorkoutName());
                 name.setTextSize(22);
                 name.setPadding(40, 15, 10, 15);
@@ -110,7 +113,7 @@ public class Library extends Activity  {
 
                 dlt.setTextColor(Color.argb(255, 255, 255, 255));
                 dlt.setBackgroundColor(Color.argb(1, 76, 175, 80));
-                dlt.setOnClickListener(checkWorkoutButton(dlt, workoutId, workoutName, workoutType, workoutEquipment, workoutLength, workoutCalories));
+                dlt.setOnClickListener(checkWorkoutButton(dlt, workoutId, workoutName, workoutType, workoutEquipment, workoutLength, workoutCalories, workoutPublished, workoutInstructions));
 
                 name.setOnClickListener(sendItemID(workoutId));
 
@@ -122,10 +125,10 @@ public class Library extends Activity  {
         }
     }
 
-    View.OnClickListener checkMealButton(final Button button, final int id, final String name, final int calorie, final int serving, final String ingredient, final String publication, final String type, final String recommend, final String diet) {
+    View.OnClickListener checkMealButton(final Button button, final int id, final String name, final int calorie, final int serving, final String ingredient, final String publication, final String type, final String recommend, final String instruct, final String diet) {
         return new View.OnClickListener() {
             public void onClick(View v) {
-                db.deleteMeals(id, name, calorie, serving, ingredient, publication, type, recommend, diet);
+                db.deleteMeals(id, name, calorie, serving, publication, type, recommend, instruct, diet, ingredient);
                 finish();
                 startActivity(getIntent());
                 Toast.makeText(getApplicationContext(), "Meal Deleted!", Toast.LENGTH_LONG).show();
@@ -133,10 +136,10 @@ public class Library extends Activity  {
         };
     }
 
-    View.OnClickListener checkWorkoutButton(final Button button, final int id, final String name, final String type, final String equipment, final int length, final int calorie) {
+    View.OnClickListener checkWorkoutButton(final Button button, final int id, final String name, final String type, final String equipment, final int length, final int calorie, final String publish, final String instruct) {
         return new View.OnClickListener() {
             public void onClick(View v) {
-                db.deleteWorkouts(id, name, type, equipment, length, calorie);
+                db.deleteWorkouts(id, name, type, equipment, length, calorie, publish, instruct);
                 finish();
                 startActivity(getIntent());
                 Toast.makeText(getApplicationContext(), "Workout Deleted!", Toast.LENGTH_LONG).show();

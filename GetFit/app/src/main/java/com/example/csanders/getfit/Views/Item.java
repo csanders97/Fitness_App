@@ -3,6 +3,7 @@ package com.example.csanders.getfit.Views;
 import android.app.Activity;
 import android.os.Bundle;
 
+import com.example.csanders.getfit.Models.Meals;
 import com.example.csanders.getfit.R;
 import com.example.csanders.getfit.Tables.DBHandler;
 
@@ -12,6 +13,7 @@ import com.example.csanders.getfit.Tables.DBHandler;
 
 public class Item extends Activity {
     DBHandler db = new DBHandler(this);
+    Meals meal = new Meals();
     int ID;
 
     @Override
@@ -21,8 +23,6 @@ public class Item extends Activity {
         Bundle bundle = getIntent().getExtras();
         String use = bundle.getString("ID");
         ID = Integer.parseInt(use);
-
-        
-
+        meal = db.getMeals(ID);
     }
 }

@@ -11,6 +11,8 @@ public class Workouts {
     private String equipment;
     private int length;
     private int caloriesBurned;
+    private String workoutPublished;
+    private String workoutInstructions;
     private int workout_user_id;
 
 
@@ -28,13 +30,15 @@ public class Workouts {
 
     }
 
-    public Workouts(String workoutName,String workoutType, String equipment, int length,int caloriesBurned, int workout_user_id) {
+    public Workouts(String workoutName,String workoutType, String equipment, int length,int caloriesBurned, String workoutPublish, String workoutWalkthrough, int workout_user_id) {
 
         this.workoutName  = workoutName;
         this.workoutType = workoutType;
         this.equipment = equipment;
         this.length = length;
         this.caloriesBurned = caloriesBurned;
+        this.workoutPublished = workoutPublish;
+        this.workoutInstructions = workoutWalkthrough;
         this.workout_user_id = workout_user_id;
 
     }
@@ -146,5 +150,17 @@ public class Workouts {
     {
 
         this.length = time;
+    }
+    public String getWorkoutPublished() {
+        return this.workoutPublished;
+    }
+    public void setWorkoutPublished(String publish) {
+        this.workoutPublished = publish;
+    }
+    public String getWorkoutInstructions() {
+        return this.workoutInstructions;
+    }
+    public void setWorkoutInstructions(String instruct) {
+        this.workoutInstructions = instruct;
     }
 }

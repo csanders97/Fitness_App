@@ -47,7 +47,7 @@ public class Meals {
     }
 
 
-    public Meals(String mealName, int mealCalories, int servings, String publications, String mealType, String recommendations, String diet, int meals_userID, String meals_IngredientName) {
+    public Meals(String mealName, int mealCalories, int servings, String publications, String mealType, String recommendations, String instructions, String diet, int meals_userID, String meals_IngredientName) {
         this.mealName = mealName;
         this.mealCalories = mealCalories;
         this.servings = servings;
@@ -57,9 +57,10 @@ public class Meals {
         this.dietaryRestrictions = diet;
         this.meals_userID = meals_userID;
         this.meals_IngredientName = meals_IngredientName;
+        this.Instructions = instructions;
     }
 
-    public Meals(int mealId, String mealName, int mealCalories, int servings,String publications, String mealType, String recommendations,String dietaryRestrictions, int meals_userID, String meals_IngredientName) {
+    public Meals(int mealId, String mealName, int mealCalories, int servings,String publications, String mealType, String recommendations,String dietaryRestrictions, String instructions, int meals_userID, String meals_IngredientName) {
         this.mealId = mealId;
         this.mealName = mealName;
         this.mealCalories = mealCalories;
@@ -68,6 +69,7 @@ public class Meals {
         this.mealType = mealType;
         this.recommendations = recommendations;
         this.dietaryRestrictions = dietaryRestrictions;
+        this.Instructions = instructions;
         this.meals_userID = meals_userID;
         this.meals_IngredientName = meals_IngredientName;
     }

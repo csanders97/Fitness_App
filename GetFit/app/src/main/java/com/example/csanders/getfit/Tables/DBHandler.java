@@ -23,7 +23,7 @@ import static com.example.csanders.getfit.Views.Search.workoutsearch;
 public class DBHandler extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 12;
+    private static final int DATABASE_VERSION = 17;
 
     // Database Name
     private static final String DATABASE_NAME = "Fitness";
@@ -64,8 +64,8 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEY_Publications = " publications ";
     private static final String KEY_MealType = " meal_type ";
     private static final String KEY_Recommendations = " recommendations ";
-    private static final String KEY_DietaryRestrictions = " dietary_restrictions ";
     private static final String KEY_Instructions = " instructions";
+    private static final String KEY_DietaryRestrictions = " dietary_restrictions ";
 
     //Foreign Key
     private static final String KEY_Meals_UserID = " userId ";
@@ -79,6 +79,8 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEY_Equipment = " equipment ";
     private static final String KEY_WorkoutLength = " workout_length ";
     private static final String KEY_CaloriesBurned = " burned_calories";
+    private static final String KEY_WorkoutPublished = " workout_published ";
+    private static final String KEY_WorkoutInstructions = " workout_instructions ";
     //Foreign Key
     private static final String KEY_Workout_User_ID = "userId";
 
@@ -107,7 +109,7 @@ public class DBHandler extends SQLiteOpenHelper {
                     + "FOREIGN KEY (" + KEY_Ingredient_UserID + ") REFERENCES " + TABLE_Users + "(" + KEY_UserID + ")" + ")";
 
     // Meals table
-    private static final String CREATE_TABLE_MEALS=
+    private static final String CREATE_TABLE_MEALS =
             "CREATE TABLE " + TABLE_Meals +
                     "(" + KEY_MealId + " INTEGER PRIMARY KEY,"
                     + KEY_MealName + " INTEGER,"
@@ -116,9 +118,9 @@ public class DBHandler extends SQLiteOpenHelper {
                     + KEY_Publications + " TEXT,"
                     + KEY_MealType + " TEXT,"
                     + KEY_Recommendations + " TEXT,"
-                    + KEY_DietaryRestrictions + "TEXT, "
-                    + KEY_Instructions        +  "TEXT, "
-                    + KEY_Meals_UserID + " INTEGER, "
+                    + KEY_Instructions        +  " TEXT,"
+                    + KEY_DietaryRestrictions + " TEXT,"
+                    + KEY_Meals_UserID + " INTEGER,"
                     + KEY_Meals_IngredientName + " TEXT,"
                     + "FOREIGN KEY (" + KEY_Meals_UserID + ") REFERENCES " + TABLE_Users + "(" + KEY_UserID + "),"
                     + "FOREIGN KEY (" + KEY_Meals_IngredientName + " ) REFERENCES " + TABLE_Ingredients + "(" + KEY_IngredientName + ")"  + ")";
@@ -134,6 +136,8 @@ public class DBHandler extends SQLiteOpenHelper {
                     + KEY_WorkoutLength   + " INTEGER,"
                     + KEY_Equipment       + " TEXT,"
                     + KEY_CaloriesBurned  + " INTEGER,"
+                    + KEY_WorkoutPublished + " TEXT,"
+                    + KEY_WorkoutInstructions + " TEXT,"
                     + KEY_Workout_User_ID + " INTEGER,"
                     + "FOREIGN KEY (" + KEY_Workout_User_ID + ") REFERENCES " + TABLE_Users + "(" + KEY_UserID + ")"  + ")";
 
@@ -348,9 +352,9 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_Servings, meals.getServings()); // Meal Servings
         values.put(KEY_Publications, meals.getPublications()); // Meal Publications
         values.put(KEY_MealType, meals.getMealType()); // Meal Type
+        values.put(KEY_Recommendations, meals.getRecommendations()); // Meal Recommendations
+        values.put(KEY_Instructions, meals.getInstructions()); // Meal Instructions
         values.put(KEY_DietaryRestrictions, meals.getDietaryRestrictions()); // Meal Dietary Restrictions
-        values.put(KEY_Recommendations, meals.getRecommendations());
-        values.put(KEY_Instructions, meals.getInstructions());
         values.put(KEY_Meals_UserID, meals.getMeals_userID()); // Meal_UserID
         values.put(KEY_Meals_IngredientName, meals.getMeals_IngredientName()); // Meal IngredientName
 
@@ -358,6 +362,22 @@ public class DBHandler extends SQLiteOpenHelper {
         // Inserting data into Users Table
         db.insert(TABLE_Meals, null, values);
         db.close();
+    }
+
+    //Return one Meal
+    public Meals getMeals(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_Meals, new String[]{KEY_MealId,
+                        KEY_MealName, KEY_MealCalories, KEY_Servings, KEY_Publications, KEY_MealType, KEY_Recommendations, KEY_Instructions, KEY_DietaryRestrictions, KEY_Meals_UserID, KEY_Meals_IngredientName}, KEY_MealId + "=?",
+                new String[]{String.valueOf(id)}, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        Meals info = new Meals(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1), cursor.getInt(2), cursor.getInt(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getInt(9),cursor.getString(10));
+// return Meals
+        return info;
     }
 
     //Updating a Meal
@@ -370,9 +390,9 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_Servings, meal.getServings()); // Meal Servings
         values.put(KEY_Publications, meal.getPublications()); // Meal Publications
         values.put(KEY_MealType, meal.getMealType()); // Meal Type
-        values.put(KEY_DietaryRestrictions, meal.getDietaryRestrictions()); // Meal Dietary Restrictions
+        values.put(KEY_Recommendations, meal.getRecommendations()); //Meal Recommendations
         values.put(KEY_Instructions, meal.getInstructions()); //Meal Instructions
-
+        values.put(KEY_DietaryRestrictions, meal.getDietaryRestrictions()); // Meal Dietary Restrictions
 
 // updating row
         return db.update(TABLE_Meals, values, KEY_MealId + " = ?",
@@ -401,8 +421,8 @@ public class DBHandler extends SQLiteOpenHelper {
                 meals.setPublications(cursor.getString(4));
                 meals.setMealType(cursor.getString(5));
                 meals.setRecommendations(cursor.getString(6));
-                meals.setDietaryRestrictions(cursor.getString(7));
-                meals.setInstructions(cursor.getString(8));
+                meals.setInstructions(cursor.getString(7));
+                meals.setDietaryRestrictions(cursor.getString(8));
                 meals.setMeals_userID(cursor.getInt(9));
                 meals.setMeals_IngredientName(cursor.getString(10));
 
@@ -419,7 +439,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
 
     //Deleting a Meal
-    public void deleteMeals(int id, String name, int calorie, int serving, String ingredient, String publication, String type, String recommend, String diet) {
+    public void deleteMeals(int id, String name, int calorie, int serving, String publication, String type, String recommend, String instructions, String diet, String ingredient) {
         Meals meals;
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_Meals, KEY_MealId + " = ?",
@@ -441,6 +461,8 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_Equipment, workout.getEquipment()); //Workout Equipment
         values.put(KEY_WorkoutLength, workout.getLength()); // Workout Length
         values.put(KEY_CaloriesBurned, workout.getCaloriesBurned()); //Calories burned after workout
+        values.put(KEY_WorkoutPublished, workout.getWorkoutPublished()); // Workout published
+        values.put(KEY_WorkoutInstructions, workout.getWorkoutInstructions()); //Workout Instructions
         values.put(KEY_Workout_User_ID, workout.getWorkout_user_id()); // Workout User ID
 
         // Inserting data into Workouts Table
@@ -459,6 +481,8 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_Equipment, workouts.getEquipment());  //Workout Equipment
         values.put(KEY_WorkoutLength, workouts.getLength()); // Workout Length
         values.put(KEY_CaloriesBurned, workouts.getCaloriesBurned()); //Calories burned after workout
+        values.put(KEY_WorkoutPublished, workouts.getWorkoutPublished());
+        values.put(KEY_WorkoutInstructions, workouts.getWorkoutInstructions());
 
 
 
@@ -489,7 +513,9 @@ public class DBHandler extends SQLiteOpenHelper {
                 workouts.setEquipment(cursor.getString(3));
                 workouts.setLength(cursor.getInt(4));
                 workouts.setCaloriesBurned(cursor.getInt(5));
-                workouts.setWorkout_user_id(cursor.getInt(6));
+                workouts.setWorkoutPublished(cursor.getString(6));
+                workouts.setWorkoutInstructions(cursor.getString(7));
+                workouts.setWorkout_user_id(cursor.getInt(8));
 
 
                 String workoutname = cursor.getString(1) + " " + cursor.getString(2);
@@ -507,7 +533,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
 
     //Deleting a workout
-    public void deleteWorkouts(int id, String name, String type, String equipment, int length, int calorie) {
+    public void deleteWorkouts(int id, String name, String type, String equipment, int length, int calorie, String publish, String instruct) {
         Workouts workouts;
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_Workouts, KEY_WorkoutId + " = ?",
