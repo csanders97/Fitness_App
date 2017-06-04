@@ -23,7 +23,7 @@ import static com.example.csanders.getfit.Views.Search.workoutsearch;
 public class DBHandler extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 17;
+    private static final int DATABASE_VERSION = 18;
 
     // Database Name
     private static final String DATABASE_NAME = "Fitness";
@@ -529,8 +529,20 @@ public class DBHandler extends SQLiteOpenHelper {
         return listofworkouts;
     }
 
+    public Workouts getWorkouts(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
 
+        Cursor cursor = db.query(TABLE_Workouts, new String[]{KEY_WorkoutId,
+                        KEY_WorkoutName, KEY_WorkoutType, KEY_Equipment, KEY_WorkoutLength, KEY_CaloriesBurned, KEY_WorkoutPublished, KEY_WorkoutInstructions, KEY_Workout_User_ID}, KEY_WorkoutId + "=?",
+                new String[]{String.valueOf(id)}, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
 
+        Workouts info = new Workouts(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getInt(4), cursor.getInt(5), cursor.getString(6), cursor.getString(7), cursor.getInt(8));
+// return Meals
+        return info;
+    }
 
     //Deleting a workout
     public void deleteWorkouts(int id, String name, String type, String equipment, int length, int calorie, String publish, String instruct) {

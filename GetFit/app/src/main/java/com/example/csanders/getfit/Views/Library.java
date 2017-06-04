@@ -112,7 +112,7 @@ public class Library extends Activity  {
                 dlt.setText("Delete");
 
                 dlt.setTextColor(Color.argb(255, 255, 255, 255));
-                dlt.setBackgroundColor(Color.argb(1, 76, 175, 80));
+                dlt.setBackgroundColor(Color.parseColor("#4CAF50"));
                 dlt.setOnClickListener(checkWorkoutButton(dlt, workoutId, workoutName, workoutType, workoutEquipment, workoutLength, workoutCalories, workoutPublished, workoutInstructions));
 
                 name.setOnClickListener(sendItemID(workoutId));

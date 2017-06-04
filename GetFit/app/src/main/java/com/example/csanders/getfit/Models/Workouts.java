@@ -52,7 +52,7 @@ public class Workouts {
 
     }
 
-    public Workouts(int workoutId,String workoutName,String workoutType,int length, int caloriesBurned, int workout_user_id) {
+    public Workouts(int workoutId,String workoutName,String workoutType,String equipment, int length,int caloriesBurned, String workoutPublish, String workoutWalkthrough, int workout_user_id) {
 
         this.workoutId = workoutId;
         this.workoutName  = workoutName;
