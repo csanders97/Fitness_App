@@ -24,9 +24,12 @@ import java.util.List;
  */
 
 public class Library extends Activity  {
-    private Button create;
+    Button create;
     DBHandler db = new DBHandler(this);
+    int workoutId;
+    int mealId;
     int ID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +61,7 @@ public class Library extends Activity  {
                 type.setPadding(40, 15, 10, 15);
                 type.setBackgroundColor(Color.argb(255, 255, 255, 255));
                 dlt.setText("Delete");
-                final int mealId = meals.getMealId();
+                mealId = meals.getMealId();
                 final String mealName = meals.getMealName();
                 final int mealCalories = meals.getMealCalories();
                 final int mealServings = meals.getServings();
@@ -73,7 +76,7 @@ public class Library extends Activity  {
                 dlt.setBackgroundColor(Color.parseColor("#4CAF50"));
                 dlt.setOnClickListener(checkMealButton(dlt, mealId, mealName, mealCalories, mealServings, ingredient, publication, typeMeal, recommendations, instruct, diet));
 
-                name.setOnClickListener(sendItemID(mealId));
+                name.setOnClickListener(sendMealItemID(mealId));
 
                 row.addView(name);
                 row.addView(type);
@@ -93,7 +96,7 @@ public class Library extends Activity  {
 
                 row.setBackgroundColor(Color.argb(1, 204, 204, 204));
                 row.setPadding(0, 0, 1, 1);
-                final int workoutId = workouts.getWorkoutId();
+                workoutId = workouts.getWorkoutId();
                 final String workoutName = workouts.getWorkoutName();
                 final String workoutType = workouts.getWorkoutType();
                 final String workoutEquipment = workouts.getEquipment();
@@ -115,7 +118,7 @@ public class Library extends Activity  {
                 dlt.setBackgroundColor(Color.parseColor("#4CAF50"));
                 dlt.setOnClickListener(checkWorkoutButton(dlt, workoutId, workoutName, workoutType, workoutEquipment, workoutLength, workoutCalories, workoutPublished, workoutInstructions));
 
-                name.setOnClickListener(sendItemID(workoutId));
+                name.setOnClickListener(sendWorkoutItemID(workoutId));
 
                 row.addView(name);
                 row.addView(type);
@@ -155,11 +158,23 @@ public class Library extends Activity  {
         startActivity(create);
     }
 
-    View.OnClickListener sendItemID(final int id) {
+    View.OnClickListener sendMealItemID(final int id) {
         return new View.OnClickListener() {
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString("ID", String.valueOf(id));
+                bundle.putString("Meal", String.valueOf(id));
+                Intent item = new Intent(v.getContext(), Item.class);
+                item.putExtras(bundle);
+                startActivity(item);
+            }
+        };
+    }
+
+    View.OnClickListener sendWorkoutItemID(final int id) {
+        return new View.OnClickListener() {
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("Workout", String.valueOf(id));
                 Intent item = new Intent(v.getContext(), Item.class);
                 item.putExtras(bundle);
                 startActivity(item);

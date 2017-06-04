@@ -57,8 +57,11 @@ public class Workouts {
         this.workoutId = workoutId;
         this.workoutName  = workoutName;
         this.workoutType = workoutType;
+        this.equipment = equipment;
         this.length = length;
         this.caloriesBurned = caloriesBurned;
+        this.workoutPublished = workoutPublish;
+        this.workoutInstructions = workoutWalkthrough;
         this.workout_user_id = workout_user_id;
 
     }

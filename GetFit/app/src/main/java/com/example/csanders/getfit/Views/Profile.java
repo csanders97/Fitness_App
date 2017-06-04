@@ -55,17 +55,16 @@ public class Profile extends Activity implements View.OnClickListener {
         dailyCalories = (TextView) findViewById(R.id.recCalories);
         goal.setSelection(getSpinnerValue(goal, test.getGoal()));
         if (isEmpty()) {
-            test.getCaloriequota();
+            calorie = String.valueOf(test.getCaloriequota());
         }
         else  {
             calorie = "Please fill in all empty values.";
         }
 
         dailyCalories.setText(calorie);
-        dailyCalories.setGravity(Gravity.CENTER);
         editUser = (Button) findViewById(R.id.submitButton);
         editUser.setOnClickListener(this);
-    }
+     }
 
     @Override
     public void onClick(View view) {
