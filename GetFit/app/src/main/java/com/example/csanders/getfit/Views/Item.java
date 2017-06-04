@@ -24,6 +24,7 @@ public class Item extends Activity {
     TextView author;
     TextView ingredients;
     TextView instructions;
+    TextView date;
     int ID;
 
     @Override
@@ -59,6 +60,8 @@ public class Item extends Activity {
         ingredients.setText(meal.getMeals_IngredientName());
         instructions = (TextView) findViewById(R.id.instructions);
         instructions.setText(meal.getInstructions());
+        date = (TextView) findViewById(R.id.date);
+        date.setText(meal.getPublications());
     }
 
     public void displayWorkoutItem(int workoutId) {
@@ -76,5 +79,7 @@ public class Item extends Activity {
         ingredients.setText(workout.getEquipment());
         instructions = (TextView) findViewById(R.id.instructions);
         instructions.setText(workout.getWorkoutInstructions());
+        date = (TextView) findViewById(R.id.date);
+        date.setText(workout.getWorkoutPublished());
     }
 }

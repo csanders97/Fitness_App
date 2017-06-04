@@ -154,7 +154,10 @@ public class Create extends Activity {
 
     public void AddtoDatabase(View view) {
 
-
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int year = calendar.get(Calendar.YEAR);
+        String publicationDate = "" + month + "/" + day + "/" + year;
 
         if(meal.isChecked() == false) {
 
@@ -167,10 +170,6 @@ public class Create extends Activity {
             String InputWorkoutLength = length.getText().toString();
             String WorkoutInstructions = instructions.getText().toString();
             int workoutLength = Integer.parseInt(InputWorkoutLength);
-            int month = calendar.get(Calendar.MONTH);
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
-            int year = calendar.get(Calendar.YEAR);
-            String publicationDate = "" + month + "/" + day + "/" + year;
             int workouts_user_id = ID;
 
             db.addWorkouts(new Workouts(InputWorkoutName,InputWorkoutType,InputWorkoutEquipment,workoutLength,WorkoutCalories, publicationDate, WorkoutInstructions, workouts_user_id));
@@ -196,10 +195,6 @@ public class Create extends Activity {
             String Dietary = "None";
             String MealInstructions = instructions.getText().toString();
             String InputMealType = MealType.getText().toString();
-            int month = calendar.get(Calendar.MONTH);
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
-            int year = calendar.get(Calendar.YEAR);
-            String publicationDate = "" + month + "/" + day + "/" + year;
             int meal_user_id = ID;
 
             db.addMeals(new Meals(InputMealName, CaloriesGained, MealServings, publicationDate, InputMealType, InputRecommendedFor, MealInstructions, Dietary, meal_user_id, InputIngredients));
