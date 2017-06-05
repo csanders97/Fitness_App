@@ -57,15 +57,16 @@ public class Search extends Activity {
         WorkoutSearch = (RadioButton)findViewById(R.id.workoutRadioBtnSearch);
         listofMeal = (ListView)findViewById(R.id.listOfMeals);
         search = (AutoCompleteTextView)findViewById(R.id.SearchTextView);
+        MealSearch.setChecked(true);
 
 
 
 
        // mealArray =  new String[meal.size()];
 //
-//        db.addMeals(new Meals(1, "Burrito", 500, 3, "publication", "NAN", "recommendations", "No Restrictions"));
-//        db.addMeals(new Meals(2, "Steak Dinner", 1001, 5, "publication", "NAN", "recommendations", "No Restrictions"));
-//        db.addMeals(new Meals(3, "CheeseBurger", 800, 3, "publication", "NAN", "recommendations", "No Restrictions"));
+//        db.addMeals(new Meals(1, "Burrito", 500, 3, "publication", "NAN", "recommendations", "No Restrictions", "eat the burrito"));
+//        db.addMeals(new Meals(2, "Steak Dinner", 1001, 5, "publication", "NAN", "recommendations", "No Restrictions", "eat the Steak"));
+          //db.addMeals(new Meals(3, "CheeseBurger", 800, 3, "publication", "NAN", "recommendations", "Meat Lover", " eat the Cheeseburger"));
 //
 //          db.addWorkouts(new Workouts(1, "Running" , "Cardio", 10));
 //          db.addWorkouts(new Workouts(2, "Jogging" , "Cardio", 10));
