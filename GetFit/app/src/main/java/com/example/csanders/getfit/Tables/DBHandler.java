@@ -380,6 +380,21 @@ public class DBHandler extends SQLiteOpenHelper {
         return info;
     }
 
+    public Meals getMealsByName(String name) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_Meals, new String[]{KEY_MealId,
+                        KEY_MealName, KEY_MealCalories, KEY_Servings, KEY_Publications, KEY_MealType, KEY_Recommendations, KEY_Instructions, KEY_DietaryRestrictions, KEY_Meals_UserID, KEY_Meals_IngredientName}, KEY_MealId + "=?",
+                new String[]{String.valueOf(name)}, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        Meals info = new Meals(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1), cursor.getInt(2), cursor.getInt(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getInt(9),cursor.getString(10));
+// return Meals
+        return info;
+    }
+
     //Updating a Meal
     public int updateMeal(Meals meal) {
         SQLiteDatabase db = this.getWritableDatabase();
