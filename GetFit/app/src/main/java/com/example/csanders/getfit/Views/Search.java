@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.csanders.getfit.Models.Ingredients;
 import com.example.csanders.getfit.Models.Meals;
@@ -62,6 +64,18 @@ public class Search extends Activity {
 
 
 
+
+        search.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
+                //Toast.makeText(getApplicationContext(), "Registration Successful!", Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+
        // mealArray =  new String[meal.size()];
 //
 //        db.addMeals(new Meals(1, "Burrito", 500, 3, "publication", "NAN", "recommendations", "No Restrictions", "eat the burrito"));
@@ -72,6 +86,13 @@ public class Search extends Activity {
 //          db.addWorkouts(new Workouts(2, "Jogging" , "Cardio", 10));
 
         //quotaMealSearch();
+    }
+
+
+
+
+    public void searchOnClick(View view) {
+
     }
 
 
