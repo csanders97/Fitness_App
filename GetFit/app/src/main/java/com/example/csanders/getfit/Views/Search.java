@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.csanders.getfit.Models.Ingredients;
 import com.example.csanders.getfit.Models.Meals;
@@ -57,20 +59,48 @@ public class Search extends Activity {
         WorkoutSearch = (RadioButton)findViewById(R.id.workoutRadioBtnSearch);
         listofMeal = (ListView)findViewById(R.id.listOfMeals);
         search = (AutoCompleteTextView)findViewById(R.id.SearchTextView);
+        MealSearch.setChecked(true);
 
 
+
+
+
+        search.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
+                //Toast.makeText(getApplicationContext(), "Registration Successful!", Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+
+        listofMeal.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
 
 
        // mealArray =  new String[meal.size()];
 //
-//        db.addMeals(new Meals(1, "Burrito", 500, 3, "publication", "NAN", "recommendations", "No Restrictions"));
-//        db.addMeals(new Meals(2, "Steak Dinner", 1001, 5, "publication", "NAN", "recommendations", "No Restrictions"));
-//        db.addMeals(new Meals(3, "CheeseBurger", 800, 3, "publication", "NAN", "recommendations", "No Restrictions"));
+//        db.addMeals(new Meals(1, "Burrito", 500, 3, "publication", "NAN", "recommendations", "No Restrictions", "eat the burrito"));
+//        db.addMeals(new Meals(2, "Steak Dinner", 1001, 5, "publication", "NAN", "recommendations", "No Restrictions", "eat the Steak"));
+          //db.addMeals(new Meals(3, "CheeseBurger", 800, 3, "publication", "NAN", "recommendations", "Meat Lover", " eat the Cheeseburger"));
 //
 //          db.addWorkouts(new Workouts(1, "Running" , "Cardio", 10));
 //          db.addWorkouts(new Workouts(2, "Jogging" , "Cardio", 10));
 
         //quotaMealSearch();
+    }
+
+
+
+
+    public void searchOnClick(View view) {
+
     }
 
 
