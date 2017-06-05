@@ -85,19 +85,23 @@ public class Meals {
          this.Instructions = Instructions;
     }
 
-    public int getMeals_userID() {
+    public int getMeals_userID()
+    {
         return meals_userID;
     }
 
-    public void setMeals_userID(int meals_userID) {
+    public void setMeals_userID(int meals_userID)
+    {
         this.meals_userID = meals_userID;
     }
 
-    public String getMeals_IngredientName() {
+    public String getMeals_IngredientName()
+    {
         return meals_IngredientName;
     }
 
-    public void setMeals_IngredientName(String meals_IngredientName) {
+    public void setMeals_IngredientName(String meals_IngredientName)
+    {
         this.meals_IngredientName = meals_IngredientName;
     }
 
