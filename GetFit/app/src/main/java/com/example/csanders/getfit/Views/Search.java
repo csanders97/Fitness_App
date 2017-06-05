@@ -76,6 +76,14 @@ public class Search extends Activity {
         });
 
 
+        listofMeal.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
+
+
        // mealArray =  new String[meal.size()];
 //
 //        db.addMeals(new Meals(1, "Burrito", 500, 3, "publication", "NAN", "recommendations", "No Restrictions", "eat the burrito"));

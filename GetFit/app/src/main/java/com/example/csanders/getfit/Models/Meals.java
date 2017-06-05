@@ -34,6 +34,8 @@ public class Meals {
         this.meals_userID = meal_user_id;
     }
 
+   
+
     public Meals(int mealId, String mealName, int mealCalories, int servings, String publications, String mealType, String recommendations,String dietaryRestrictions, String Instructions) {
         this.mealId = mealId;
         this.mealName = mealName;
