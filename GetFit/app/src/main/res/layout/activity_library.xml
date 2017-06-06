@@ -61,6 +61,15 @@
             android:paddingBottom="3dp"
             android:textSize="35dp"
             android:textStyle="bold"/>
+
     </TableRow>
+
+    <Button
+        android:id="@+id/back"
+        android:layout_weight="96"
+        android:background="#4CAF50"
+        android:text="Home"
+        android:onClick="BackHome"
+        android:textColor="#fff" />
 
 </TableLayout>

@@ -25,6 +25,7 @@ import java.util.List;
 
 public class Library extends Activity  {
     Button create;
+    Button home;
     DBHandler db = new DBHandler(this);
     int workoutId;
     int mealId;
@@ -39,6 +40,7 @@ public class Library extends Activity  {
         ID = Integer.parseInt(use);
         TableLayout tl = (TableLayout) findViewById(R.id.tlTable01);
         create = (Button)findViewById(R.id.createItemBtn);
+        home = (Button)findViewById(R.id.back);
         List<Meals> meal = db.getAllMeals();
         for(Meals meals : meal) {
             if (meals.meals_userID == ID) {
@@ -156,6 +158,14 @@ public class Library extends Activity  {
         Intent create = new Intent(this, Create.class);
         create.putExtras(bundle);
         startActivity(create);
+    }
+
+    public void BackHome(View view) {
+        Bundle bundle = new Bundle();
+        bundle.putString("stuff", String.valueOf(ID));
+        Intent home = new Intent(this, Home.class);
+        home.putExtras(bundle);
+        startActivity(home);
     }
 
     View.OnClickListener sendMealItemID(final int id) {
