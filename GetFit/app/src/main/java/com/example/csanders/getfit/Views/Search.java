@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -49,14 +50,13 @@ public class Search extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         final DBHandler db = new DBHandler(this);
         db.getAllMeals();
         MealSearch = (RadioButton) findViewById(R.id.mealRadioBtnSearch);
         WorkoutSearch = (RadioButton)findViewById(R.id.workoutRadioBtnSearch);
         listofMeal = (ListView)findViewById(R.id.listOfMeals);
         search = (AutoCompleteTextView)findViewById(R.id.SearchTextView);
-        MealSearch.setChecked(true);
 
 
 
