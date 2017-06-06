@@ -1,6 +1,7 @@
 package com.example.csanders.getfit.Views;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -37,10 +38,6 @@ public class Search extends Activity {
     private AutoCompleteTextView search;
     public static ArrayList<String> mealsearch = new ArrayList<String>();
     public static ArrayList<String> workoutsearch = new ArrayList<String>();
-
-
-
-
     Meals meals = new Meals();
     public final static int quota = 1000;
 
@@ -53,7 +50,7 @@ public class Search extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        DBHandler db = new DBHandler(this);
+        final DBHandler db = new DBHandler(this);
         db.getAllMeals();
         MealSearch = (RadioButton) findViewById(R.id.mealRadioBtnSearch);
         WorkoutSearch = (RadioButton)findViewById(R.id.workoutRadioBtnSearch);
@@ -79,7 +76,31 @@ public class Search extends Activity {
         listofMeal.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                String record = ((TextView)view).getText().toString();
+                String[] name = record.split("\\s+");
+                String itemName = name[0];
+                List<Workouts> workout = db.getAllWorkouts();
+                for(Workouts workouts : workout) {
+                    if (workouts.getWorkoutName().equals(itemName)) {
+                        int workoutId = workouts.getWorkoutId();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("Workout", String.valueOf(workoutId));
+                        Intent item = new Intent(view.getContext(), Item.class);
+                        item.putExtras(bundle);
+                        startActivity(item);
+                    }
+                }
+                List<Meals> meal = db.getAllMeals();
+                for(Meals meals : meal) {
+                    if (meals.getMealName().equals(itemName)) {
+                        int mealId = meals.getMealId();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("Meal", String.valueOf(mealId));
+                        Intent item = new Intent(view.getContext(), Item.class);
+                        item.putExtras(bundle);
+                        startActivity(item);
+                    }
+                }
             }
         });
 
