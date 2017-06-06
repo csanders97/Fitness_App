@@ -74,10 +74,6 @@ public class Create extends Activity {
 
 
 
-        meal.setChecked(true);
-
-
-
         //List<Ingredients> ing = db.getAllIngredients();
 
 //        db.addIngredients(new Ingredients(1, "Banana", 89, "Fruit"));
